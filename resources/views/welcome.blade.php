@@ -51,12 +51,12 @@
             </div>
           </div>
           <div class="box-out mb-5">
-            <h3 class="heading-sm mb-4">Dashboard Filter</h3>
+            <h3 class="heading-sm mb-4">{{ __('dashboard.Dashboard Filter')}}</h3>
             <div class="box">
-              <h4>Filter by:</h4>
+              <h4>{{ __('dashboard.Filter by')}}:</h4>
               <div class="list-input  mb-4">
                 <ul class="mb-0">
-                  <li><a href="#">Diagnosis</a></li>
+                  <li><a href="#">{{ __('dashboard.Diagnosis')}}</a></li>
                 </ul>
 
                 <div class="chk-block">
@@ -72,7 +72,7 @@
               </div>
               <div class="list-input">
                 <ul class="mb-0">
-                  <li><a href="#">Age Group</a></li>
+                  <li><a href="#">{{__('dashboard.Age Group')}}</a></li>
                 </ul>
 
                 <div class="chk-block">
@@ -196,17 +196,17 @@
           </div>
           <div class="box-out mb-5">
             <div class="d-sm-flex justify-content-between mb-4">
-              <h3 class="heading-sm">Overall Health Decline</h3>
-              <a href="#" class="text-black-50">View More <i class="fa-regular fa-chevron-right"></i></a>
+              <h3 class="heading-sm">{{__('dashboard.Overall Health Decline')}}</h3>
+              <a href="#" class="text-black-50">{{__('dashboard.View More')}} <i class="fa-regular fa-chevron-right"></i></a>
             </div>
             <div class="cust-table">
               <table class="table ">
                 <thead>
                   <tr>
-                    <th scope="col" width="30%">Patient</th>
-                    <th scope="col" width="25%">Monitor</th>
-                    <th scope="col" width="25%" align="center" class="text-center">Value</th>
-                    <th scope="col" width="20%">Duration</th>
+                    <th scope="col" width="30%">{{__('dashboard.Patient')}}</th>
+                    <th scope="col" width="25%">{{__('dashboard.Monitor')}}</th>
+                    <th scope="col" width="25%" align="center" class="text-center">{{__('dashboard.Value')}}</th>
+                    <th scope="col" width="20%">{{__('dashboard.Duration')}}</th>
                   </tr>
                 </thead>
               </table>
@@ -218,7 +218,7 @@
                     <td width="25%"><canvas id="myChart{{$patient->id}}" class="overallChart" data-report="{{$patient->patientHistory->over_rep_combined}}" data-labels="{{$patient->patientHistory->rep_dates}}"></canvas>
                     </td>
                     <td width="25%" align="center" class="text-center">{{$patient->patientHistory->total_value}}</td>
-                    <td width="20%">{{$patient->patientHistory->total_days}} days</td>
+                    <td width="20%">{{$patient->patientHistory->total_days}} {{__('dashboard.days')}}</td>
                   </tr>
                   @endforeach
                 </tbody>

@@ -14,6 +14,17 @@
         'User management'=>'User management',
         'Medical facility'=>'Medical facility',
         'Doctors'=>'Doctors',
-        'Patients'=>'Patients'
+        'Patients'=>'Patients',
+        'Dashboard Filter'=>'Dashboard Filter',
+        'Diagnosis'=>'Diagnosis',
+        'Filter by'=>'Filter by',
+        'Age Group'=>'Age Group',
+        'Overall Health Decline'=>'Overall Health Decline',
+        'View More'=>'View More',
+        'Patient'=>'Patient',
+        'Monitor'=>'Monitor',
+        'Value'=>'Value',
+        'Duration'=>'Duration',
+        'days'=>'days'
     ]
 ?>

@@ -53,13 +53,13 @@ class OutboundController extends Controller
         Patient::where('id', $monitor_condition->patient_id)->update(['monitor_id' => $request->patient_id]);
         $patient = Patient::where('id', $monitor_condition->patient_id)->first();
         $phone_number = $patient->phone_number;
-        $data['bot'] = 'st-6dca4177-14d6-543a-82a3-f0ea628ccbae';
+        $data['bot'] = 'st-6f87a15a-fd93-5476-bee4-390dded02853';
         $data['target'] = $phone_number;
-        $data['caller'] = '+12517665278';
+        $data['caller'] = '+421800223184';
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://smartassist.kore.ai/api/1.1/public/bot/st-6dca4177-14d6-543a-82a3-f0ea628ccbae/smartassist/dialout',
+            CURLOPT_URL => 'https://smartassist.kore.ai/api/1.1/public/bot/st-6f87a15a-fd93-5476-bee4-390dded02853/smartassist/dialout',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

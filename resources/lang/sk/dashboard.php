@@ -15,5 +15,16 @@
         'Medical facility' => 'Zdravotnícke zariadenie',
         'Doctors' => 'Lekári',
         'Patients' => 'Pacienti',
+        'Dashboard Filter' => 'Filter prístrojovej dosky',
+        'Diagnosis' => 'Diagnóza',
+        'Filter by' => 'Filtrovať podľa',
+        'Age Group' => 'Veková skupina',
+        'Overall Health Decline' => 'Celkový pokles zdravia',
+        'View More' => 'Zobraziť viac',
+        'Patient' => 'Pacient',
+        'Monitor' => 'Monitorovať',
+        'Value' => 'Hodnota',
+        'Duration' => 'Trvanie',
+        'days' => 'dni',
     ]
 ?>
