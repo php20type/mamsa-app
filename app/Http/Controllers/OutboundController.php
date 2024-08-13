@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Patient;
 use App\Models\PatientMonitor;
 use App\Models\Symptom;
@@ -45,7 +46,8 @@ class OutboundController extends Controller
             ->limit(5)
             ->get();
         $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->get();
-        return view('welcome', compact('paientslist', 'groupedPatients', 'patients','topSymptoms'));
+        $messages=Message::where('receiver_id',$userid)->where('message_sender','patient')->where('is_read',0)->get();
+        return view('welcome', compact('paientslist', 'groupedPatients', 'patients','topSymptoms','messages'));
     }
     public function call(Request $request)
     {

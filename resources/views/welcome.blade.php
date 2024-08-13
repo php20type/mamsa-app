@@ -286,26 +286,14 @@
               </table>
               <table class="table table-bordered">
                 <tbody>
+                  @foreach($messages as $message)
                   <tr>
-                    <td>M. Fillovm / 1952</td>
-                    <td>Can I get some cough meds?</td>
+                    <td>{{strtoupper(substr($message->patientDetails->first_name, 0, 1))}}. {{ ucfirst($message->patientDetails->last_name)}}</td>
+                    <td>{{ $message->message}}</td>
                     <td><a href="#" class="btn btn-theme w-100">Reply</a> </td>
                   </tr>
-                  <tr>
-                    <td>F. Groge / 1947</td>
-                    <td>My blood pressure is low...</td>
-                    <td><a href="#" class="btn btn-theme w-100">Reply</a> </td>
-                  </tr>
-                  <tr>
-                    <td>M. Fillovm / 1952</td>
-                    <td>Can I get some cough meds?</td>
-                    <td><a href="#" class="btn btn-theme w-100">Reply</a> </td>
-                  </tr>
-                  <tr>
-                    <td>F. Groge / 1947</td>
-                    <td>My blood pressure is low...</td>
-                    <td><a href="#" class="btn btn-theme w-100">Reply</a> </td>
-                  </tr>
+                  @endforeach
+                  
                 </tbody>
               </table>
             </div>

@@ -13,7 +13,7 @@ class MessageController extends Controller
         $message_type=$request->message_type;
         $message=$request->message;
         foreach($patients as $patient){
-            Message::create(['sender_id'=>auth()->user()->id,'receiver_id'=>$patient,'message'=>$message,'message_type'=>$message_type]);
+            Message::create(['sender_id'=>auth()->user()->id,'receiver_id'=>$patient,'message'=>$message,'message_type'=>$message_type,'message_sender'=>'doctor']);
         }
         return redirect()->back()->with('success','Message Send Successfully');
     }

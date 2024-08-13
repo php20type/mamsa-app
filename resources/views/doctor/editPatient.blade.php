@@ -393,85 +393,72 @@
                      <div class="medical-body border-0">
                         <form class="" action="">
                            <div class="row">
-                              <div class="col-lg-4 col-md-6">
-                                 <p class="mb-2"><strong>Medication</strong></p>
+                              <div class="col-lg-2 col-md-4">
                                  <div class="form-group">
+                                     <label class="mb-2"><strong>Medication</strong></label>
                                     <input type="text" class="form-control" placeholder="Melyd 60x2 mg" >
-                                    
                                  </div>
-
                               </div>
-                              <div class="col-lg-3 col-md-6">
-                                 <div class="UseMeal">
-                                    <div class="Use-check">
-                                       <p class="mb-2"><strong>Use</strong></p>
-                                       <div class="form-check mb-2">
-                                          <label class="form-check-label" for="flexMorning">
-                                          Morning
-                                          </label>
-                                          <input class="form-check-input" type="checkbox" value="" id="flexMorning">
-                                       </div>
-                                       <div class="form-check mb-2">
-                                          <label class="form-check-label" for="flexNoon">
-                                          Noon
-                                          </label>
-                                          <input class="form-check-input" type="checkbox" value="" id="flexNoon">
-                                       </div>
-                                       <div class="form-check mb-2">
-                                          <label class="form-check-label" for="flexEvening">
-                                          Evening
-                                          </label>
-                                          <input class="form-check-input" type="checkbox" value="" id="flexEvening">
-                                       </div>
+                              <div class="col-lg-2 col-md-4">
+                                 <div class="form-group">
+                                     <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                    <input type="text" class="form-control" placeholder="" >
+                                 </div>
+                              </div>
+                              <div class="col-lg-3 col-md-4">
+                                <div class="use-column">
+                                 <div class="mfrequency">
+                                <p class=""><strong>Use schedule </strong></p>
+                                  <div class="mfrequency-form">
+                                    <div class="form-check ps-0">
+                                       <p class="form-check-label">6:00</p>
+                                       <input class="form-check-input ms-0" type="checkbox" value="" id="6:00">
                                     </div>
-                                    <div class="WithMeal-check">
-                                       <p class="mb-2"><strong>With Meel</strong></p>
-                                       <div class="form-check mb-2">
-                                          <input class="form-check-input" type="checkbox" value="" id="flexMeel1">
-                                       </div>
-                                       <div class="form-check mb-2">
-                                          <input class="form-check-input" type="checkbox" value="" id="flexMeel2">
-                                       </div>
-                                       <div class="form-check mb-2">
-                                          <input class="form-check-input" type="checkbox" value="" id="flexMeel3">
-                                       </div>
+                                    <div class="form-check ps-0">
+                                       <p class="form-check-label">12:00</p>
+                                       <input class="form-check-input ms-0" type="checkbox" value="" id="12:00">
                                     </div>
+                                    <div class="form-check ps-0">
+                                       <p class="form-check-label">18:00</p>
+                                       <input class="form-check-input ms-0" type="checkbox" value="" id="18:00">
+                                    </div>
+                                    <div class="form-check ps-0">
+                                       <p class="form-check-label">24:00</p>
+                                       <input class="form-check-input ms-0" type="checkbox" value="" id="24:00">
+                                    </div>
+                                </div>
+                              </div>
+                                <div class="food-use">
+                                    <p class="mb-2"><strong>Food and use</strong></p>
+                                       <select class="form-select" aria-label="Default select example">
+                                          <option selected>Dropdown</option>
+                                          <option value="1">One</option>
+                                          <option value="2">Two</option>
+                                          <option value="3">Three</option>
+                                       </select>
+                                 </div>
                                  </div>
                               </div>
                               <div class="col-lg-5 col-md-6">
-                                 <div class="Dose-Check">
-                                 <p class="mb-2"><strong>Dose</strong></p>
-                                      <div class="row">
-                                          <div class="col-6">
-                                              <div class="form-group mb-3">
-                                                  <label class="form-label"> Dose/Use (x units)</label>
-                                                  <input type="text" class="form-control" placeholder="" >
-                                               </div>
-                                          </div>
-                                          <div class="col-6">
-                                              <div class="form-group mb-3">
-                                                  <label class="form-label">Purpose of Medication</label>
-                                                  <input type="text" class="form-control" placeholder="" >
-                                               </div>
-                                          </div>
-                                          <div class="col-6">
-                                              <div class="form-group mb-3">
-                                                  <label class="form-label">Doses per package</label>
-                                                  <input type="text" class="form-control" placeholder="" >
-                                               </div>
-                                          </div>
-                                          <div class="col-6">
-                                              <div class="form-group mb-3">
-                                                  <label class="form-label">Last prescription start</label>
-                                                  <input type="date" class="form-control" placeholder="" >
-                                               </div>
-                                          </div>
-                                      </div>
+                                  
+                                    <div class="dose-column">
+                                    <div class="form-group">
+                                        <label class="mb-1">Dose/Use(x units)</label>
+                                        <input type="text" class="form-control" > 
+                                     </div>
+                                     <div class="form-group">
+                                        <label class="mb-1">Doses per package </label>
+                                        <input type="text" class="form-control" > 
+                                     </div>
+                                     <div class="form-group">
+                                        <label class="mb-1">Last prescription start</label>
+                                        <input type="date" class="form-control" > 
+                                     </div>
                                  </div>
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="col-lg-3">
+                            <div class="row mt-lg-4 mt-3">
+                              <div class="col-lg-12">
                                      <a href="#" class="btn btn-primary"> Add Medication  <i class="fa-solid fa-plus ms-2"></i></a>
                                  </div>
                             </div>

@@ -300,6 +300,7 @@ class PatientController extends Controller
         }
         if ($request->filled('notes')) {
             $data['notes'] = $request->notes;
+            Message::create(['sender_id'=>$montorcondition->patient_id,'receiver_id'=>$montorcondition->doctor_id,'message'=>$request->notes,'message_sender'=>'patient']);
         }
 
         // Update or create the MonitoringHistory record with the prepared data
