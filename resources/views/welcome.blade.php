@@ -244,27 +244,31 @@
               </table>
               <table class="table table-bordered">
                 <tbody>
-                  <tr>
-                    <td width="25%">M. Fillovm / 1952</td>
-                    <td width="25%">- </td>
-                    <td width="20%">Insomnia </td>
-                    <td width="15%" align="center" class="text-center">-4</td>
-                    <td width="15%">4 days</td>
-                  </tr>
-                  <tr>
-                    <td width="25%">F. Groge / 1947</td>
-                    <td width="25%">-</td>
-                    <td width="20%">Cough </td>
-                    <td width="15%" align="center" class="text-center">-7</td>
-                    <td width="15%">2 days</td>
-                  </tr>
-                  <tr>
-                    <td width="25%">B. Beyoke / 1937</td>
-                    <td width="25%">- </td>
-                    <td width="20%">Hip Pain </td>
-                    <td width="15%" align="center" class="text-center">-4</td>
-                    <td width="15%">5 days</td>
-                  </tr>
+                  @foreach($paientsMonitoredCondition as $patient)
+                    @foreach($patient->patientMonitors as $monitor)
+                        @php
+                            // Fetch the corresponding history for the current monitor_id
+                            $history = $patient->patientHistory->where('monitor_id', $monitor->id)->first();
+                        @endphp
+                        @if($history)
+                            <tr>
+                                <td width="25%">{{ strtoupper(substr($patient->first_name, 0, 1)) }}. {{ ucfirst($patient->last_name) }} / {{ \Carbon\Carbon::parse($patient->DOB)->year }}</td>
+                                <td width="25%">
+                                    <canvas id="myChart{{$patient->id}}_{{$monitor->id}}" class="overallChart" data-report="{{ $history->over_rep_combined }}" data-labels="{{ $history->rep_dates }}"></canvas>
+                                </td>
+                                <td width="20%">
+                                    {{ $monitor->symptom->title ?? 'N/A' }}
+                                </td>
+                                <td width="15%" align="center" class="text-center">
+                                    {{ $history->total_value }}
+                                </td>
+                                <td width="20%">
+                                    {{ $history->total_days }} {{ __('dashboard.days') }}
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                  @endforeach
                 </tbody>
               </table>
             </div>

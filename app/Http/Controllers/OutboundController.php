@@ -46,8 +46,22 @@ class OutboundController extends Controller
             ->limit(5)
             ->get();
         $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->get();
+
+        $paientsMonitoredCondition = Patient::with([
+            'patientMonitors' => function ($query) {
+                $query->with('symptom');
+            },
+            'patientHistory' => function ($query) {
+                $query->select('patient_id', 'monitor_id', DB::raw('GROUP_CONCAT(rep_monitor_condition) as over_rep_combined'), DB::raw('SUM(rep_overall) as total_value'), DB::raw('COUNT(rep_date) as total_days'), DB::raw('GROUP_CONCAT(DATE_FORMAT(rep_date, "%Y-%m-%d")) as rep_dates'))
+                    ->groupBy('patient_id', 'monitor_id');
+            }
+        ])->whereRaw("FIND_IN_SET($userid,doctor_ids)")
+            ->where('lang', app()->getLocale())
+            ->orderBy('first_name', 'asc')
+            ->get();
+
         $messages=Message::where('receiver_id',$userid)->where('message_sender','patient')->where('is_read',0)->get();
-        return view('welcome', compact('paientslist', 'groupedPatients', 'patients','topSymptoms','messages'));
+        return view('welcome', compact('paientslist', 'groupedPatients', 'patients','topSymptoms','messages','paientsMonitoredCondition'));
     }
     public function call(Request $request)
     {

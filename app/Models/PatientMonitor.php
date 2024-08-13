@@ -19,6 +19,11 @@ class PatientMonitor extends Model
     public function medications(){
         return $this->belongsTo(Medication::class,'medication','id');
     }
+
+    public function history()
+    {
+        return $this->hasMany(MonitoringHistory::class, 'monitor_id', 'id');
+    }
     
     
 }
