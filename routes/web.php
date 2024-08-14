@@ -70,7 +70,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Route::group(['prefix' => 'doctor','middleware' => 'auth:web'], function () {
     Route::post('/sendGroupMessage',[MessageController::class,'sendGroupMessage'])->name('sendGroupMessage');
+    Route::post('/replyMessage',[MessageController::class,'replyMessage'])->name('replyMessage');
     Route::get('/patients', [PatientController::class, 'patientFile'])->name('doctor.patients');
+    Route::get('/getPatientList', [PatientController::class, 'getPatientList'])->name('doctor.getPatientList');
     Route::post('/add-patient', [PatientController::class, 'storePatientFile'])->name('doctor.store.patient');
     Route::get('/delete-patient/{id}', [PatientController::class, 'delete'])->name('doctor.delete.patient');
     Route::get('/monitoring',[PatientMonitorController::class,'index'])->name('patientMonitoring');
@@ -78,4 +80,5 @@ Route::group(['prefix' => 'doctor','middleware' => 'auth:web'], function () {
     Route::get('/delete-monitoring/{id}', [PatientMonitorController::class, 'delete'])->name('doctor.delete.monitoring');
     Route::get('/patient-report/{patient_id}',[PatientController::class,'patientDetail'])->name('patientDetail');
     Route::get('/edit-patient/{id}',[PatientController::class,'editPatient'])->name('editPatient');
+    Route::post('/update-medical-condition', [PatientController::class, 'updateMedicalCondition']);
 });

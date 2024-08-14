@@ -598,6 +598,8 @@ ul.third li:first-child:before {
 	margin-top: .125em;
 	border: 2px solid #996B57;
 }
+.form-select:focus,
+.form-control:focus,
 .form-check-input:focus {
     border-color: #6f4d3f;
     outline: 0;
@@ -1385,6 +1387,9 @@ background-image: unset;
 .medical-conditions .medical-body .row>* {
 	padding-right: calc(var(--bs-gutter-x)* .2);
 	padding-left: calc(var(--bs-gutter-x)* .2);
+}
+#editProfileModal .form-group {
+	margin-bottom: 0.6rem;
 }
 
 

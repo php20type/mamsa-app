@@ -192,7 +192,7 @@ class PatientController extends Controller
             // Store the file and get its path
             $imagePath = $request->file('image')->store('public/patient_images');
             $imageName = basename($imagePath);
-            
+
             // Update the patient's image
             $patient->image = $imageName;
         }
@@ -214,9 +214,9 @@ class PatientController extends Controller
     {
         $patient = Patient::where(DB::raw('RIGHT(phone_number, 10)'), substr($request->phone_number, -10))->first();
         $monitordata = PatientMonitor::where('id', $patient->monitor_id)->first();
-        $medication=Medication::where('id',$monitordata->medication)->first();
-        $symptoms=Symptom::where('id',$monitordata->monitor_condition)->first();
-        $doctor=User::where('id',$monitordata->doctor_id)->first();
+        $medication = Medication::where('id', $monitordata->medication)->first();
+        $symptoms = Symptom::where('id', $monitordata->monitor_condition)->first();
+        $doctor = User::where('id', $monitordata->doctor_id)->first();
         $messages = Message::where('receiver_id', $patient->id)->where('is_read', 0)->get();
         $messagetext = '';
         Message::where('receiver_id', $patient->id)->update(['is_read' => 1]);
@@ -228,10 +228,10 @@ class PatientController extends Controller
         // Get today's day of the week (1 for Monday through 7 for Sunday)
         $today = Carbon::now()->dayOfWeekIso; // Monday = 1, Sunday = 7
         // Find the next enabled day
-        $nextEnabledDay='';
+        $nextEnabledDay = '';
         for ($i = 1; $i < 7; $i++) {
             $dayIndex = ($today + $i - 1) % 7; // Adjust index to match array (0-6)
-            if ($frequencyPattern[$dayIndex] == '1' && $nextEnabledDay=='') {
+            if ($frequencyPattern[$dayIndex] == '1' && $nextEnabledDay == '') {
                 $nextEnabledDay = Carbon::now()->addDays($i)->format('l');
             }
         }
@@ -243,12 +243,12 @@ class PatientController extends Controller
         $patientdata['med_form_look'] = $medication->med_form_look;
         $patientdata['med_pack_look'] = $medication->med_pack_look;
         $patientdata['dose'] = $monitordata->dose;
-        $patientdata['nextDay']=$nextEnabledDay;
+        $patientdata['nextDay'] = $nextEnabledDay;
         $patientdata['message'] = $messagetext;
-        if(isset($doctor->firstname)){
-            $patientdata['medication_admin']=$doctor->firstname;
-        }else{
-            $patientdata['medication_admin']='';
+        if (isset($doctor->firstname)) {
+            $patientdata['medication_admin'] = $doctor->firstname;
+        } else {
+            $patientdata['medication_admin'] = '';
         }
         return response()->json($patientdata);
     }
@@ -300,7 +300,7 @@ class PatientController extends Controller
         }
         if ($request->filled('notes')) {
             $data['notes'] = $request->notes;
-            Message::create(['sender_id'=>$montorcondition->patient_id,'receiver_id'=>$montorcondition->doctor_id,'message'=>$request->notes,'message_sender'=>'patient']);
+            Message::create(['sender_id' => $montorcondition->patient_id, 'receiver_id' => $montorcondition->doctor_id, 'message' => $request->notes, 'message_sender' => 'patient']);
         }
 
         // Update or create the MonitoringHistory record with the prepared data
@@ -316,8 +316,37 @@ class PatientController extends Controller
     }
     public function editPatient(Request $request)
     {
-        
+
         $patient = Patient::find($request->id);
-        return view('doctor/editPatient',compact('patient'));
+        return view('doctor/editPatient', compact('patient'));
+    }
+    public function getPatientList(Request $request)
+    {
+        $userid = auth()->user()->id;
+        $search=$request->search;
+        if($search!=''){
+            $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->where(function ($query) use($search){ $query->where('first_name','LIKE','%'.$search.'%')->orWhere('last_name','LIKE','%'.$search.'%'); })->where('lang', app()->getLocale())
+            ->orderBy('first_name', 'asc')
+            ->get();
+        }else{
+            $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->where('lang', app()->getLocale())
+            ->orderBy('first_name', 'asc')
+            ->get();
+        }
+        
+
+        // Group patients by the first letter of their first name
+        $groupedPatients = $patients->groupBy(function ($item) {
+            return strtoupper(substr($item->first_name, 0, 1));
+        });
+        $html = '';
+        foreach ($groupedPatients as $letter => $patients) {
+            $html .= '<div class="d-flex"><span class="name-letter">' . $letter . '</span><ul class="first">';
+            foreach ($patients as $patient) {
+                $html .= '<li><a href="#">' . $patient->first_name . ', ' . $patient->last_name . '</a></li>';
+            }
+            $html .= '</ul></div>';
+        }
+        return $html;
     }
 }

@@ -33,20 +33,11 @@
                   <div class="input-icon">
                     <a href="#"><i class="fa-light fa-magnifying-glass"></i></a>
                   </div>
-                  <input type="text" class="form-control border-0" id="search" placeholder="Search">
+                  <input type="text" class="form-control border-0" onkeyup="getPatientList()" id="search" placeholder="Search">
                 </div>
               </form>
-              <div class="list-block">
-              @foreach($groupedPatients as $letter => $patients)
-                <div class="d-flex">
-                  <span class="name-letter">{{ $letter }}</span>
-                  <ul class="first">
-                  @foreach($patients as $patient)
-                    <li><a href="#">{{ $patient->first_name }}, {{ $patient->last_name }}</a></li>
-                    @endforeach
-                  </ul>
-                </div>
-              @endforeach
+              <div class="list-block" id="filterPatients">
+              
               </div>
             </div>
           </div>
@@ -101,7 +92,7 @@
       </div>
       <div class="col-md-10">
         @if(session()->has('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mt-4">
           <span>{{session()->get('success')}}</span>
         </div>
         @endif
@@ -246,11 +237,8 @@
                 <tbody>
                   @foreach($paientsMonitoredCondition as $patient)
                     @foreach($patient->patientMonitors as $monitor)
-                        @php
-                            // Fetch the corresponding history for the current monitor_id
-                            $history = $patient->patientHistory->where('monitor_id', $monitor->id)->first();
-                        @endphp
-                        @if($history)
+                       @foreach($patient->patientHistoryList as $history)
+                        @if($history->monitor_id==$monitor->id)
                             <tr>
                                 <td width="25%">{{ strtoupper(substr($patient->first_name, 0, 1)) }}. {{ ucfirst($patient->last_name) }} / {{ \Carbon\Carbon::parse($patient->DOB)->year }}</td>
                                 <td width="25%">
@@ -267,6 +255,7 @@
                                 </td>
                             </tr>
                         @endif
+                        @endforeach
                     @endforeach
                   @endforeach
                 </tbody>
@@ -275,16 +264,16 @@
           </div>
           <div class="box-out mb-5">
             <div class="d-sm-flex justify-content-between mb-4">
-              <h3 class="heading-sm">Messages</h3>
-              <a href="#" class="text-black-50">View More <i class="fa-regular fa-chevron-right"></i></a>
+              <h3 class="heading-sm">{{__('dashboard.Messages')}}</h3>
+              <!-- <a href="#" class="text-black-50">View More <i class="fa-regular fa-chevron-right"></i></a> -->
             </div>
             <div class="cust-table">
               <table class="table ">
                 <thead>
                   <tr>
-                    <th scope="col" width="30%">Patient</th>
-                    <th scope="col" width="50%">Message</th>
-                    <th scope="col" width="20%" class="text-center">Action</th>
+                    <th scope="col" width="30%">{{__('dashboard.Patient')}}</th>
+                    <th scope="col" width="50%">{{__('dashboard.Message')}}</th>
+                    <th scope="col" width="20%" class="text-center">{{__('dashboard.Action')}}</th>
                   </tr>
                 </thead>
               </table>
@@ -294,7 +283,7 @@
                   <tr>
                     <td>{{strtoupper(substr($message->patientDetails->first_name, 0, 1))}}. {{ ucfirst($message->patientDetails->last_name)}}</td>
                     <td>{{ $message->message}}</td>
-                    <td><a href="#" class="btn btn-theme w-100">Reply</a> </td>
+                    <td><a href="#" class="btn btn-theme w-100" onclick="replyMessage('{{$message->id}}')">{{__('dashboard.Reply')}}</a> </td>
                   </tr>
                   @endforeach
                   
@@ -313,33 +302,33 @@
       <form action="{{ route('sendGroupMessage')}}" method="post" class="modal-form">
         @csrf
         <div class="modal-header">
-          <h5 class="modal-title" id="form_title">Send Message</h5>
+          <h5 class="modal-title" id="form_title">{{__('dashboard.Send Message')}}</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <h4 class="fw-bold mb-4">Message Type</h4>
+          <h4 class="fw-bold mb-4">{{__('dashboard.Message Type')}}</h4>
           <div class="form-check mb-3">
             <input class="form-check-input" type="radio" value="1" name="message_type" id="additional">
             <label class="form-check-label" for="flexCheckDefault">
-              Additional Question
+            {{__('dashboard.Additional Question')}}
             </label>
           </div>
           <div class="form-check mb-3">
             <input class="form-check-input" type="radio" value="2" name="message_type" id="lab_test">
             <label class="form-check-label" for="flexCheckDefault">
-              Lab test result
+            {{__('dashboard.Lab test result')}}
             </label>
           </div>
           <div class="form-check mb-3">
             <input class="form-check-input" type="radio" value="3" name="message_type" id="appointment">
             <label class="form-check-label" for="flexCheckDefault">
-              Request Appointment
+            {{__('dashboard.Request Appointment')}}
             </label>
           </div>
           <div class="form-group mb-4">
-            <label class="form-label">Patients:</label>
+            <label class="form-label">{{__('dashboard.Patients')}}:</label>
             <div class="input-inline">
               <select class="selectpicker  form-control" name="patient[]" id="patient" multiple aria-label="Default select example" data-live-search="true" required>
                 @foreach($patients as $patient)
@@ -353,7 +342,32 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="form_btn">Send</button>
+          <button type="submit" class="btn btn-primary" id="form_btn">{{__('dashboard.Send')}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal EditPatients" tabindex="-1" role="dialog" id="messageReplyModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form action="{{ route('replyMessage')}}" method="post" class="modal-form">
+        @csrf
+        <input type="hidden" name="message_id" id="message_id">
+        <div class="modal-header">
+          <h5 class="modal-title" id="form_title">{{__('dashboard.Send Reply')}}</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+          <div class="form-group mb-4">
+            <textarea name="message" id="message" placeholder="Type your message here" class="form-control" rows="6"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="form_btn">{{__('dashboard.Send')}}</button>
         </div>
       </form>
     </div>
@@ -428,7 +442,10 @@
       quarter: "rgba(80, 102, 120, 0.25)"
     }
   };
-
+  function replyMessage(message_id){
+    $('#message_id').val(message_id);
+    $('#messageReplyModal').modal('show');
+  }
   function createChart(ctx,labels, weight,gradient) {
     return new Chart(ctx, {
       type: "line",
@@ -485,7 +502,20 @@
       }
     });
   }
-
+  function getPatientList(){
+    var searchtext=$('#search').val()
+    $.ajax({
+        url : "{{ route('doctor.getPatientList') }}",
+        data : {'search' : searchtext},
+        type : 'GET',
+        success : function(result){
+          $('#filterPatients').html(result);
+        }
+    });
+  }
+  $(document).ready(function(){
+    getPatientList();
+  });
   window.onload = function() {
     const charts = document.querySelectorAll('.overallChart');
     

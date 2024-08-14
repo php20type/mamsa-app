@@ -25,6 +25,19 @@
         'Monitor'=>'Monitor',
         'Value'=>'Value',
         'Duration'=>'Duration',
-        'days'=>'days'
+        'days'=>'days',
+        'Messages'=>'Messages',
+        'Patient'=>'Patient',
+        'Message'=>'Message',
+        'Action'=>'Action',
+        'Reply'=>'Reply',
+        'Send Message'=>'Send Message',
+        'Message Type'=>'Message Type',
+        'Additional Question'=>'Additional Question',
+        'Lab test result'=>'Lab test result',
+        'Request Appointment'=>'Request Appointment',
+        'Patients'=>'Patients',
+        'Send'=>'Send',
+        'Send Reply'=>'Send Reply',
     ]
 ?>

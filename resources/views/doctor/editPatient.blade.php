@@ -137,15 +137,15 @@
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
                         <h4>Areas of Monitoring</h4>
-                        <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a>
+                        <a href="javascript:void()" id="edit-btn" class="edit-btn"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body">
                         <h5 class="mb-3"><strong>Medical Conditions</strong></h5>
                         <form class="" action="">
                            <div class="row">
-                              <div class="col-lg-4 col-md-6">
+                              <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexOverall">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexOverall" disabled>
                                     <label class="form-check-label" for="flexOverall">
                                        Overall Health 
                                        <svg data-toggle="tooltip" aria-label="Overall Health" data-bs-original-title="Overall Health" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,7 +155,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexChronic">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexChronic" disabled>
                                     <label class="form-check-label" for="flexChronic">
                                        Chronic Pain 
                                        <svg data-toggle="tooltip" aria-label="Chronic Pain" data-bs-original-title="Chronic Pain" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,42 +165,10 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexPulmonary">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexPulmonary" disabled>
                                     <label class="form-check-label" for="flexPulmonary">
                                        Pulmonary disease 
                                        <svg data-toggle="tooltip" aria-label="Pulmonary disease" data-bs-original-title="Pulmonary disease" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
-                                          <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"/>
-                                       </svg>
-                                    </label>
-                                 </div>
-                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexTBD">
-                                    <label class="form-check-label" for="flexTBD">
-                                       TBD 
-                                       <svg data-toggle="tooltip" aria-label="TBD" data-bs-original-title="TBD" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
-                                          <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"/>
-                                       </svg>
-                                    </label>
-                                 </div>
-                              </div>
-                              <div class="col-lg-4 col-md-6">
-                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexTBD1">
-                                    <label class="form-check-label" for="flexTBD1">
-                                       TBD 
-                                       <svg data-toggle="tooltip" aria-label="TBD" data-bs-original-title="TBD" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
-                                          <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"/>
-                                       </svg>
-                                    </label>
-                                 </div>
-                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexTBD2">
-                                    <label class="form-check-label" for="flexTBD2">
-                                       TBD 
-                                       <svg data-toggle="tooltip" aria-label="TBD" data-bs-original-title="TBD" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"/>
                                        </svg>
@@ -226,7 +194,7 @@
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexmedication">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexmedication" disabled>
                                     <label class="form-check-label" for="flexmedication">
                                        Use of medication 
                                        <svg data-toggle="tooltip" aria-label="Use of medication" data-bs-original-title="Use of medication" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -236,7 +204,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexuseremind">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexuseremind" disabled>
                                     <label class="form-check-label" for="flexuseremind">
                                        Medication use remind us 
                                        <svg data-toggle="tooltip" aria-label="Medication use remind us" data-bs-original-title="Medication use remind us" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,20 +214,10 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexsideeffects">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexsideeffects" disabled>
                                     <label class="form-check-label" for="flexsideeffects">
                                        Medication side effects 
                                        <svg data-toggle="tooltip" aria-label="Medication side effects" data-bs-original-title="Medication side effects" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
-                                          <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"/>
-                                       </svg>
-                                    </label>
-                                 </div>
-                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexTBD11">
-                                    <label class="form-check-label" for="flexTBD11">
-                                       TBD 
-                                       <svg data-toggle="tooltip" aria-label="TBD" data-bs-original-title="TBD" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"/>
                                        </svg>
@@ -284,7 +242,7 @@
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexBloodpressure">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexBloodpressure" disabled>
                                     <label class="form-check-label" for="flexBloodpressure">
                                        Blood pressure 
                                        <svg data-toggle="tooltip" aria-label="Blood pressure" data-bs-original-title="Blood pressure" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -294,7 +252,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexuseWeight">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexuseWeight" disabled>
                                     <label class="form-check-label" for="flexuseWeight">
                                        Weight 
                                        <svg data-toggle="tooltip" aria-label="Weight" data-bs-original-title="Weight" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -304,7 +262,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexgometer">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexgometer" disabled>
                                     <label class="form-check-label" for="flexgometer">
                                        Physical exercise/activity 
                                        <svg data-toggle="tooltip" aria-label="Qxy gometer" data-bs-original-title="Qxy gometer" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -332,7 +290,7 @@
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexRegularFood">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexRegularFood" disabled>
                                     <label class="form-check-label" for="flexRegularFood">
                                        Regular food food intake 
                                        <svg data-toggle="tooltip" aria-label="Regular food food intake" data-bs-original-title="Regular food food intake" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -342,7 +300,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexuseHydration">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexuseHydration" disabled>
                                     <label class="form-check-label" for="flexuseHydration">
                                        Hydration 
                                        <svg data-toggle="tooltip" aria-label="Hydration" data-bs-original-title="Hydration" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -352,7 +310,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexPhysical">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexPhysical" disabled>
                                     <label class="form-check-label" for="flexPhysical">
                                        Qxy gometer 
                                        <svg data-toggle="tooltip" aria-label="Physical exercise/activity" data-bs-original-title="Physical exercise/activity" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -362,7 +320,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexQuality">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexQuality" disabled>
                                     <label class="form-check-label" for="flexQuality">
                                        Quality of sleep 
                                        <svg data-toggle="tooltip" aria-label="Quality of sleep" data-bs-original-title="Quality of sleep" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -471,41 +429,51 @@
                         <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body border-0 mb-0">
-                        <h5 class="mb-3"><strong>Frequency</strong></h5>
-                        <form class="" action="">
-                           <div class="mfrequency-form">
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Mon</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Mon">
-                              </div>
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Tue</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Tue">
-                              </div>
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Wed</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Wed">
-                              </div>
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Thu</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Thu">
-                              </div>
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Fri</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Fri">
-                              </div>
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Sat</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Sat">
-                              </div>
-                              <div class="form-check ps-0">
-                                 <p class="form-check-label">Sun</p>
-                                 <input class="form-check-input ms-0" type="checkbox" value="" id="Sun">
-                              </div>
-                           </div>
-                           <div class="Preferred-call mt-4">
-                              <p class="form-check-label mb-3">Preferred call time</p>
-                              From <input type="text" class="form-controls"> to <input type="text" class="form-controls">
+                            <form class="" action="">
+                                 <div class="row">
+                                    <div class="col-lg-3 col-md-6">
+                                       <h5 class="mb-2"><strong>Frequency</strong></h5>
+                                       <div class="mfrequency-form">
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Mon</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Mon">
+                                          </div>
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Tue</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Tue">
+                                          </div>
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Wed</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Wed">
+                                          </div>
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Thu</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Thu">
+                                          </div>
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Fri</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Fri">
+                                          </div>
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Sat</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Sat">
+                                          </div>
+                                          <div class="form-check ps-0">
+                                             <p class="form-check-label">Sun</p>
+                                             <input class="form-check-input ms-0" type="checkbox" value="" id="Sun">
+                                          </div>
+                                       </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6">
+                                   <h5 class="mb-2"><strong>Preferred call time</strong></h5>
+                                   <div class="Preferred-call">
+                                       <select class="form-select" aria-label="Default select example">
+                                          <option selected>10 : 12 PM</option>
+                                          <option value="1">12 : 14 PM</option>
+                                          <option value="2">14 : 16 PM</option>
+                                       </select>
+                                    </div>
+                                 </div>
                            </div>
                         </form>
                      </div>
@@ -925,6 +893,7 @@
 </footer>
 @endsection
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
    function openEditProfileModal() {
       $('#editProfileModal').modal('show');
@@ -956,6 +925,69 @@
       });
    }
 
+   $(document).ready(function() {
+      $('#edit-btn').click(function(event) {
+         event.preventDefault();  // Prevent default button behavior
+
+         // Toggle the disabled attribute for all checkboxes
+         $('.checkbox1').each(function() {
+            $('.checkbox1').prop('disabled', false);
+         });
+
+      });
+
+      $('.checkbox1').change(function() {
+         var checkbox = $(this);
+         var isChecked = checkbox.is(':checked');
+         var conditionId = checkbox.val();  // Assuming the checkbox value corresponds to the condition ID
+         var patientId = checkbox.data('patient-id');  // Assuming you have a data attribute for patient ID
+
+         // Display SweetAlert confirmation
+         Swal.fire({
+               title: 'Are you sure?',
+               text: "You want to update the medical condition!",
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, update it!'
+         }).then((result) => {
+               if (result.isConfirmed) {
+                  // Make AJAX request to update the value in the table
+                  $.ajax({
+                     url: '/update-medical-condition',  // Your route here
+                     method: 'POST',
+                     data: {
+                           _token: '{{ csrf_token() }}',  // CSRF token for security
+                           patient_id: patientId,
+                           condition_id: conditionId,
+                           is_checked: isChecked ? 1 : 0  // Send 1 for checked, 0 for unchecked
+                     },
+                     success: function(response) {
+                           Swal.fire(
+                              'Updated!',
+                              'The medical condition has been updated.',
+                              'success'
+                           );
+                     },
+                     error: function(xhr, status, error) {
+                           Swal.fire(
+                              'Error!',
+                              'There was an error updating the medical condition.',
+                              'error'
+                           );
+                           // Revert the checkbox state if there's an error
+                           checkbox.prop('checked', !isChecked);
+                     }
+                  });
+               } else {
+                  // Revert the checkbox state if the user cancels the confirmation
+                  checkbox.prop('checked', !isChecked);
+               }
+         });
+      });
+
+   });
 
 </script>
 @endsection

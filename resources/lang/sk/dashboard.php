@@ -26,5 +26,18 @@
         'Value' => 'Hodnota',
         'Duration' => 'Trvanie',
         'days' => 'dni',
+        'Messages' => 'Správy',
+        'Patient' => 'Pacient',
+        'Message' => 'Správa',
+        'Action' => 'Akcia',
+        'Reply' => 'Odpoveď',
+        'Send Message' => 'Poslať správu',
+        'Message Type' => 'Typ správy',
+        'Additional Question' => 'Ďalšia otázka',
+        'Lab test result' => 'Výsledok laboratórneho testu',
+        'Request Appointment' => 'Požiadať o stretnutie',
+        'Patients' => 'Pacienti',
+        'Send' => 'Poslať',
+        'Send Reply'=>'Odoslať odpoveď',
     ]
 ?>

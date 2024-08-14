@@ -29,6 +29,10 @@ class Patient extends Model
     {
         return $this->belongsTo(MonitoringHistory::class,'id','patient_id');
     }
+    public function patientHistoryList()
+    {
+        return $this->hasMany(MonitoringHistory::class,'patient_id','id');
+    }
     public function patientMonitors()
     {
         return $this->hasMany(PatientMonitor::class, 'patient_id', 'id');

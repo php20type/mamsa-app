@@ -17,4 +17,10 @@ class MessageController extends Controller
         }
         return redirect()->back()->with('success','Message Send Successfully');
     }
+    public function replyMessage(Request $request){
+        $message=Message::where('id',$request->message_id)->first();
+        Message::where('id',$request->message_id)->update(['is_read'=>1]);
+        Message::create(['sender_id'=>auth()->user()->id,'receiver_id'=>$message->sender_id,'message'=>$request->message,'message_sender'=>'doctor']);
+        return redirect()->back()->with('success','Message Send Successfully');
+    }
 }
