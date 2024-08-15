@@ -11,6 +11,10 @@ use App\Models\Patient;
 use App\Models\PatientMonitor;
 use App\Models\Symptom;
 use App\Models\User;
+use App\Models\PatientMedicalCondition;
+use App\Models\PatientMedicationsTreatment;
+use App\Models\PatientQuantitativeIndicators;
+use App\Models\PatientLifestyleAndWellbeing;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -316,24 +320,38 @@ class PatientController extends Controller
     }
     public function editPatient(Request $request)
     {
+        // Find the patient with all related data
+        $patient = Patient::with([
+            'PatientMedicalCondition',
+            'PatientMedicationsTreatment',
+            'PatientQuantitativeIndicators',
+            'PatientLifestyleAndWellbeing'
+        ])->find($request->id);
 
-        $patient = Patient::find($request->id);
+        // Check if the patient exists
+        if (!$patient) {
+            return redirect()->back()->with('error', 'Patient not found');
+        }
+
+        // Pass the patient and related data to the view
         return view('doctor/editPatient', compact('patient'));
     }
     public function getPatientList(Request $request)
     {
         $userid = auth()->user()->id;
-        $search=$request->search;
-        if($search!=''){
-            $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->where(function ($query) use($search){ $query->where('first_name','LIKE','%'.$search.'%')->orWhere('last_name','LIKE','%'.$search.'%'); })->where('lang', app()->getLocale())
-            ->orderBy('first_name', 'asc')
-            ->get();
-        }else{
+        $search = $request->search;
+        if ($search != '') {
+            $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->where(function ($query) use ($search) {
+                $query->where('first_name', 'LIKE', '%' . $search . '%')->orWhere('last_name', 'LIKE', '%' . $search . '%');
+            })->where('lang', app()->getLocale())
+                ->orderBy('first_name', 'asc')
+                ->get();
+        } else {
             $patients = Patient::whereRaw("FIND_IN_SET($userid,doctor_ids)")->where('lang', app()->getLocale())
-            ->orderBy('first_name', 'asc')
-            ->get();
+                ->orderBy('first_name', 'asc')
+                ->get();
         }
-        
+
 
         // Group patients by the first letter of their first name
         $groupedPatients = $patients->groupBy(function ($item) {
@@ -349,4 +367,31 @@ class PatientController extends Controller
         }
         return $html;
     }
+
+    public function updateMedicalCondition(Request $request)
+    {
+        $patientId = $request->input('patientId');
+        $model = $request->input('model');
+        $column = $request->input('column');
+        $value = $request->input('value');
+
+        $modelClass = 'App\\Models\\' . $model;
+        $modelInstance = $modelClass::where('patient_id', $patientId)->first();
+
+        if ($modelInstance) {
+            // Update the existing record
+            $modelInstance->$column = $value;
+        } else {
+            // Create a new record with the provided patient_id
+            $modelInstance = new $modelClass;
+            $modelInstance->patient_id = $patientId;
+            $modelInstance->$column = $value;
+        }
+
+        // Save the record (either new or updated)
+        $modelInstance->save();
+
+        return response()->json(['success' => true]);
+    }
+
 }

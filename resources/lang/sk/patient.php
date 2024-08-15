@@ -34,7 +34,30 @@ return [
     'Sat' => 'So',
     'Sun' => 'Ne',
     'Date Of Birth'=>'Dátum narodenia',
-    'Weight'=>'Hmotnosť'
+    'Weight'=>'Hmotnosť',
+    'Areas of Monitoring' => 'Oblasti monitorovania',
+    'Medical Conditions' => 'Zdravotné podmienky',
+    'Overall Health' => 'Celkové zdravie',
+    'Chronic Pain' => 'Chronická bolesť',
+    'Pulmonary disease' => 'Pľúcne ochorenie',
+    'Are you missing a medical Condition for Monitoring' => 'Chýba vám zdravotný stav na monitorovanie?',
+    'Request' => 'Požiadať',
+    'Medications and Treatment' => 'Lieky a liečba',
+    'Use of medication' => 'Používanie liekov',
+    'Medication use remind us' => 'Pripomeňte nám používanie liekov',
+    'Medication side effects' => 'Vedľajšie účinky liekov',
+    'Request additional monitoring of medicines & treatment' => 'Požiadajte o ďalšie monitorovanie liekov a liečby',
+    'Quantitative Indicators' => 'Kvantitatívne ukazovatele',
+    'Blood pressure' => 'Krvný tlak',
+    'Physical exercise/activity' => 'Fyzické cvičenie/aktivita',
+    'Are you missing measures Or any indicators?' => 'Chýbajú vám nejaké opatrenia alebo ukazovatele?',
+    'Lifestyle and Wellbeing' => 'Životný štýl a pohoda',
+    'Regular food food intake' => 'Pravidelný príjem jedla',
+    'Hydration' => 'Hydratácia',
+    'Qxy gometer' => 'Oxymeter',
+    'Quality of sleep' => 'Kvalita spánku',
+    'Which other indicators of lifestyle & wellbeing would you like to see?' => 'Ktoré ďalšie ukazovatele životného štýlu a pohody by ste chceli vidieť?',
+
 ];
 
 ?>

@@ -39,5 +39,8 @@
         'Patients' => 'Pacienti',
         'Send' => 'Poslať',
         'Send Reply'=>'Odoslať odpoveď',
+        'Send Message via Mamsa' => 'Odoslať správu cez Mamsa',
+        'Message Send Successfully' => 'Správa bola úspešne odoslaná',
+        ''
     ]
 ?>

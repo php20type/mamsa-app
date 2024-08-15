@@ -9,6 +9,8 @@ class PatientMedicalCondition extends Model
 {
     use HasFactory;
 
+    protected $table = 'patient_medical_conditions';
+
     protected $fillable = [
         'patient_id',
         'overall_health',
