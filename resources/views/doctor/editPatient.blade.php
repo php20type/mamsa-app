@@ -142,11 +142,16 @@
                      <div class="medical-body">
                         <h5 class="mb-3"><strong>Medical Conditions</strong></h5>
                         <form class="" action="">
+                           @csrf
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexOverall" disabled>
-                                    <label class="form-check-label" for="flexOverall">
+                                    <?php
+                                       // Get the first medication treatment record
+                                       $medicalCondition = $patient->PatientMedicalCondition->first();
+                                    ?>
+                                    <input class="form-check-input checkbox1" type="checkbox" id="overall_health" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="overall_health" {{ $medicalCondition && $medicalCondition->overall_health ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="overall_health">
                                        Overall Health 
                                        <svg data-toggle="tooltip" aria-label="Overall Health" data-bs-original-title="Overall Health" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -155,8 +160,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexChronic" disabled>
-                                    <label class="form-check-label" for="flexChronic">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="chronic_pain" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="chronic_pain" {{ $medicalCondition && $medicalCondition->chronic_pain ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="chronic_pain">
                                        Chronic Pain 
                                        <svg data-toggle="tooltip" aria-label="Chronic Pain" data-bs-original-title="Chronic Pain" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -165,8 +170,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexPulmonary" disabled>
-                                    <label class="form-check-label" for="flexPulmonary">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="pulmonary_disease" data-patient-id="{{ $patient->id }}"  data-model="PatientMedicalCondition" data-column="pulmonary_disease" {{ $medicalCondition && $medicalCondition->pulmonary_disease ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="pulmonary_disease">
                                        Pulmonary disease 
                                        <svg data-toggle="tooltip" aria-label="Pulmonary disease" data-bs-original-title="Pulmonary disease" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -194,8 +199,12 @@
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexmedication" disabled>
-                                    <label class="form-check-label" for="flexmedication">
+                                    <?php
+                                       // Get the first medication treatment record
+                                       $medicationsTreatment = $patient->PatientMedicationsTreatment->first();
+                                    ?>
+                                    <input class="form-check-input checkbox1" type="checkbox" id="use_of_medication" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="use_of_medication" {{ $medicationsTreatment && $medicationsTreatment->use_of_medication ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="use_of_medication">
                                        Use of medication 
                                        <svg data-toggle="tooltip" aria-label="Use of medication" data-bs-original-title="Use of medication" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -204,8 +213,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexuseremind" disabled>
-                                    <label class="form-check-label" for="flexuseremind">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="medication_use_reminders" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_use_reminders" {{ $medicationsTreatment && $medicationsTreatment->medication_use_reminders ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="medication_use_reminders">
                                        Medication use remind us 
                                        <svg data-toggle="tooltip" aria-label="Medication use remind us" data-bs-original-title="Medication use remind us" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -214,8 +223,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexsideeffects" disabled>
-                                    <label class="form-check-label" for="flexsideeffects">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="medication_side_effects" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_side_effects" {{ $medicationsTreatment && $medicationsTreatment->medication_side_effects ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="medication_side_effects">
                                        Medication side effects 
                                        <svg data-toggle="tooltip" aria-label="Medication side effects" data-bs-original-title="Medication side effects" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -242,8 +251,12 @@
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexBloodpressure" disabled>
-                                    <label class="form-check-label" for="flexBloodpressure">
+                                    <?php
+                                       // Get the first medication treatment record
+                                       $quantitativeIndicators = $patient->PatientQuantitativeIndicators->first();
+                                    ?>
+                                    <input class="form-check-input checkbox1" type="checkbox" id="blood_pressure" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="blood_pressure" {{ $quantitativeIndicators && $quantitativeIndicators->blood_pressure ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="blood_pressure">
                                        Blood pressure 
                                        <svg data-toggle="tooltip" aria-label="Blood pressure" data-bs-original-title="Blood pressure" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -252,8 +265,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexuseWeight" disabled>
-                                    <label class="form-check-label" for="flexuseWeight">
+                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="weight" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="weight" {{ $quantitativeIndicators && $quantitativeIndicators->weight ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="weight">
                                        Weight 
                                        <svg data-toggle="tooltip" aria-label="Weight" data-bs-original-title="Weight" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -262,8 +275,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexgometer" disabled>
-                                    <label class="form-check-label" for="flexgometer">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="physical_exercise_activity" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="physical_exercise_activity" {{ $quantitativeIndicators && $quantitativeIndicators->physical_exercise_activity ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="physical_exercise_activity">
                                        Physical exercise/activity 
                                        <svg data-toggle="tooltip" aria-label="Qxy gometer" data-bs-original-title="Qxy gometer" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -290,8 +303,12 @@
                            <div class="row">
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexRegularFood" disabled>
-                                    <label class="form-check-label" for="flexRegularFood">
+                                    <?php
+                                       // Get the first medication treatment record
+                                       $lifestyleAndWellbeing = $patient->PatientLifestyleAndWellbeing->first();
+                                    ?>
+                                    <input class="form-check-input checkbox1" type="checkbox" id="regular_food_intake" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="regular_food_intake" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->regular_food_intake ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="regular_food_intake">
                                        Regular food food intake 
                                        <svg data-toggle="tooltip" aria-label="Regular food food intake" data-bs-original-title="Regular food food intake" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -300,8 +317,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexuseHydration" disabled>
-                                    <label class="form-check-label" for="flexuseHydration">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="hydration" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="hydration" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->hydration ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="hydration">
                                        Hydration 
                                        <svg data-toggle="tooltip" aria-label="Hydration" data-bs-original-title="Hydration" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -310,8 +327,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexPhysical" disabled>
-                                    <label class="form-check-label" for="flexPhysical">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="qxy_gometer" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="qxy_gometer" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->qxy_gometer ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="qxy_gometer">
                                        Qxy gometer 
                                        <svg data-toggle="tooltip" aria-label="Physical exercise/activity" data-bs-original-title="Physical exercise/activity" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -320,8 +337,8 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="flexQuality" disabled>
-                                    <label class="form-check-label" for="flexQuality">
+                                    <input class="form-check-input checkbox1" type="checkbox" id="quality_of_sleep" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="quality_of_sleep" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->quality_of_sleep ? 'checked' : '' }} disabled>
+                                    <label class="form-check-label" for="quality_of_sleep">
                                        Quality of sleep 
                                        <svg data-toggle="tooltip" aria-label="Quality of sleep" data-bs-original-title="Quality of sleep" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"/>
@@ -899,32 +916,6 @@
       $('#editProfileModal').modal('show');
    }
 
-   function updateProfile() {
-      // Get the form data
-      var formData = new FormData(document.getElementById("editProfileForm"));
-
-      $.ajax({
-         url: '/update-profile', // Change to your route
-         type: 'POST',
-         data: formData,
-         processData: false,
-         contentType: false,
-         headers: {
-            _token: '{{ csrf_token() }}'
-         },
-         success: function(response) {
-               // Handle success (e.g., show a success message, close modal)
-               $('#editProfileModal').modal('hide');
-               alert('Profile updated successfully!');
-               location.reload(); // Reload the page to see the updated data
-         },
-         error: function(xhr) {
-               // Handle error (e.g., show error message)
-               alert('An error occurred while updating the profile.');
-         }
-      });
-   }
-
    $(document).ready(function() {
       $('#edit-btn').click(function(event) {
          event.preventDefault();  // Prevent default button behavior
@@ -936,54 +927,51 @@
 
       });
 
-      $('.checkbox1').change(function() {
-         var checkbox = $(this);
-         var isChecked = checkbox.is(':checked');
-         var conditionId = checkbox.val();  // Assuming the checkbox value corresponds to the condition ID
-         var patientId = checkbox.data('patient-id');  // Assuming you have a data attribute for patient ID
+      $('.checkbox1').on('change', function() {
+         const checkbox = $(this);
+         const isChecked = checkbox.prop('checked');
+         const model = checkbox.data('model');
+         const column = checkbox.data('column');
+         const patientId = checkbox.data('patient-id');
 
-         // Display SweetAlert confirmation
          Swal.fire({
-               title: 'Are you sure?',
-               text: "You want to update the medical condition!",
-               icon: 'warning',
-               showCancelButton: true,
-               confirmButtonColor: '#3085d6',
-               cancelButtonColor: '#d33',
-               confirmButtonText: 'Yes, update it!'
+            title: 'Confirm Change',
+            text: `Are you sure you want to ${isChecked ? 'check' : 'uncheck'} this item?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
          }).then((result) => {
-               if (result.isConfirmed) {
-                  // Make AJAX request to update the value in the table
-                  $.ajax({
-                     url: '/update-medical-condition',  // Your route here
-                     method: 'POST',
-                     data: {
-                           _token: '{{ csrf_token() }}',  // CSRF token for security
-                           patient_id: patientId,
-                           condition_id: conditionId,
-                           is_checked: isChecked ? 1 : 0  // Send 1 for checked, 0 for unchecked
-                     },
-                     success: function(response) {
-                           Swal.fire(
-                              'Updated!',
-                              'The medical condition has been updated.',
-                              'success'
-                           );
-                     },
-                     error: function(xhr, status, error) {
-                           Swal.fire(
-                              'Error!',
-                              'There was an error updating the medical condition.',
-                              'error'
-                           );
-                           // Revert the checkbox state if there's an error
-                           checkbox.prop('checked', !isChecked);
+            if (result.isConfirmed) {
+               // Perform AJAX request to update the database
+               $.ajax({
+                  url: '/doctor/update-medical-condition',
+                  method: 'POST',
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  },
+                  contentType: 'application/json',
+                  data: JSON.stringify({
+                     patientId: patientId,
+                     model: model,
+                     column: column,
+                     value: isChecked
+                  }),
+                  success: function(data) {
+                     if (data.success) {
+                        Swal.fire('Updated!', 'The checkbox has been updated.', 'success');
+                     } else {
+                        Swal.fire('Error!', 'There was an error updating the checkbox.', 'error');
                      }
-                  });
-               } else {
-                  // Revert the checkbox state if the user cancels the confirmation
-                  checkbox.prop('checked', !isChecked);
-               }
+                  },
+                  error: function() {
+                     Swal.fire('Error!', 'There was an error with the request.', 'error');
+                  }
+               });
+            } else {
+               // Revert the checkbox if the user cancels
+               checkbox.prop('checked', !isChecked);
+            }
          });
       });
 
