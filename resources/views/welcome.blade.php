@@ -204,6 +204,7 @@
               <table class="table table-bordered">
                 <tbody>
                   @foreach($paientslist as $patient)
+                  @if($patient->patientHistory!=null)
                   <tr>
                     <td width="30%">{{strtoupper(substr($patient->first_name, 0, 1))}}. {{ ucfirst($patient->last_name)}}</td>
                     <td width="25%"><canvas id="myChart{{$patient->id}}" class="overallChart" data-report="{{$patient->patientHistory->over_rep_combined}}" data-labels="{{$patient->patientHistory->rep_dates}}"></canvas>
@@ -211,6 +212,7 @@
                     <td width="25%" align="center" class="text-center">{{$patient->patientHistory->total_value}}</td>
                     <td width="20%">{{$patient->patientHistory->total_days}} {{__('dashboard.days')}}</td>
                   </tr>
+                  @endif
                   @endforeach
                 </tbody>
               </table>

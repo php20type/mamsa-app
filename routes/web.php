@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Route::group(['prefix' => 'doctor','middleware' => 'auth:web'], function () {
     Route::post('/sendGroupMessage',[MessageController::class,'sendGroupMessage'])->name('sendGroupMessage');
+    Route::post('/sendMessage',[MessageController::class,'sendMessage'])->name('sendMessage');
     Route::post('/replyMessage',[MessageController::class,'replyMessage'])->name('replyMessage');
     Route::get('/patients', [PatientController::class, 'patientFile'])->name('doctor.patients');
     Route::get('/getPatientList', [PatientController::class, 'getPatientList'])->name('doctor.getPatientList');

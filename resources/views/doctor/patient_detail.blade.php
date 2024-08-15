@@ -28,7 +28,7 @@
 <section class="medi-area" style="padding: 0px;">
   <div class="container-fluid ps-lg-0 px-3">
     <div class="row">
-      <div class="col-md-2 px-lg-0"  style="background: #6f4d3f;">
+      <div class="col-md-2 px-lg-0" style="background: #6f4d3f;">
         <div class="medi-area-left">
           <div class="box-out mb-5">
             <h3 class="heading-sm mb-4">Action Button</h3>
@@ -38,33 +38,33 @@
             </div>
           </div>
           <div class="box-out mb-5">
-            <h3 class="heading-sm mb-4">Send Message Via Mamsa</h3>
+            <h3 class="heading-sm mb-4">{{__('dashboard.Send Message via Mamsa')}}</h3>
             <div class="box">
-              <h4 class="fw-bold mb-4">Message Type</h4>
-              <form accept="" class="MessageForm">
+              <h4 class="fw-bold mb-4">{{__('dashboard.Message Type')}}</h4>
+              <form accept="" class="MessageForm" method="post" action="{{ route('sendMessage')}}">
                 <div class="form-check mb-3">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <input class="form-check-input" type="radio" value="1" name="message_type" id="additional">
                   <label class="form-check-label" for="flexCheckDefault">
-                    Additional Question
+                  {{__('dashboard.Additional Question')}}
                   </label>
                 </div>
                 <div class="form-check mb-3">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                  <input class="form-check-input" type="radio" value="2" name="message_type" id="lab_test">
                   <label class="form-check-label" for="flexCheckChecked">
-                    Test Result
+                  {{__('dashboard.Lab test result')}}
                   </label>
                 </div>
                 <div class="form-check mb-4">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1">
+                  <input class="form-check-input" type="radio" value="3" name="message_type" id="appointment">
                   <label class="form-check-label" for="flexCheckChecked1">
-                    Other
+                  {{__('dashboard.Request Appointment')}}
                   </label>
                 </div>
                 <div class="form-group mb-4">
                   <textarea name="" id="" placeholder="Type your message here" class="form-control" rows="6"></textarea>
                 </div>
                 <div class="form-group mb-3">
-                  <button type="button" class="btn btn-theme px-5">SEND</button>
+                  <button type="submit" class="btn btn-theme px-5">{{__('dashboard.Send')}}</button>
                 </div>
               </form>
             </div>
@@ -73,6 +73,11 @@
         </div>
       </div>
       <div class="col-md-10">
+        @if(session()->has('success'))
+        <div class="alert alert-success mt-4">
+          <span>{{session()->get('success')}}</span>
+        </div>
+        @endif
         <div class="cust-card-area">
           <div class="row">
             <div class="col">

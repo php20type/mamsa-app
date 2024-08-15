@@ -39,5 +39,8 @@
         'Patients'=>'Patients',
         'Send'=>'Send',
         'Send Reply'=>'Send Reply',
+        'Send Message via Mamsa'=>'Send Message via Mamsa',
+        'Message Send Successfully'=>'Message Send Successfully',
+
     ]
 ?>

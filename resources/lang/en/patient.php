@@ -37,6 +37,6 @@
         'Doctor'=>'Doctor',
         'Doctor ID'=>'Doctor ID',
         'Date Of Birth'=>'Date Of Birth',
-        'Weight'=>'Weight'
+        'Weight'=>'Weight',
     ]
 ?>
