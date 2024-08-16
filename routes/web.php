@@ -52,8 +52,8 @@ Route::post('/add-patient', [PatientController::class, 'store'])->name('store.pa
 
 Route::get('/delete-patient/{id}', [PatientController::class, 'delete'])->name('delete.patient');
 Route::post('/update-frequency', [PatientController::class, 'updateFrequency']);
-Route::get('/changeLanguage/{lang}',[LanguageController::class,'changeLanguage'])->name('changeLanguage');
-Route::get('/getHistory',[OutboundController::class,'getHistory']);
+Route::get('/changeLanguage/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');
+Route::get('/getHistory', [OutboundController::class, 'getHistory']);
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', [LoginController::class, 'showAdminLogin'])->name('admin.login-view');
     Route::post('/login', [LoginController::class, 'adminLogin'])->name('admin.login');
@@ -63,23 +63,25 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/symptoms', [SymptomController::class, 'index'])->name('symptoms');
         Route::get('/bodyparts', [BodypartController::class, 'index'])->name('bodyparts');
         Route::get('/medications', [MedicationController::class, 'index'])->name('medications');
-        Route::get('/medical-fecilities',[MedicalFecilityController::class,'index'])->name('medical-fecilities');
+        Route::get('/medical-fecilities', [MedicalFecilityController::class, 'index'])->name('medical-fecilities');
         Route::get('/patients', [PatientController::class, 'index'])->name('patients');
         Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors');
     });
 });
-Route::group(['prefix' => 'doctor','middleware' => 'auth:web'], function () {
-    Route::post('/sendGroupMessage',[MessageController::class,'sendGroupMessage'])->name('sendGroupMessage');
-    Route::post('/sendMessage',[MessageController::class,'sendMessage'])->name('sendMessage');
-    Route::post('/replyMessage',[MessageController::class,'replyMessage'])->name('replyMessage');
+Route::group(['prefix' => 'doctor', 'middleware' => 'auth:web'], function () {
+    Route::post('/sendGroupMessage', [MessageController::class, 'sendGroupMessage'])->name('sendGroupMessage');
+    Route::post('/sendMessage', [MessageController::class, 'sendMessage'])->name('sendMessage');
+    Route::post('/replyMessage', [MessageController::class, 'replyMessage'])->name('replyMessage');
     Route::get('/patients', [PatientController::class, 'patientFile'])->name('doctor.patients');
     Route::get('/getPatientList', [PatientController::class, 'getPatientList'])->name('doctor.getPatientList');
     Route::post('/add-patient', [PatientController::class, 'storePatientFile'])->name('doctor.store.patient');
     Route::get('/delete-patient/{id}', [PatientController::class, 'delete'])->name('doctor.delete.patient');
-    Route::get('/monitoring',[PatientMonitorController::class,'index'])->name('patientMonitoring');
+    Route::get('/monitoring', [PatientMonitorController::class, 'index'])->name('patientMonitoring');
     Route::post('/add-monitoring', [PatientMonitorController::class, 'store'])->name('doctor.store.monitoring');
     Route::get('/delete-monitoring/{id}', [PatientMonitorController::class, 'delete'])->name('doctor.delete.monitoring');
-    Route::get('/patient-report/{patient_id}',[PatientController::class,'patientDetail'])->name('patientDetail');
-    Route::get('/edit-patient/{id}',[PatientController::class,'editPatient'])->name('editPatient');
+    Route::get('/patient-report/{patient_id}', [PatientController::class, 'patientDetail'])->name('patientDetail');
+    Route::get('/edit-patient/{id}', [PatientController::class, 'editPatient'])->name('editPatient');
     Route::post('/update-medical-condition', [PatientController::class, 'updateMedicalCondition'])->name('updateMedicalCondition');
+    Route::post('/update-hobby-status', [PatientController::class, 'updateHobbyStatus'])->name('update.hobby.status');
+
 });

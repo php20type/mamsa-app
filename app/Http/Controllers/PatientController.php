@@ -19,6 +19,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Validation\Rule;
+use App\Models\Hobby;
+use App\Models\PatientHobby;
 
 class PatientController extends Controller
 {
@@ -332,9 +334,14 @@ class PatientController extends Controller
         if (!$patient) {
             return redirect()->back()->with('error', 'Patient not found');
         }
+        $hobbies = Hobby::all();
+        $selectedHobbies = PatientHobby::where('patient_id', $patient->id)
+            ->where('status', 1)
+            ->pluck('hobby_id')
+            ->toArray();
 
         // Pass the patient and related data to the view
-        return view('doctor/editPatient', compact('patient'));
+        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies'));
     }
     public function getPatientList(Request $request)
     {
@@ -390,6 +397,36 @@ class PatientController extends Controller
 
         // Save the record (either new or updated)
         $modelInstance->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function updateHobbyStatus(Request $request)
+    {
+        $hobbyId = $request->input('hobby_id');
+        $isChecked = $request->input('is_checked');
+        $patientId = $request->input('patient_id');
+        // Check if the hobby already exists for the patient
+        $patientHobby = PatientHobby::where('patient_id', $patientId)
+            ->where('hobby_id', $hobbyId)
+            ->first();
+
+        if ($patientHobby) {
+            if ($isChecked == 1) {
+                // If checked and already exists, update the status to 1 (active)
+                $patientHobby->update(['status' => 1]);
+            } else {
+                // If unchecked, update the status to 0 (inactive)
+                $patientHobby->update(['status' => 0]);
+            }
+        } else if ($isChecked) {
+            // If not exists and checked, create a new record
+            PatientHobby::create([
+                'patient_id' => $patientId,
+                'hobby_id' => $hobbyId,
+                'status' => 1
+            ]);
+        }
 
         return response()->json(['success' => true]);
     }
