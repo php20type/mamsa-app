@@ -55,4 +55,10 @@ class Patient extends Model
     {
         return $this->hasMany(PatientLifestyleAndWellbeing::class, 'patient_id', 'id');
     }
+
+    // Define the relationship with PatientMedication model
+    public function medications()
+    {
+        return $this->hasMany(PatientMedication::class);
+    }
 }
