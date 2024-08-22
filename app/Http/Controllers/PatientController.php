@@ -230,7 +230,7 @@ class PatientController extends Controller
             $messagetext .= $message->message;
         }
         $frequencyPattern = explode(',', $patient->frequency);
-
+        $medical_condition=PatientMedicalCondition::where('patient_id',$patient->id)->first();
         // Get today's day of the week (1 for Monday through 7 for Sunday)
         $today = Carbon::now()->dayOfWeekIso; // Monday = 1, Sunday = 7
         // Find the next enabled day
@@ -251,6 +251,8 @@ class PatientController extends Controller
         $patientdata['dose'] = $monitordata->dose;
         $patientdata['nextDay'] = $nextEnabledDay;
         $patientdata['message'] = $messagetext;
+        $patientdata['medical_condition']=$medical_condition;
+        
         if (isset($doctor->firstname)) {
             $patientdata['medication_admin'] = $doctor->firstname;
         } else {

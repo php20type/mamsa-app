@@ -69,13 +69,13 @@ class OutboundController extends Controller
         Patient::where('id', $monitor_condition->patient_id)->update(['monitor_id' => $request->patient_id]);
         $patient = Patient::where('id', $monitor_condition->patient_id)->first();
         $phone_number = $patient->phone_number;
-        $data['bot'] = 'st-6f87a15a-fd93-5476-bee4-390dded02853';
+        $data['bot'] = 'st-708ff60f-49ef-555d-8ed2-05ed00ddeed9';
         $data['target'] = $phone_number;
-        $data['caller'] = '+421800223184';
+        $data['caller'] = '+16592095534';
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://smartassist.kore.ai/api/1.1/public/bot/st-6f87a15a-fd93-5476-bee4-390dded02853/smartassist/dialout',
+            CURLOPT_URL => 'https://smartassist.kore.ai/api/1.1/public/bot/st-708ff60f-49ef-555d-8ed2-05ed00ddeed9/smartassist/dialout',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -85,8 +85,8 @@ class OutboundController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_HTTPHEADER => array(
-                'Auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6ImNzLWM4MTUxOGRkLWU0MGEtNTJkYS1hYzNmLTBmOGQ0YTZjODlhMCJ9.qPOadjHTFpjoc2AV-CAdCU-2KFmjyo143AJrc7_LgtU',
-                'accountId: 6605460a50c7c155ebe5324d',
+                'Auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6ImNzLWI3N2NjZDQ5LTQ1Y2QtNTI3Yy05YjRkLTI2Njk3MTI5ZDgxYSJ9.1pOLujhtnZ7C9-VQLPdrmI-a-otac7bDjB3is5D4-YA',
+                'accountId: 66bdff8aa776a1a90c7fe3b4',
                 'Content-Type: application/json'
             ),
         ));
