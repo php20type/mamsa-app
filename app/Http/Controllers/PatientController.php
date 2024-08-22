@@ -463,7 +463,7 @@ class PatientController extends Controller
         $medication->save();
 
         return response()->json([
-            'message' => 'Medication saved successfully!',
+            'message' => 'Medication Saved Successfully!',
             'id' => $medication->id
         ]);
     }
@@ -475,7 +475,10 @@ class PatientController extends Controller
         // Update the existing medication
         $medication->update($data);
 
-        return response()->json(['Medication updated successfully!' => true]);
+        return response()->json([
+            'message' => 'Medication Updated Successfully!',
+            'id' => $medication->id
+        ]);
     }
 
     public function destroyMedication(Request $request)

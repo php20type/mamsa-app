@@ -1012,49 +1012,77 @@
       });
 
       // Save button click event
-      $(document).on('click', '.save-btn-area-of-medication', function(e) {
+     $(document).on('click', '.save-btn-area-of-medication', function(e) {
          e.preventDefault();
-         
          var form = $(this).closest('form');
          var formData = new FormData(form[0]); // Create FormData object from the form
-         var isUpdate = formData.get('id');
-         var url = isUpdate ? '{{ route("update.medication") }}' : '{{ route("save.medication") }}'; // Use the appropriate route
+         var isUpdate = formData.get('id'); // Check if the form has an ID for updating
 
-         // Append CSRF token to FormData
-         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-         formData.append('_token', csrfToken);    
-         $.ajax({
-               url: url, // Replace with your route
-               method: 'POST',
-               data: formData,
-               contentType: false, // Required for FormData
-               processData: false, // Required for FormData
-               success: function(response) {
-                 if (!isUpdate) {
-                     // If it's a new row, add the ID to the form
-                     form.append('<input type="hidden" name="id" value="' + response.id + '">');
-                  }
+         // Determine the action text (save or update)
+         var actionText = isUpdate ? 'update' : 'save';
 
-                  // Display success alert
+         // Show confirmation dialog
+         Swal.fire({
+            title: 'Are you sure?',
+            text: `Do you want to ${actionText} this medication?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, save it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+         }).then((result) => {
+            if (result.isConfirmed) {
+                  // User confirmed, proceed with saving or updating
+
+                  var url = isUpdate ? '{{ route("update.medication") }}' : '{{ route("save.medication") }}'; // Determine the URL for the AJAX request
+
+                  // Append CSRF token to FormData
+                  var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                  formData.append('_token', csrfToken);
+
+                  $.ajax({
+                     url: url, // The URL for the AJAX request
+                     method: 'POST',
+                     data: formData,
+                     contentType: false, // Required for FormData
+                     processData: false, // Required for FormData
+                     success: function(response) {
+                        if (!isUpdate) {
+                              // If it's a new row, add the ID to the form
+                              form.append('<input type="hidden" name="id" value="' + response.id + '">');
+                        }
+
+                        // Display success alert
+                        Swal.fire({
+                              icon: 'success',
+                              title: 'Success!',
+                              text: response.message,
+                              confirmButtonText: 'OK'
+                        });
+                     },
+                     error: function(xhr) {
+                        // Display error alert
+                        Swal.fire({
+                              icon: 'error',
+                              title: 'Error!',
+                              text: 'Error saving medication! ' + (xhr.responseJSON.message || ''),
+                              confirmButtonText: 'OK'
+                        });
+                     }
+                  });
+            } else {
+                  // User canceled, no action taken
                   Swal.fire({
-                     icon: 'success',
-                     title: 'Success!',
-                     text: response.message,
+                     icon: 'info',
+                     title: 'Cancelled',
+                     text: 'Your medication update was not saved.',
                      confirmButtonText: 'OK'
                   });
-               },
-               error: function(xhr) {
-                  // Display error alert
-                  Swal.fire({
-                     icon: 'error',
-                     title: 'Error!',
-                     text: 'Error saving medication!',
-                     confirmButtonText: 'OK'
-                  });
-               }
+            }
          });
       });
 
+      // Delete medication click event   
       $(document).on('click', '.close-btn-area-of-medication', function(e) {
          e.preventDefault();
 
@@ -1112,6 +1140,8 @@
             }
          });
       });
+
+      /* Script of area of medication section End */
    });
 </script>
 @endsection
