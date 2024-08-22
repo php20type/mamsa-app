@@ -525,55 +525,43 @@
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
                         <h4>Monitoring Frequency</h4>
-                        <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a>
+                        <a href="#" class="edit-btn" id="edit-btn-monitoring-frequency"><i class="fa-light fa-pen"></i></a>
                      </div>
-                     <div class="medical-body border-0 mb-0">
-                        <form class="" action="">
-                           <div class="row">
-                              <div class="col-lg-3 col-md-6">
-                                 <h5 class="mb-2"><strong>Frequency</strong></h5>
-                                 <div class="mfrequency-form">
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Mon</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Mon">
-                                    </div>
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Tue</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Tue">
-                                    </div>
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Wed</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Wed">
-                                    </div>
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Thu</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Thu">
-                                    </div>
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Fri</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Fri">
-                                    </div>
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Sat</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Sat">
-                                    </div>
-                                    <div class="form-check ps-0">
-                                       <p class="form-check-label">Sun</p>
-                                       <input class="form-check-input ms-0" type="checkbox" value="" id="Sun">
+                     <div class="medical-body medical-body-monitoring-frequency border-0 mb-0">
+                        <form class="monitoring-frequency-form" action="">
+                              <div class="row">
+                                 <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                                 <div class="col-lg-3 col-md-6">
+                                    <h5 class="mb-2"><strong>Frequency</strong></h5>
+                                    <div class="mfrequency-form">
+                                          @php
+                                             // Decode the frequency JSON or set an empty array if no record
+                                             $frequency = $monitoringFrequency ? json_decode($monitoringFrequency->frequency, true) : [];
+                                          @endphp
+                                          @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
+                                             <div class="form-check ps-0">
+                                                <p class="form-check-label">{{ $day }}</p>
+                                                <input class="form-check-input ms-0" type="checkbox" name="frequency[]" value="{{ $day }}" 
+                                                         {{ in_array($day, $frequency) ? 'checked' : '' }} disabled>
+                                             </div>
+                                          @endforeach
                                     </div>
                                  </div>
-                              </div>
-                              <div class="col-lg-2 col-md-6">
-                                 <h5 class="mb-2"><strong>Preferred call time</strong></h5>
-                                 <div class="Preferred-call">
-                                    <select class="form-select" aria-label="Default select example">
-                                       <option selected>10 : 12 PM</option>
-                                       <option value="1">12 : 14 PM</option>
-                                       <option value="2">14 : 16 PM</option>
-                                    </select>
+                                 <div class="col-lg-2 col-md-6">
+                                    <h5 class="mb-2"><strong>Preferred call time</strong></h5>
+                                    <div class="Preferred-call">
+                                          <select class="form-select" name="preferred_call_time" disabled>
+                                             <option value="10:12 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '10:12 PM' ? 'selected' : '' }}>10:12 PM</option>
+                                             <option value="12:14 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '12:14 PM' ? 'selected' : '' }}>12:14 PM</option>
+                                             <option value="14:16 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '14:16 PM' ? 'selected' : '' }}>14:16 PM</option>
+                                          </select>
+                                    </div>
                                  </div>
+                                 <div class="col-lg-2 col-md-6 mt-4 pt-2">
+                                    <a href="#" class="btn btn-success save-btn-monitoring-frequency" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                    <a href="#" class="btn btn-danger close-btn-monitoring-frequency" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
+                                 </div>   
                               </div>
-                           </div>
                         </form>
                      </div>
                   </div>
@@ -1082,7 +1070,7 @@
       });
 
       // Save button click event
-     $(document).on('click', '.save-btn-area-of-medication', function(e) {
+      $(document).on('click', '.save-btn-area-of-medication', function(e) {
          e.preventDefault();
          var form = $(this).closest('form');
          var formData = new FormData(form[0]); // Create FormData object from the form
@@ -1210,8 +1198,62 @@
             }
          });
       });
-
       /* Script of area of medication section End */
+      
+      /* Script of monitoring frequency section Start */
+      $(document).on('click', '#edit-btn-monitoring-frequency', function(e) {
+         e.preventDefault();
+         
+         // Find the form in the same section as the clicked edit button
+         const form = $(this).closest('.medical-conditions').find('form');
+         
+         // Enable all inputs and selects in the form
+         form.find('input, select').prop('disabled', false);
+         
+         // Enable the save and close buttons
+         form.find('.save-btn-monitoring-frequency, .close-btn-monitoring-frequency')
+         .css({'pointer-events': 'auto', 'opacity': '1'})
+         .prop('disabled', false);
+      });
+
+
+      $(document).on('click', '.save-btn-monitoring-frequency', function(e) {
+         e.preventDefault();
+
+         Swal.fire({
+            title: 'Confirmation',
+            text: 'Do you want to save this monitoring frequency?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, save it!',
+            cancelButtonText: 'No, cancel!',
+         }).then((result) => {
+            if (result.isConfirmed) {
+                  var form = $(this).closest('form');
+                  var formData = new FormData(form[0]);
+                  var url = '{{ route("save.monitoring_frequency") }}';
+
+                  formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+                  $.ajax({
+                     url: url,
+                     method: 'POST',
+                     data: formData,
+                     contentType: false,
+                     processData: false,
+                     success: function(response) {
+                        form.append('<input type="hidden" name="id" value="' + response.id + '">');
+                        Swal.fire('Saved!', response.message, 'success');
+                     },
+                     error: function(xhr) {
+                        Swal.fire('Error!', 'Error saving monitoring frequency!', 'error');
+                     }
+                  });
+            }
+         });
+      });
+
+      /* Script of monitoring frequency section End */
    });
 </script>
 @endsection

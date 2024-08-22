@@ -13,6 +13,7 @@ use App\Models\Symptom;
 use App\Models\User;
 use App\Models\PatientMedication;
 use App\Models\PatientMedicalCondition;
+use App\Models\PatientMonitoringFrequency;
 use App\Models\PatientMedicationsTreatment;
 use App\Models\PatientQuantitativeIndicators;
 use App\Models\PatientLifestyleAndWellbeing;
@@ -341,11 +342,12 @@ class PatientController extends Controller
             ->where('status', 1)
             ->pluck('hobby_id')
             ->toArray();
+        $monitoringFrequency = PatientMonitoringFrequency::where('patient_id', $patient->id)->first();
 
         $patientMedications = $patient->medications;
 
         // Pass the patient and related data to the view
-        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications'));
+        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications', 'monitoringFrequency'));
     }
     public function getPatientList(Request $request)
     {
@@ -499,5 +501,22 @@ class PatientController extends Controller
             return response()->json(['success' => false, 'message' => 'Medication not found'], 404);
         }
     }
+
+    public function saveMonitoringFrequency(Request $request)
+    {
+        $frequency = json_encode($request->input('frequency'));
+
+        $monitoringFrequency = PatientMonitoringFrequency::updateOrCreate(
+            ['id' => $request->input('id')],
+            [
+                'patient_id' => $request->input('patient_id'),
+                'frequency' => $frequency,
+                'preferred_call_time' => $request->input('preferred_call_time')
+            ]
+        );
+
+        return response()->json(['message' => 'Monitoring frequency saved successfully!', 'id' => $monitoringFrequency->id]);
+    }
+
 
 }
