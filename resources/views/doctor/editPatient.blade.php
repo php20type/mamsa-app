@@ -374,76 +374,146 @@
                      </div>
                      <div class="medical-body medical-body-medication border-0">
                         <div id="medication-forms-container">
-                           @foreach($patientMedications as $medication)
-                              <form class="medication-form" action="" data-form-id="{{ $loop->index + 1 }}">
-                                 <input type="hidden" name="id" value="{{ $medication->id }}">
+                           @if($patientMedications->isEmpty())
+                              <!-- Display default form if there are no records -->
+                              <form class="medication-form" action="" data-form-id="1">
                                  <div class="row">
-                                       <div class="col-lg-1 col-md-4">
-                                          <div class="form-group">
-                                             <label class="mb-2"><strong>Medication</strong></label>
-                                             <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
-                                             <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="{{ old('medication', $medication->medication) }}" disabled>
-                                          </div>
+                                    <div class="col-lg-1 col-md-4">
+                                       <div class="form-group">
+                                          <label class="mb-2"><strong>Medication</strong></label>
+                                          <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                                          <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="" disabled>
                                        </div>
-                                       <div class="col-lg-2 col-md-4">
-                                          <div class="form-group">
-                                             <label class="mb-2"><strong>Purpose Of Medication</strong></label>
-                                             <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="{{ old('purpose_of_medication', $medication->purpose_of_medication) }}" disabled>
-                                          </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4">
+                                       <div class="form-group">
+                                          <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                          <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="" disabled>
                                        </div>
-                                       <div class="col-lg-3 col-md-4">
-                                          <div class="use-column">
-                                             <div class="mfrequency">
-                                                   <p class=""><strong>Use schedule </strong></p>
-                                                   <div class="mfrequency-form">
-                                                      @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
-                                                         <div class="form-check ps-0">
-                                                            <p class="form-check-label">{{ $time }}</p>
-                                                            <input 
-                                                                  class="form-check-input ms-0" 
-                                                                  type="checkbox" 
-                                                                  name="use_schedule[]" 
-                                                                  value="{{ $time }}" 
-                                                                  {{ in_array($time, json_decode($medication->use_schedule, true)) ? 'checked' : '' }} 
-                                                                  disabled>
-                                                         </div>
-                                                      @endforeach
+                                    </div>
+                                    <div class="col-lg-3 col-md-4">
+                                       <div class="use-column">
+                                          <div class="mfrequency">
+                                             <p class=""><strong>Use schedule</strong></p>
+                                             <div class="mfrequency-form">
+                                                @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
+                                                   <div class="form-check ps-0">
+                                                      <p class="form-check-label">{{ $time }}</p>
+                                                      <input 
+                                                         class="form-check-input ms-0" 
+                                                         type="checkbox" 
+                                                         name="use_schedule[]" 
+                                                         value="{{ $time }}" 
+                                                         disabled>
                                                    </div>
+                                                @endforeach
                                              </div>
-                                             <div class="food-use">
-                                                   <p class="mb-2"><strong>Food and use</strong></p>
-                                                   <select class="form-select" name="food_use" aria-label="Default select example" disabled>
-                                                      <option selected>Dropdown</option>
-                                                      <option value="1" {{ old('food_use', $medication->food_use) == 1 ? 'selected' : '' }}>One</option>
-                                                      <option value="2" {{ old('food_use', $medication->food_use) == 2 ? 'selected' : '' }}>Two</option>
-                                                      <option value="3" {{ old('food_use', $medication->food_use) == 3 ? 'selected' : '' }}>Three</option>
-                                                   </select>
+                                          </div>
+                                          <div class="food-use">
+                                             <p class="mb-2"><strong>Food and use</strong></p>
+                                             <select class="form-select" name="food_use" aria-label="Default select example" disabled>
+                                                <option selected>Dropdown</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                             </select>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                       <div class="dose-column">
+                                          <div class="form-group">
+                                             <label class="mb-1">Dose/Use(x units)</label>
+                                             <input type="text" class="form-control" name="dose_use" value="" disabled>
+                                          </div>
+                                          <div class="form-group">
+                                             <label class="mb-1">Doses per package</label>
+                                             <input type="text" class="form-control" name="doses_per_package" value="" disabled>
+                                          </div>
+                                          <div class="form-group">
+                                             <label class="mb-1">Last prescription start</label>
+                                             <div class="d-flex">
+                                                <input type="date" class="form-control me-1" name="last_prescription_start" value="" disabled>
+                                                <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                                <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
                                              </div>
                                           </div>
                                        </div>
-                                       <div class="col-lg-6 col-md-6">
-                                          <div class="dose-column">
-                                             <div class="form-group">
-                                                   <label class="mb-1">Dose/Use(x units)</label>
-                                                   <input type="text" class="form-control" name="dose_use" value="{{ old('dose_use', $medication->dose_use) }}" disabled>
-                                             </div>
-                                             <div class="form-group">
-                                                   <label class="mb-1">Doses per package </label>
-                                                   <input type="text" class="form-control" name="doses_per_package" value="{{ old('doses_per_package', $medication->doses_per_package) }}" disabled>
-                                             </div>
-                                             <div class="form-group">
-                                                   <label class="mb-1">Last prescription start</label>
-                                                   <div class="d-flex">
-                                                   <input type="date" class="form-control me-1" name="last_prescription_start" value="{{ old('last_prescription_start', $medication->last_prescription_start) }}" disabled>
-                                                   <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
-                                                   <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
-                                                   </div>
-                                                </div>
-                                          </div>
-                                       </div>
+                                    </div>
                                  </div>
                               </form>
-                           @endforeach
+                           @else
+                              @foreach($patientMedications as $medication)
+                                 <form class="medication-form" action="" data-form-id="{{ $loop->index + 1 }}">
+                                    <input type="hidden" name="id" value="{{ $medication->id }}">
+                                    <div class="row">
+                                          <div class="col-lg-1 col-md-4">
+                                             <div class="form-group">
+                                                <label class="mb-2"><strong>Medication</strong></label>
+                                                <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                                                <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="{{ old('medication', $medication->medication) }}" disabled>
+                                             </div>
+                                          </div>
+                                          <div class="col-lg-2 col-md-4">
+                                             <div class="form-group">
+                                                <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                                <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="{{ old('purpose_of_medication', $medication->purpose_of_medication) }}" disabled>
+                                             </div>
+                                          </div>
+                                          <div class="col-lg-3 col-md-4">
+                                             <div class="use-column">
+                                                <div class="mfrequency">
+                                                      <p class=""><strong>Use schedule </strong></p>
+                                                      <div class="mfrequency-form">
+                                                         @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
+                                                            <div class="form-check ps-0">
+                                                               <p class="form-check-label">{{ $time }}</p>
+                                                               <input 
+                                                                     class="form-check-input ms-0" 
+                                                                     type="checkbox" 
+                                                                     name="use_schedule[]" 
+                                                                     value="{{ $time }}" 
+                                                                     {{ in_array($time, json_decode($medication->use_schedule, true)) ? 'checked' : '' }} 
+                                                                     disabled>
+                                                            </div>
+                                                         @endforeach
+                                                      </div>
+                                                </div>
+                                                <div class="food-use">
+                                                      <p class="mb-2"><strong>Food and use</strong></p>
+                                                      <select class="form-select" name="food_use" aria-label="Default select example" disabled>
+                                                         <option selected>Dropdown</option>
+                                                         <option value="1" {{ old('food_use', $medication->food_use) == 1 ? 'selected' : '' }}>One</option>
+                                                         <option value="2" {{ old('food_use', $medication->food_use) == 2 ? 'selected' : '' }}>Two</option>
+                                                         <option value="3" {{ old('food_use', $medication->food_use) == 3 ? 'selected' : '' }}>Three</option>
+                                                      </select>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-lg-6 col-md-6">
+                                             <div class="dose-column">
+                                                <div class="form-group">
+                                                      <label class="mb-1">Dose/Use(x units)</label>
+                                                      <input type="text" class="form-control" name="dose_use" value="{{ old('dose_use', $medication->dose_use) }}" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                      <label class="mb-1">Doses per package </label>
+                                                      <input type="text" class="form-control" name="doses_per_package" value="{{ old('doses_per_package', $medication->doses_per_package) }}" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                      <label class="mb-1">Last prescription start</label>
+                                                      <div class="d-flex">
+                                                      <input type="date" class="form-control me-1" name="last_prescription_start" value="{{ old('last_prescription_start', $medication->last_prescription_start) }}" disabled>
+                                                      <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                                      <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
+                                                      </div>
+                                                   </div>
+                                             </div>
+                                          </div>
+                                    </div>
+                                 </form>
+                              @endforeach
+                           @endif
                         </div>
                         <div class="row mt-lg-4 mt-3">
                               <div class="col-lg-12">
