@@ -374,75 +374,76 @@
                      </div>
                      <div class="medical-body medical-body-medication border-0">
                         <div id="medication-forms-container">
-                              <form class="medication-form" action="" data-form-id="1"> <!-- Add unique data-form-id -->
+                           @foreach($patientMedications as $medication)
+                              <form class="medication-form" action="" data-form-id="{{ $loop->index + 1 }}">
+                                 <input type="hidden" name="id" value="{{ $medication->id }}">
                                  <div class="row">
-                                    <div class="col-lg-2 col-md-4">
+                                       <div class="col-lg-1 col-md-4">
                                           <div class="form-group">
                                              <label class="mb-2"><strong>Medication</strong></label>
-                                             <input type="hidden" class="form-control" name="patient_id" value="{{$patient->id}}">
-                                             <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" disabled>
+                                             <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                                             <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="{{ old('medication', $medication->medication) }}" disabled>
                                           </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-4">
+                                       </div>
+                                       <div class="col-lg-2 col-md-4">
                                           <div class="form-group">
                                              <label class="mb-2"><strong>Purpose Of Medication</strong></label>
-                                             <input type="text" class="form-control" name="purpose_of_medication" placeholder="" disabled>
+                                             <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="{{ old('purpose_of_medication', $medication->purpose_of_medication) }}" disabled>
                                           </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4">
+                                       </div>
+                                       <div class="col-lg-3 col-md-4">
                                           <div class="use-column">
                                              <div class="mfrequency">
-                                                <p class=""><strong>Use schedule </strong></p>
-                                                <div class="mfrequency-form">
-                                                      <div class="form-check ps-0">
-                                                         <p class="form-check-label">6:00</p>
-                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="6:00" disabled>
-                                                      </div>
-                                                      <div class="form-check ps-0">
-                                                         <p class="form-check-label">12:00</p>
-                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="12:00" disabled>
-                                                      </div>
-                                                      <div class="form-check ps-0">
-                                                         <p class="form-check-label">18:00</p>
-                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="18:00" disabled>
-                                                      </div>
-                                                      <div class="form-check ps-0">
-                                                         <p class="form-check-label">24:00</p>
-                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="24:00" disabled>
-                                                      </div>
-                                                </div>
+                                                   <p class=""><strong>Use schedule </strong></p>
+                                                   <div class="mfrequency-form">
+                                                      @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
+                                                         <div class="form-check ps-0">
+                                                            <p class="form-check-label">{{ $time }}</p>
+                                                            <input 
+                                                                  class="form-check-input ms-0" 
+                                                                  type="checkbox" 
+                                                                  name="use_schedule[]" 
+                                                                  value="{{ $time }}" 
+                                                                  {{ in_array($time, json_decode($medication->use_schedule, true)) ? 'checked' : '' }} 
+                                                                  disabled>
+                                                         </div>
+                                                      @endforeach
+                                                   </div>
                                              </div>
                                              <div class="food-use">
-                                                <p class="mb-2"><strong>Food and use</strong></p>
-                                                <select class="form-select" name="food_use" aria-label="Default select example" disabled>
+                                                   <p class="mb-2"><strong>Food and use</strong></p>
+                                                   <select class="form-select" name="food_use" aria-label="Default select example" disabled>
                                                       <option selected>Dropdown</option>
-                                                      <option value="1">One</option>
-                                                      <option value="2">Two</option>
-                                                      <option value="3">Three</option>
-                                                </select>
+                                                      <option value="1" {{ old('food_use', $medication->food_use) == 1 ? 'selected' : '' }}>One</option>
+                                                      <option value="2" {{ old('food_use', $medication->food_use) == 2 ? 'selected' : '' }}>Two</option>
+                                                      <option value="3" {{ old('food_use', $medication->food_use) == 3 ? 'selected' : '' }}>Three</option>
+                                                   </select>
                                              </div>
                                           </div>
-                                    </div>
-                                    <div class="col-lg-5 col-md-6">
+                                       </div>
+                                       <div class="col-lg-6 col-md-6">
                                           <div class="dose-column">
                                              <div class="form-group">
-                                                <label class="mb-1">Dose/Use(x units)</label>
-                                                <input type="text" class="form-control" name="dose_use" disabled>
+                                                   <label class="mb-1">Dose/Use(x units)</label>
+                                                   <input type="text" class="form-control" name="dose_use" value="{{ old('dose_use', $medication->dose_use) }}" disabled>
                                              </div>
                                              <div class="form-group">
-                                                <label class="mb-1">Doses per package </label>
-                                                <input type="text" class="form-control" name="doses_per_package" disabled>
+                                                   <label class="mb-1">Doses per package </label>
+                                                   <input type="text" class="form-control" name="doses_per_package" value="{{ old('doses_per_package', $medication->doses_per_package) }}" disabled>
                                              </div>
                                              <div class="form-group">
-                                                <label class="mb-1">Last prescription start</label>
-                                                <input type="date" class="form-control" name="last_prescription_start" disabled>
-                                                <a href="#" class="btn btn-success me-2 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
-                                                <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
-                                             </div>
+                                                   <label class="mb-1">Last prescription start</label>
+                                                   <div class="d-flex">
+                                                   <input type="date" class="form-control me-1" name="last_prescription_start" value="{{ old('last_prescription_start', $medication->last_prescription_start) }}" disabled>
+                                                   <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                                   <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
+                                                   </div>
+                                                </div>
                                           </div>
-                                    </div>
+                                       </div>
                                  </div>
                               </form>
+                           @endforeach
                         </div>
                         <div class="row mt-lg-4 mt-3">
                               <div class="col-lg-12">
@@ -834,10 +835,11 @@
          const model = checkbox.data('model');
          const column = checkbox.data('column');
          const patientId = checkbox.data('patient-id');
+         const actionMessage = isChecked ? `Are you sure you want to add this ${$model}?` : `Are you sure you want to remove this ${$model}?`;
 
          Swal.fire({
             title: 'Confirm Change',
-            text: `Are you sure you want to ${isChecked ? 'check' : 'uncheck'} this item?`,
+            text: actionMessage,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes',
@@ -860,9 +862,9 @@
                   }),
                   success: function(data) {
                      if (data.success) {
-                        Swal.fire('Updated!', 'The checkbox has been updated.', 'success');
+                        Swal.fire('Updated!', `The ${column} has been updated for ${model}.`, 'success');
                      } else {
-                        Swal.fire('Error!', 'There was an error updating the checkbox.', 'error');
+                        Swal.fire('Error!', `There was an error updating the ${column}.`, 'error');
                      }
                   },
                   error: function() {
@@ -981,16 +983,23 @@
          // Clone the form row(s) above the Add Medication button
          var formToClone = $('#medication-forms-container .medication-form:first').clone(true);
 
+         // Remove the specific hidden input with name form 'id'
+          formToClone.find('input[type="hidden"][name="id"]').remove();
+
          // Generate a new unique ID for the cloned form
          var newFormId = $('#medication-forms-container .medication-form').length + 1;
          formToClone.attr('data-form-id', newFormId);
 
          // Reset form fields
-         formToClone.find('input').val('').prop('checked', false);
-         formToClone.find('select').prop('selectedIndex', 0);
+         formToClone.find('input').not('input[type="hidden"]').not(':checkbox').val(''); // Reset all inputs except checkboxes
+         formToClone.find('input[type="checkbox"]').prop('checked', false); // Uncheck all checkboxes
+         formToClone.find('select').prop('selectedIndex', 0); // Reset all selects
 
-         // Update patient_id hidden input
-         formToClone.find('input[name="patient_id"]').val('{{ $patient->id }}'); // Make sure this is correctly set
+         // Retain checkbox values (if needed, update this part according to your logic)
+         var checkboxValues = ['6:00', '12:00', '18:00', '24:00'];
+         formToClone.find('input[type="checkbox"]').each(function(index) {
+            $(this).val(checkboxValues[index]);
+         });
 
          // Enable save and close buttons
          formToClone.find('.save-btn-area-of-medication, .close-btn-area-of-medication').css({
@@ -998,10 +1007,9 @@
             'opacity': '1'
          }).prop('disabled', false);
 
-         // Insert the cloned form above the Add Medication button
-         $('#medication-forms-container').prepend(formToClone);
+         // Insert the cloned form at the bottom of the medication forms container
+         $('#medication-forms-container').append(formToClone);
       });
-
 
       // Save button click event
       $(document).on('click', '.save-btn-area-of-medication', function(e) {
@@ -1009,27 +1017,101 @@
          
          var form = $(this).closest('form');
          var formData = new FormData(form[0]); // Create FormData object from the form
+         var isUpdate = formData.get('id');
+         var url = isUpdate ? '{{ route("update.medication") }}' : '{{ route("save.medication") }}'; // Use the appropriate route
 
          // Append CSRF token to FormData
          var csrfToken = $('meta[name="csrf-token"]').attr('content');
-         formData.append('_token', csrfToken);        
+         formData.append('_token', csrfToken);    
          $.ajax({
-               url: '{{ route('save.medication') }}', // Replace with your route
+               url: url, // Replace with your route
                method: 'POST',
                data: formData,
                contentType: false, // Required for FormData
                processData: false, // Required for FormData
                success: function(response) {
-                  alert('Medication saved successfully!');
-                  // Optionally, you can handle success feedback or reset form
+                 if (!isUpdate) {
+                     // If it's a new row, add the ID to the form
+                     form.append('<input type="hidden" name="id" value="' + response.id + '">');
+                  }
+
+                  // Display success alert
+                  Swal.fire({
+                     icon: 'success',
+                     title: 'Success!',
+                     text: response.message,
+                     confirmButtonText: 'OK'
+                  });
                },
                error: function(xhr) {
-                  alert('Error saving medication!');
-                  // Optionally, handle error feedback
+                  // Display error alert
+                  Swal.fire({
+                     icon: 'error',
+                     title: 'Error!',
+                     text: 'Error saving medication!',
+                     confirmButtonText: 'OK'
+                  });
                }
          });
       });
 
+      $(document).on('click', '.close-btn-area-of-medication', function(e) {
+         e.preventDefault();
+
+         var form = $(this).closest('form');
+         var medicationId = form.find('input[name="id"]').val(); // Adjust if ID is stored differently
+
+         Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!'
+         }).then((result) => {
+            if (result.isConfirmed) {
+                  if (medicationId) {
+                     // Existing row - send AJAX request to delete from the database
+                     $.ajax({
+                        url: '{{ route("delete.medication") }}', // Check this URL is correct
+                        method: 'POST',
+                        data: {
+                              id: medicationId,
+                              _token: '{{ csrf_token() }}' // Ensure CSRF token is included
+                        },
+                        success: function(response) {
+                              if (response.success) {
+                                 Swal.fire(
+                                    'Deleted!',
+                                    'The medication has been deleted.',
+                                    'success'
+                                 );
+                                 form.remove(); // Remove the row from the DOM
+                              } else {
+                                 Swal.fire(
+                                    'Error!',
+                                    'Error: ' + response.message,
+                                    'error'
+                                 );
+                              }
+                        },
+                        error: function(xhr) {
+                              Swal.fire(
+                                 'Error!',
+                                 'Error deleting medication!',
+                                 'error'
+                              );
+                        }
+                     });
+                  } else {
+                     // New row - just remove the row from the DOM
+                     form.remove();
+                  }
+            }
+         });
+      });
    });
 </script>
 @endsection

@@ -342,8 +342,10 @@ class PatientController extends Controller
             ->pluck('hobby_id')
             ->toArray();
 
+        $patientMedications = $patient->medications;
+
         // Pass the patient and related data to the view
-        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies'));
+        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications'));
     }
     public function getPatientList(Request $request)
     {
@@ -435,31 +437,64 @@ class PatientController extends Controller
 
     public function storeMedication(Request $request)
     {
+        $request->validate([
+            'medication' => 'required|string',
+            'purpose_of_medication' => 'nullable|string',
+            'use_schedule' => 'nullable|array', // Ensure it's validated as an array
+            'food_use' => 'nullable|integer',
+            'dose_use' => 'nullable|string',
+            'doses_per_package' => 'nullable|string',
+            'last_prescription_start' => 'nullable|date',
+        ]);
 
-        // Validate request
-        // $validated = $request->validate([
-        //     'medication' => 'required|string|max:255',
-        //     'purpose_of_medication' => 'required|string|max:255',
-        //     'use_schedule' => 'required|array',
-        //     'food_use' => 'required|string|max:255',
-        //     'dose_use' => 'required|string|max:255',
-        //     'doses_per_package' => 'required|string|max:255',
-        //     'last_prescription_start' => 'required|date',
-        // ]);
+        $useSchedule = $request->input('use_schedule', []);
+        $useScheduleJson = json_encode($useSchedule); // Convert array to JSON string
+        $medication = new PatientMedication([
+            'patient_id' => $request->input('patient_id'),
+            'medication' => $request->input('medication'),
+            'purpose_of_medication' => $request->input('purpose_of_medication'),
+            'use_schedule' => $useScheduleJson, // Save as JSON string
+            'food_use' => $request->input('food_use'),
+            'dose_use' => $request->input('dose_use'),
+            'doses_per_package' => $request->input('doses_per_package'),
+            'last_prescription_start' => $request->input('last_prescription_start'),
+        ]);
 
-        // Create new record
-        $medication = new PatientMedication();
-        $medication->medication = $request->medication;
-        $medication->patient_id = $request->patient_id;
-        $medication->purpose_of_medication = $request->purpose_of_medication;
-        $medication->use_schedule = json_encode($request->use_schedule); // Store as JSON
-        $medication->food_use = $request->food_use;
-        $medication->dose_use = $request->dose_use;
-        $medication->doses_per_package = $request->doses_per_package;
-        $medication->last_prescription_start = $request->last_prescription_start;
         $medication->save();
 
-        return response()->json(['message' => 'Medication saved successfully!']);
+        return response()->json([
+            'message' => 'Medication saved successfully!',
+            'id' => $medication->id
+        ]);
+    }
+
+    public function updateMedication(Request $request)
+    {
+        $data = $request->all();
+        $medication = PatientMedication::find($data['id']);
+        // Update the existing medication
+        $medication->update($data);
+
+        return response()->json(['Medication updated successfully!' => true]);
+    }
+
+    public function destroyMedication(Request $request)
+    {
+        $medicationId = $request->input('id');
+        // Ensure the ID is present
+        if (!$medicationId) {
+            return response()->json(['success' => false, 'message' => 'ID not provided'], 400);
+        }
+
+        // Find and delete the medication
+        $medication = PatientMedication::find($medicationId);
+
+        if ($medication) {
+            $medication->delete();
+            return response()->json(['success' => true, 'message' => 'Medication deleted successfully']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Medication not found'], 404);
+        }
     }
 
 }
