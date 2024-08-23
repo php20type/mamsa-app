@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\PatientMonitor;
 use App\Models\Symptom;
 use App\Models\User;
+use App\Models\PatientMedication;
 use App\Models\PatientMedicalCondition;
 use App\Models\PatientMedicationsTreatment;
 use App\Models\PatientQuantitativeIndicators;
@@ -230,7 +231,8 @@ class PatientController extends Controller
             $messagetext .= $message->message;
         }
         $frequencyPattern = explode(',', $patient->frequency);
-        $medical_condition=PatientMedicalCondition::where('patient_id',$patient->id)->first();
+        $medical_condition = PatientMedicalCondition::where('patient_id', $patient->id)->first();
+        $quantitative_indicators = PatientQuantitativeIndicators::where('patient_id', $patient->id)->first();
         // Get today's day of the week (1 for Monday through 7 for Sunday)
         $today = Carbon::now()->dayOfWeekIso; // Monday = 1, Sunday = 7
         // Find the next enabled day
@@ -251,8 +253,8 @@ class PatientController extends Controller
         $patientdata['dose'] = $monitordata->dose;
         $patientdata['nextDay'] = $nextEnabledDay;
         $patientdata['message'] = $messagetext;
-        $patientdata['medical_condition']=$medical_condition;
-        
+        $patientdata['medical_condition'] = $medical_condition;
+        $patientdata['quantitative_indicators']=$quantitative_indicators;
         if (isset($doctor->firstname)) {
             $patientdata['medication_admin'] = $doctor->firstname;
         } else {
@@ -431,6 +433,35 @@ class PatientController extends Controller
         }
 
         return response()->json(['success' => true]);
+    }
+
+    public function storeMedication(Request $request)
+    {
+
+        // Validate request
+        // $validated = $request->validate([
+        //     'medication' => 'required|string|max:255',
+        //     'purpose_of_medication' => 'required|string|max:255',
+        //     'use_schedule' => 'required|array',
+        //     'food_use' => 'required|string|max:255',
+        //     'dose_use' => 'required|string|max:255',
+        //     'doses_per_package' => 'required|string|max:255',
+        //     'last_prescription_start' => 'required|date',
+        // ]);
+
+        // Create new record
+        $medication = new PatientMedication();
+        $medication->medication = $request->medication;
+        $medication->patient_id = $request->patient_id;
+        $medication->purpose_of_medication = $request->purpose_of_medication;
+        $medication->use_schedule = json_encode($request->use_schedule); // Store as JSON
+        $medication->food_use = $request->food_use;
+        $medication->dose_use = $request->dose_use;
+        $medication->doses_per_package = $request->doses_per_package;
+        $medication->last_prescription_start = $request->last_prescription_start;
+        $medication->save();
+
+        return response()->json(['message' => 'Medication saved successfully!']);
     }
 
 }

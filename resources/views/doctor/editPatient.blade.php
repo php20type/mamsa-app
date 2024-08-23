@@ -158,7 +158,7 @@
                                        // Get the first medication treatment record
                                        $medicalCondition = $patient->PatientMedicalCondition->first();
                                     ?>
-                                    <input class="form-check-input checkbox1" type="checkbox" id="overall_health" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="overall_health" {{ $medicalCondition && $medicalCondition->overall_health ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="overall_health" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="overall_health" {{ $medicalCondition && $medicalCondition->overall_health ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="overall_health">
                                     {{__('patient.Overall Health')}}
                                        <svg data-toggle="tooltip" aria-label="Overall Health" data-bs-original-title="Overall Health" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +168,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="chronic_pain" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="chronic_pain" {{ $medicalCondition && $medicalCondition->chronic_pain ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="chronic_pain" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="chronic_pain" {{ $medicalCondition && $medicalCondition->chronic_pain ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="chronic_pain">
                                     {{__('patient.Chronic Pain')}} 
                                        <svg data-toggle="tooltip" aria-label="Chronic Pain" data-bs-original-title="Chronic Pain" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="pulmonary_disease" data-patient-id="{{ $patient->id }}"  data-model="PatientMedicalCondition" data-column="pulmonary_disease" {{ $medicalCondition && $medicalCondition->pulmonary_disease ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="pulmonary_disease" data-patient-id="{{ $patient->id }}"  data-model="PatientMedicalCondition" data-column="pulmonary_disease" {{ $medicalCondition && $medicalCondition->pulmonary_disease ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="pulmonary_disease">
                                     {{__('patient.Pulmonary disease')}}
                                        <svg data-toggle="tooltip" aria-label="Pulmonary disease" data-bs-original-title="Pulmonary disease" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +210,7 @@
                                        // Get the first medication treatment record
                                        $medicationsTreatment = $patient->PatientMedicationsTreatment->first();
                                     ?>
-                                    <input class="form-check-input checkbox1" type="checkbox" id="use_of_medication" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="use_of_medication" {{ $medicationsTreatment && $medicationsTreatment->use_of_medication ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="use_of_medication" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="use_of_medication" {{ $medicationsTreatment && $medicationsTreatment->use_of_medication ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="use_of_medication">
                                     {{__('patient.Use of medication')}}
                                        <svg data-toggle="tooltip" aria-label="Use of medication" data-bs-original-title="Use of medication" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -220,7 +220,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="medication_use_reminders" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_use_reminders" {{ $medicationsTreatment && $medicationsTreatment->medication_use_reminders ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="medication_use_reminders" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_use_reminders" {{ $medicationsTreatment && $medicationsTreatment->medication_use_reminders ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="medication_use_reminders">
                                     {{__('patient.Medication use remind us')}}
                                        <svg data-toggle="tooltip" aria-label="Medication use remind us" data-bs-original-title="Medication use remind us" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,7 +230,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="medication_side_effects" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_side_effects" {{ $medicationsTreatment && $medicationsTreatment->medication_side_effects ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="medication_side_effects" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_side_effects" {{ $medicationsTreatment && $medicationsTreatment->medication_side_effects ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="medication_side_effects">
                                     {{__('patient.Medication side effects')}}
                                        <svg data-toggle="tooltip" aria-label="Medication side effects" data-bs-original-title="Medication side effects" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -262,7 +262,7 @@
                                        // Get the first medication treatment record
                                        $quantitativeIndicators = $patient->PatientQuantitativeIndicators->first();
                                     ?>
-                                    <input class="form-check-input checkbox1" type="checkbox" id="blood_pressure" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="blood_pressure" {{ $quantitativeIndicators && $quantitativeIndicators->blood_pressure ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="blood_pressure" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="blood_pressure" {{ $quantitativeIndicators && $quantitativeIndicators->blood_pressure ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="blood_pressure">
                                     {{__('patient.Blood pressure')}}
                                        <svg data-toggle="tooltip" aria-label="Blood pressure" data-bs-original-title="Blood pressure" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -272,7 +272,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" value="" id="weight" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="weight" {{ $quantitativeIndicators && $quantitativeIndicators->weight ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" value="" id="weight" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="weight" {{ $quantitativeIndicators && $quantitativeIndicators->weight ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="weight">
                                     {{__('patient.Weight')}}
                                        <svg data-toggle="tooltip" aria-label="Weight" data-bs-original-title="Weight" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -282,7 +282,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="physical_exercise_activity" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="physical_exercise_activity" {{ $quantitativeIndicators && $quantitativeIndicators->physical_exercise_activity ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="physical_exercise_activity" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="physical_exercise_activity" {{ $quantitativeIndicators && $quantitativeIndicators->physical_exercise_activity ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="physical_exercise_activity">
                                     {{__('patient.Physical exercise/activity')}}
                                        <svg data-toggle="tooltip" aria-label="Qxy gometer" data-bs-original-title="Qxy gometer" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -314,7 +314,7 @@
                                        // Get the first medication treatment record
                                        $lifestyleAndWellbeing = $patient->PatientLifestyleAndWellbeing->first();
                                     ?>
-                                    <input class="form-check-input checkbox1" type="checkbox" id="regular_food_intake" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="regular_food_intake" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->regular_food_intake ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="regular_food_intake" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="regular_food_intake" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->regular_food_intake ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="regular_food_intake">
                                     {{__('patient.Regular food food intake')}}
                                        <svg data-toggle="tooltip" aria-label="Regular food food intake" data-bs-original-title="Regular food food intake" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -324,7 +324,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="hydration" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="hydration" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->hydration ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="hydration" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="hydration" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->hydration ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="hydration">
                                     {{__('patient.Hydration')}}
                                        <svg data-toggle="tooltip" aria-label="Hydration" data-bs-original-title="Hydration" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -334,7 +334,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="qxy_gometer" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="qxy_gometer" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->qxy_gometer ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="qxy_gometer" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="qxy_gometer" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->qxy_gometer ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="qxy_gometer">
                                     {{__('patient.Qxy gometer')}}
                                        <svg data-toggle="tooltip" aria-label="Physical exercise/activity" data-bs-original-title="Physical exercise/activity" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -344,7 +344,7 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox1" type="checkbox" id="quality_of_sleep" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="quality_of_sleep" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->quality_of_sleep ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="quality_of_sleep" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="quality_of_sleep" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->quality_of_sleep ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="quality_of_sleep">
                                     {{__('patient.Quality of sleep')}}
                                        <svg data-toggle="tooltip" aria-label="Quality of sleep" data-bs-original-title="Quality of sleep" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -370,81 +370,85 @@
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
                         <h4>Medications</h4>
-                        <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a>
+                        <a href="#" class="edit-btn" id="edit-btn-area-of-medication"><i class="fa-light fa-pen"></i></a>
                      </div>
-                     <div class="medical-body border-0">
-                        <form class="" action="">
-                           <div class="row">
-                              <div class="col-lg-2 col-md-4">
-                                 <div class="form-group">
-                                    <label class="mb-2"><strong>Medication</strong></label>
-                                    <input type="text" class="form-control" placeholder="Melyd 60x2 mg">
-                                 </div>
-                              </div>
-                              <div class="col-lg-2 col-md-4">
-                                 <div class="form-group">
-                                    <label class="mb-2"><strong>Purpose Of Medication</strong></label>
-                                    <input type="text" class="form-control" placeholder="">
-                                 </div>
-                              </div>
-                              <div class="col-lg-3 col-md-4">
-                                 <div class="use-column">
-                                    <div class="mfrequency">
-                                       <p class=""><strong>Use schedule </strong></p>
-                                       <div class="mfrequency-form">
-                                          <div class="form-check ps-0">
-                                             <p class="form-check-label">6:00</p>
-                                             <input class="form-check-input ms-0" type="checkbox" value="" id="6:00">
+                     <div class="medical-body medical-body-medication border-0">
+                        <div id="medication-forms-container">
+                              <form class="medication-form" action="" data-form-id="1"> <!-- Add unique data-form-id -->
+                                 <div class="row">
+                                    <div class="col-lg-2 col-md-4">
+                                          <div class="form-group">
+                                             <label class="mb-2"><strong>Medication</strong></label>
+                                             <input type="hidden" class="form-control" name="patient_id" value="{{$patient->id}}">
+                                             <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" disabled>
                                           </div>
-                                          <div class="form-check ps-0">
-                                             <p class="form-check-label">12:00</p>
-                                             <input class="form-check-input ms-0" type="checkbox" value="" id="12:00">
-                                          </div>
-                                          <div class="form-check ps-0">
-                                             <p class="form-check-label">18:00</p>
-                                             <input class="form-check-input ms-0" type="checkbox" value="" id="18:00">
-                                          </div>
-                                          <div class="form-check ps-0">
-                                             <p class="form-check-label">24:00</p>
-                                             <input class="form-check-input ms-0" type="checkbox" value="" id="24:00">
-                                          </div>
-                                       </div>
                                     </div>
-                                    <div class="food-use">
-                                       <p class="mb-2"><strong>Food and use</strong></p>
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>Dropdown</option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
-                                       </select>
+                                    <div class="col-lg-2 col-md-4">
+                                          <div class="form-group">
+                                             <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                             <input type="text" class="form-control" name="purpose_of_medication" placeholder="" disabled>
+                                          </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4">
+                                          <div class="use-column">
+                                             <div class="mfrequency">
+                                                <p class=""><strong>Use schedule </strong></p>
+                                                <div class="mfrequency-form">
+                                                      <div class="form-check ps-0">
+                                                         <p class="form-check-label">6:00</p>
+                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="6:00" disabled>
+                                                      </div>
+                                                      <div class="form-check ps-0">
+                                                         <p class="form-check-label">12:00</p>
+                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="12:00" disabled>
+                                                      </div>
+                                                      <div class="form-check ps-0">
+                                                         <p class="form-check-label">18:00</p>
+                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="18:00" disabled>
+                                                      </div>
+                                                      <div class="form-check ps-0">
+                                                         <p class="form-check-label">24:00</p>
+                                                         <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="24:00" disabled>
+                                                      </div>
+                                                </div>
+                                             </div>
+                                             <div class="food-use">
+                                                <p class="mb-2"><strong>Food and use</strong></p>
+                                                <select class="form-select" name="food_use" aria-label="Default select example" disabled>
+                                                      <option selected>Dropdown</option>
+                                                      <option value="1">One</option>
+                                                      <option value="2">Two</option>
+                                                      <option value="3">Three</option>
+                                                </select>
+                                             </div>
+                                          </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6">
+                                          <div class="dose-column">
+                                             <div class="form-group">
+                                                <label class="mb-1">Dose/Use(x units)</label>
+                                                <input type="text" class="form-control" name="dose_use" disabled>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="mb-1">Doses per package </label>
+                                                <input type="text" class="form-control" name="doses_per_package" disabled>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="mb-1">Last prescription start</label>
+                                                <input type="date" class="form-control" name="last_prescription_start" disabled>
+                                                <a href="#" class="btn btn-success me-2 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                                <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
+                                             </div>
+                                          </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="col-lg-5 col-md-6">
-
-                                 <div class="dose-column">
-                                    <div class="form-group">
-                                       <label class="mb-1">Dose/Use(x units)</label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                       <label class="mb-1">Doses per package </label>
-                                       <input type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                       <label class="mb-1">Last prescription start</label>
-                                       <input type="date" class="form-control">
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row mt-lg-4 mt-3">
+                              </form>
+                        </div>
+                        <div class="row mt-lg-4 mt-3">
                               <div class="col-lg-12">
-                                 <a href="#" class="btn btn-primary"> Add Medication <i class="fa-solid fa-plus ms-2"></i></a>
+                                 <a href="#" class="btn btn-primary" id="add-medication-btn" style="pointer-events: none; opacity: 0.5;"> Add Medication <i class="fa-solid fa-plus ms-2"></i></a>
                               </div>
-                           </div>
-                        </form>
+                        </div>
                      </div>
                   </div>
                   <div class="medical-conditions mb-4">
@@ -691,7 +695,7 @@
       </div>
    </div>
    </div>
-   <!-- Edit Profile Modal -->
+   <!-- Edit Profile Modal Start-->
    <!-- Display validation errors -->
    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -753,7 +757,7 @@
          </div>
       </div>
    </div>
-   <!-- Edit Profile Modal -->
+   <!-- Edit Profile Modal End-->
 </section>
 <footer class="footer">
    <div class="container-fluid">
@@ -812,17 +816,19 @@
    }
 
    $(document).ready(function() {
+
+      /* Script of area of monitoring section Satrt */
       $('#edit-btn-area-of-monitoring').click(function(event) {
          event.preventDefault(); // Prevent default button behavior
 
          // Toggle the disabled attribute for all checkboxes
-         $('.checkbox1').each(function() {
-            $('.checkbox1').prop('disabled', false);
+         $('.checkbox_monitoring').each(function() {
+            $('.checkbox_monitoring').prop('disabled', false);
          });
 
       });
 
-      $('.checkbox1').on('change', function() {
+      $('.checkbox_monitoring').on('change', function() {
          const checkbox = $(this);
          const isChecked = checkbox.prop('checked');
          const model = checkbox.data('model');
@@ -869,7 +875,9 @@
             }
          });
       });
+      /* Script of area of monitoring section End */
 
+      /* Script of area of hobbies section Satrt */
       $('#edit-btn-area-of-hobbies').click(function(event) {
          event.preventDefault(); // Prevent default button behavior
 
@@ -905,7 +913,7 @@
       });
 
       function updateHobbyStatus(hobbyId, isChecked , patientId) {
-        $.ajax({
+         $.ajax({
             url: '{{ route('update.hobby.status') }}',
             method: 'POST',
             data: {
@@ -937,7 +945,90 @@
                 });
             }
         });
-    }
+      }
+      /* Script of area of hobbies section End */
+
+      /* Script of area of medication section Satrt */
+
+      // Ensure save and close buttons are disabled and styled on page load
+      $('.save-btn-area-of-medication, .close-btn-area-of-medication').css({
+         'pointer-events': 'none',
+         'opacity': '0.5'
+      }).prop('disabled', true);
+
+      // Click event to enable editing
+      $('#edit-btn-area-of-medication').on('click', function(e) {
+         e.preventDefault();
+         
+         // Enable all inputs and selects in the form
+         $('.medical-body-medication input, .medical-body-medication select').prop('disabled', false);
+
+         // Enable the Add Medication button
+         $('#add-medication-btn').css('pointer-events', 'auto').css('opacity', '1');     
+
+         // Enable the buttons
+         $('.save-btn-area-of-medication, .close-btn-area-of-medication').css({
+            'pointer-events': 'auto',
+            'opacity': '1'
+        }).prop('disabled', false);
+
+
+      });
+
+      $('#add-medication-btn').on('click', function(e) {
+         e.preventDefault();
+
+         // Clone the form row(s) above the Add Medication button
+         var formToClone = $('#medication-forms-container .medication-form:first').clone(true);
+
+         // Generate a new unique ID for the cloned form
+         var newFormId = $('#medication-forms-container .medication-form').length + 1;
+         formToClone.attr('data-form-id', newFormId);
+
+         // Reset form fields
+         formToClone.find('input').val('').prop('checked', false);
+         formToClone.find('select').prop('selectedIndex', 0);
+
+         // Update patient_id hidden input
+         formToClone.find('input[name="patient_id"]').val('{{ $patient->id }}'); // Make sure this is correctly set
+
+         // Enable save and close buttons
+         formToClone.find('.save-btn-area-of-medication, .close-btn-area-of-medication').css({
+            'pointer-events': 'auto',
+            'opacity': '1'
+         }).prop('disabled', false);
+
+         // Insert the cloned form above the Add Medication button
+         $('#medication-forms-container').prepend(formToClone);
+      });
+
+
+      // Save button click event
+      $(document).on('click', '.save-btn-area-of-medication', function(e) {
+         e.preventDefault();
+         
+         var form = $(this).closest('form');
+         var formData = new FormData(form[0]); // Create FormData object from the form
+
+         // Append CSRF token to FormData
+         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+         formData.append('_token', csrfToken);        
+         $.ajax({
+               url: '{{ route('save.medication') }}', // Replace with your route
+               method: 'POST',
+               data: formData,
+               contentType: false, // Required for FormData
+               processData: false, // Required for FormData
+               success: function(response) {
+                  alert('Medication saved successfully!');
+                  // Optionally, you can handle success feedback or reset form
+               },
+               error: function(xhr) {
+                  alert('Error saving medication!');
+                  // Optionally, handle error feedback
+               }
+         });
+      });
 
    });
 </script>
