@@ -84,4 +84,7 @@ Route::group(['prefix' => 'doctor', 'middleware' => 'auth:web'], function () {
     Route::post('/update-medical-condition', [PatientController::class, 'updateMedicalCondition'])->name('updateMedicalCondition');
     Route::post('/update-hobby-status', [PatientController::class, 'updateHobbyStatus'])->name('update.hobby.status');
     Route::post('/save-medication', [PatientController::class, 'storeMedication'])->name('save.medication');
+    Route::post('/update-medication', [PatientController::class, 'updateMedication'])->name('update.medication');
+    Route::post('/delete-medication', [PatientController::class, 'destroyMedication'])->name('delete.medication');
+    Route::post('/monitoring-frequency', [PatientController::class, 'saveMonitoringFrequency'])->name('save.monitoring_frequency');
 });
