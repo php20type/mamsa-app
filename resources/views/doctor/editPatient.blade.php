@@ -559,38 +559,39 @@
                         <a href="javascript:void(0)" onclick="editFemilyMember()" class="edit-btn"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body border-0 mb-0">
-                        <form class="" action="" id="familyMemberForm" onsubmit="addFamilyMembers()">
+                        <form class="" action="" id="familyMemberForm" onsubmit="addFamilyMembers(event,this)">
+                           <input type="hidden" name="patient_id" value="{{$patient->id}}">
                            @if(count($patientmembers)>0)
                            @foreach($patientmembers as $member)
-                           <input type="hidden" name="member_id[]" id="member_id[]" value="{{$member->id}}">
                            <div class="row">
+                              <input type="hidden" name="member_id[]" id="member_id[]" value="{{$member->id}}">
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Member Name</label>
-                                    <input type="text" id="name[]" name="name[]" placeholder="Member Name" class="form-control femily-member-sec" disabled value="{{$member->name}}" />
+                                    <input type="text" id="name[]" name="name[]" placeholder="Member Name" required class="form-control femily-member-sec" disabled value="{{$member->name}}" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Mobile Number</label>
-                                    <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" class="form-control femily-member-sec" disabled value="{{$member->phone}}" />
+                                    <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" required class="form-control femily-member-sec" disabled value="{{$member->phone}}" />
                                  </div>
                               </div>
                               <div class="col-lg-2 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Relationship</label>
-                                    <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="{{$member->id}}" />
+                                    <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="{{$member->relation}}" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Email Address</label>
-                                    <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled />
+                                    <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled value="{{$member->email}}" />
                                  </div>
                               </div>
                               <div class="col-lg-1 col-md-6">
-                                 <button type="submit" class="btn btn-success" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
-                                 <button type="button" class="btn btn-danger" onclick="removeFamilyMember()" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+                                 <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
+                                 <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
                               </div>
                               <!-- <div class="col-lg-12 col-md-12">
                                  <div class="form-check mb-4">
@@ -608,16 +609,17 @@
                            @endforeach
                            @else
                            <div class="row">
+                              <input type="hidden" name="member_id[]" id="member_id[]" value="">
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Member Name</label>
-                                    <input type="text" id="name[]" name="name[]" placeholder="Member Name" class="form-control femily-member-sec" disabled value="" />
+                                    <input type="text" id="name[]" name="name[]" placeholder="Member Name" required class="form-control femily-member-sec" disabled value="" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Mobile Number</label>
-                                    <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" class="form-control femily-member-sec" disabled value="" />
+                                    <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" required class="form-control femily-member-sec" disabled value="" />
                                  </div>
                               </div>
                               <div class="col-lg-2 col-md-6">
@@ -634,7 +636,7 @@
                               </div>
                               <div class="col-lg-1 col-md-6">
                                  <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
-                                 <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember()" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+                                 <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
                               </div>
                               <!-- <div class="col-lg-12 col-md-12">
                                  <div class="form-check mb-4">
@@ -910,16 +912,17 @@
 </footer>
 <div id="familymemberrow" class="d-none">
    <div class="row">
+      <input type="hidden" name="member_id[]" id="member_id[]" value="">
       <div class="col-lg-3 col-md-6">
          <div class="form-group mb-4">
             <label class="form-label">Member Name</label>
-            <input type="text" id="name[]" name="name[]" placeholder="Member Name" class="form-control femily-member-sec" disabled value="" />
+            <input type="text" id="name[]" name="name[]" placeholder="Member Name" required class="form-control femily-member-sec" disabled value="" />
          </div>
       </div>
       <div class="col-lg-3 col-md-6">
          <div class="form-group mb-4">
             <label class="form-label">Mobile Number</label>
-            <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" class="form-control femily-member-sec" disabled value="" />
+            <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" required class="form-control femily-member-sec" disabled value="" />
          </div>
       </div>
       <div class="col-lg-2 col-md-6">
@@ -967,16 +970,86 @@
    function editFemilyMember() {
       $('.femily-member-sec').prop('disabled', false);
    }
-   function addFamilyMembers(){
 
+   function addFamilyMembers(event, formobj) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Confirm',
+         text: 'Are you sure to update family member changes ?',
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonText: 'Yes',
+         cancelButtonText: 'No'
+      }).then((result) => {
+         if (result.isConfirmed) {
+            // Perform AJAX request to update the database
+            $.ajax({
+               url: '{{ route("addMember")}}',
+               method: 'POST',
+               headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                  "Accept": "application/json"
+               },
+               dataType: "json",
+               processData: false, // Prevent jQuery from processing the data
+               contentType: false, // Prevent jQuery from setting the Content-Type header
+               data: new FormData(formobj),
+               success: function(response) {
+                  if (response.status && response.member_ids) {
+                     // Iterate over each member_id and set it to the corresponding hidden field
+                     response.member_ids.forEach(function(member_id, index) {
+                        // Select the nth hidden input for member_id[]
+                        $('input[name="member_id[]"]').eq(index).val(member_id);
+                        Swal.fire('Updated!', `The Family member data is updated`, 'success');
+                     });
+                  }
+               },
+            });
+         }
+      });
    }
-   function removeFamilyMember(obj){
-      const row = obj.closest('.row');
 
-    // Remove the row element from the DOM
-    if (row) {
-        row.remove();
-    }
+   function removeFamilyMember(obj, member_id = '') {
+      Swal.fire({
+         title: 'Confirm',
+         text: 'Are you sure to delete family member row ?',
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonText: 'Yes',
+         cancelButtonText: 'No'
+      }).then((result) => {
+         if (result.isConfirmed) {
+            // Perform AJAX request to update the database
+            if (member_id != '') {
+               var memberurl = '{{ route("deleteMember",":member_id")}}';
+               memberurl = memberurl.replace(":member_id", member_id);
+               $.ajax({
+                  url: memberurl,
+                  method: 'GET',
+                  contentType: 'application/json',
+                  data: JSON.stringify({
+                     member_id: member_id,
+                  }),
+                  success: function(data) {
+                     if (data.status) {
+                        const row = obj.closest('.row');
+                        row.remove();
+                        Swal.fire('Deleted!', `The Family member row is deleted`, 'success');
+                     } else {
+                        Swal.fire('Error!', `Something wrong in delete entry`, 'error');
+
+                     }
+                  },
+               });
+            } else {
+               const row = obj.closest('.row');
+               row.remove();
+               Swal.fire('Deleted!', `The Family member row is deleted`, 'success');
+            }
+         }
+      });
+
+      // Remove the row element from the DOM
    }
    $(document).ready(function() {
 

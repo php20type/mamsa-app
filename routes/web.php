@@ -81,6 +81,8 @@ Route::group(['prefix' => 'doctor', 'middleware' => 'auth:web'], function () {
     Route::get('/delete-monitoring/{id}', [PatientMonitorController::class, 'delete'])->name('doctor.delete.monitoring');
     Route::get('/patient-report/{patient_id}', [PatientController::class, 'patientDetail'])->name('patientDetail');
     Route::get('/edit-patient/{id}', [PatientController::class, 'editPatient'])->name('editPatient');
+    Route::get('/delete-member/{member_id}', [PatientController::class, 'deleteMember'])->name('deleteMember');
+    Route::post('/add-member', [PatientController::class, 'addMember'])->name('addMember');
     Route::post('/update-medical-condition', [PatientController::class, 'updateMedicalCondition'])->name('updateMedicalCondition');
     Route::post('/update-hobby-status', [PatientController::class, 'updateHobbyStatus'])->name('update.hobby.status');
     Route::post('/save-medication', [PatientController::class, 'storeMedication'])->name('save.medication');
