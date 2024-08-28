@@ -1096,8 +1096,8 @@ background-image: unset;
 }
 
 .btn-primary{
-	background-color: #996B57;
-    border-color: #996B57;
+	background-color: #996B57 !important;
+    border-color: #996B57 !important;
 }
 .btn.show,
 .btn-primary:hover {
@@ -1391,7 +1391,6 @@ background-image: unset;
 #editProfileModal .form-group {
 	margin-bottom: 0.6rem;
 }
-
 
 /* Responsive CSS start */
 

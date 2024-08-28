@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Validation\Rule;
 use App\Models\Hobby;
+use App\Models\PatientFemilyMember;
 use App\Models\PatientHobby;
 
 class PatientController extends Controller
@@ -345,11 +346,11 @@ class PatientController extends Controller
             ->pluck('hobby_id')
             ->toArray();
         $monitoringFrequency = PatientMonitoringFrequency::where('patient_id', $patient->id)->first();
-
+        $patientmembers=PatientFemilyMember::where('patient_id',$patient->id)->get();
         $patientMedications = $patient->medications;
 
         // Pass the patient and related data to the view
-        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications', 'monitoringFrequency'));
+        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications', 'monitoringFrequency','patientmembers'));
     }
     public function getPatientList(Request $request)
     {

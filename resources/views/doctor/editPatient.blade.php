@@ -155,12 +155,12 @@
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
                                     <?php
-                                       // Get the first medication treatment record
-                                       $medicalCondition = $patient->PatientMedicalCondition->first();
+                                    // Get the first medication treatment record
+                                    $medicalCondition = $patient->PatientMedicalCondition->first();
                                     ?>
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="overall_health" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="overall_health" {{ $medicalCondition && $medicalCondition->overall_health ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="overall_health">
-                                    {{__('patient.Overall Health')}}
+                                       {{__('patient.Overall Health')}}
                                        <svg data-toggle="tooltip" aria-label="Overall Health" data-bs-original-title="Overall Health" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -170,7 +170,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="chronic_pain" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="chronic_pain" {{ $medicalCondition && $medicalCondition->chronic_pain ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="chronic_pain">
-                                    {{__('patient.Chronic Pain')}} 
+                                       {{__('patient.Chronic Pain')}}
                                        <svg data-toggle="tooltip" aria-label="Chronic Pain" data-bs-original-title="Chronic Pain" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -178,9 +178,9 @@
                                     </label>
                                  </div>
                                  <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="pulmonary_disease" data-patient-id="{{ $patient->id }}"  data-model="PatientMedicalCondition" data-column="pulmonary_disease" {{ $medicalCondition && $medicalCondition->pulmonary_disease ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input checkbox_monitoring" type="checkbox" id="pulmonary_disease" data-patient-id="{{ $patient->id }}" data-model="PatientMedicalCondition" data-column="pulmonary_disease" {{ $medicalCondition && $medicalCondition->pulmonary_disease ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="pulmonary_disease">
-                                    {{__('patient.Pulmonary disease')}}
+                                       {{__('patient.Pulmonary disease')}}
                                        <svg data-toggle="tooltip" aria-label="Pulmonary disease" data-bs-original-title="Pulmonary disease" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -207,12 +207,12 @@
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
                                     <?php
-                                       // Get the first medication treatment record
-                                       $medicationsTreatment = $patient->PatientMedicationsTreatment->first();
+                                    // Get the first medication treatment record
+                                    $medicationsTreatment = $patient->PatientMedicationsTreatment->first();
                                     ?>
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="use_of_medication" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="use_of_medication" {{ $medicationsTreatment && $medicationsTreatment->use_of_medication ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="use_of_medication">
-                                    {{__('patient.Use of medication')}}
+                                       {{__('patient.Use of medication')}}
                                        <svg data-toggle="tooltip" aria-label="Use of medication" data-bs-original-title="Use of medication" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -222,7 +222,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="medication_use_reminders" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_use_reminders" {{ $medicationsTreatment && $medicationsTreatment->medication_use_reminders ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="medication_use_reminders">
-                                    {{__('patient.Medication use remind us')}}
+                                       {{__('patient.Medication use remind us')}}
                                        <svg data-toggle="tooltip" aria-label="Medication use remind us" data-bs-original-title="Medication use remind us" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -232,7 +232,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="medication_side_effects" data-patient-id="{{ $patient->id }}" data-model="PatientMedicationsTreatment" data-column="medication_side_effects" {{ $medicationsTreatment && $medicationsTreatment->medication_side_effects ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="medication_side_effects">
-                                    {{__('patient.Medication side effects')}}
+                                       {{__('patient.Medication side effects')}}
                                        <svg data-toggle="tooltip" aria-label="Medication side effects" data-bs-original-title="Medication side effects" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -259,12 +259,12 @@
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
                                     <?php
-                                       // Get the first medication treatment record
-                                       $quantitativeIndicators = $patient->PatientQuantitativeIndicators->first();
+                                    // Get the first medication treatment record
+                                    $quantitativeIndicators = $patient->PatientQuantitativeIndicators->first();
                                     ?>
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="blood_pressure" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="blood_pressure" {{ $quantitativeIndicators && $quantitativeIndicators->blood_pressure ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="blood_pressure">
-                                    {{__('patient.Blood pressure')}}
+                                       {{__('patient.Blood pressure')}}
                                        <svg data-toggle="tooltip" aria-label="Blood pressure" data-bs-original-title="Blood pressure" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -274,7 +274,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" value="" id="weight" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="weight" {{ $quantitativeIndicators && $quantitativeIndicators->weight ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="weight">
-                                    {{__('patient.Weight')}}
+                                       {{__('patient.Weight')}}
                                        <svg data-toggle="tooltip" aria-label="Weight" data-bs-original-title="Weight" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -284,7 +284,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="physical_exercise_activity" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="physical_exercise_activity" {{ $quantitativeIndicators && $quantitativeIndicators->physical_exercise_activity ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="physical_exercise_activity">
-                                    {{__('patient.Physical exercise/activity')}}
+                                       {{__('patient.Physical exercise/activity')}}
                                        <svg data-toggle="tooltip" aria-label="Qxy gometer" data-bs-original-title="Qxy gometer" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -311,12 +311,12 @@
                               <div class="col-lg-8 col-md-6">
                                  <div class="form-check mb-2">
                                     <?php
-                                       // Get the first medication treatment record
-                                       $lifestyleAndWellbeing = $patient->PatientLifestyleAndWellbeing->first();
+                                    // Get the first medication treatment record
+                                    $lifestyleAndWellbeing = $patient->PatientLifestyleAndWellbeing->first();
                                     ?>
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="regular_food_intake" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="regular_food_intake" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->regular_food_intake ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="regular_food_intake">
-                                    {{__('patient.Regular food food intake')}}
+                                       {{__('patient.Regular food food intake')}}
                                        <svg data-toggle="tooltip" aria-label="Regular food food intake" data-bs-original-title="Regular food food intake" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -326,7 +326,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="hydration" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="hydration" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->hydration ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="hydration">
-                                    {{__('patient.Hydration')}}
+                                       {{__('patient.Hydration')}}
                                        <svg data-toggle="tooltip" aria-label="Hydration" data-bs-original-title="Hydration" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -336,7 +336,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="qxy_gometer" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="qxy_gometer" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->qxy_gometer ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="qxy_gometer">
-                                    {{__('patient.Qxy gometer')}}
+                                       {{__('patient.Qxy gometer')}}
                                        <svg data-toggle="tooltip" aria-label="Physical exercise/activity" data-bs-original-title="Physical exercise/activity" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -346,7 +346,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="quality_of_sleep" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="quality_of_sleep" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->quality_of_sleep ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="quality_of_sleep">
-                                    {{__('patient.Quality of sleep')}}
+                                       {{__('patient.Quality of sleep')}}
                                        <svg data-toggle="tooltip" aria-label="Quality of sleep" data-bs-original-title="Quality of sleep" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -375,150 +375,139 @@
                      <div class="medical-body medical-body-medication border-0">
                         <div id="medication-forms-container">
                            @if($patientMedications->isEmpty())
-                              <!-- Display default form if there are no records -->
-                              <form class="medication-form" action="" data-form-id="1">
-                                 <div class="row">
-                                    <div class="col-lg-1 col-md-4">
-                                       <div class="form-group">
-                                          <label class="mb-2"><strong>Medication</strong></label>
-                                          <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
-                                          <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="" disabled>
-                                       </div>
+                           <!-- Display default form if there are no records -->
+                           <form class="medication-form" action="" data-form-id="1">
+                              <div class="row">
+                                 <div class="col-lg-1 col-md-4">
+                                    <div class="form-group">
+                                       <label class="mb-2"><strong>Medication</strong></label>
+                                       <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                                       <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="" disabled>
                                     </div>
-                                    <div class="col-lg-2 col-md-4">
-                                       <div class="form-group">
-                                          <label class="mb-2"><strong>Purpose Of Medication</strong></label>
-                                          <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="" disabled>
-                                       </div>
+                                 </div>
+                                 <div class="col-lg-2 col-md-4">
+                                    <div class="form-group">
+                                       <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                       <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="" disabled>
                                     </div>
-                                    <div class="col-lg-3 col-md-4">
-                                       <div class="use-column">
-                                          <div class="mfrequency">
-                                             <p class=""><strong>Use schedule</strong></p>
-                                             <div class="mfrequency-form">
-                                                @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
-                                                   <div class="form-check ps-0">
-                                                      <p class="form-check-label">{{ $time }}</p>
-                                                      <input 
-                                                         class="form-check-input ms-0" 
-                                                         type="checkbox" 
-                                                         name="use_schedule[]" 
-                                                         value="{{ $time }}" 
-                                                         disabled>
-                                                   </div>
-                                                @endforeach
+                                 </div>
+                                 <div class="col-lg-3 col-md-4">
+                                    <div class="use-column">
+                                       <div class="mfrequency">
+                                          <p class=""><strong>Use schedule</strong></p>
+                                          <div class="mfrequency-form">
+                                             @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
+                                             <div class="form-check ps-0">
+                                                <p class="form-check-label">{{ $time }}</p>
+                                                <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="{{ $time }}" disabled>
                                              </div>
-                                          </div>
-                                          <div class="food-use">
-                                             <p class="mb-2"><strong>Food and use</strong></p>
-                                             <select class="form-select" name="food_use" aria-label="Default select example" disabled>
-                                                <option selected>Dropdown</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                             </select>
+                                             @endforeach
                                           </div>
                                        </div>
+                                       <div class="food-use">
+                                          <p class="mb-2"><strong>Food and use</strong></p>
+                                          <select class="form-select" name="food_use" aria-label="Default select example" disabled>
+                                             <option selected>Dropdown</option>
+                                             <option value="1">One</option>
+                                             <option value="2">Two</option>
+                                             <option value="3">Three</option>
+                                          </select>
+                                       </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
-                                       <div class="dose-column">
-                                          <div class="form-group">
-                                             <label class="mb-1">Dose/Use(x units)</label>
-                                             <input type="text" class="form-control" name="dose_use" value="" disabled>
-                                          </div>
-                                          <div class="form-group">
-                                             <label class="mb-1">Doses per package</label>
-                                             <input type="text" class="form-control" name="doses_per_package" value="" disabled>
-                                          </div>
-                                          <div class="form-group">
-                                             <label class="mb-1">Last prescription start</label>
-                                             <div class="d-flex">
-                                                <input type="date" class="form-control me-1" name="last_prescription_start" value="" disabled>
-                                                <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
-                                                <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
-                                             </div>
+                                 </div>
+                                 <div class="col-lg-6 col-md-6">
+                                    <div class="dose-column">
+                                       <div class="form-group">
+                                          <label class="mb-1">Dose/Use(x units)</label>
+                                          <input type="text" class="form-control" name="dose_use" value="" disabled>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="mb-1">Doses per package</label>
+                                          <input type="text" class="form-control" name="doses_per_package" value="" disabled>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="mb-1">Last prescription start</label>
+                                          <div class="d-flex">
+                                             <input type="date" class="form-control me-1" name="last_prescription_start" value="" disabled>
+                                             <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                             <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
-                              </form>
+                              </div>
+                           </form>
                            @else
-                              @foreach($patientMedications as $medication)
-                                 <form class="medication-form" action="" data-form-id="{{ $loop->index + 1 }}">
-                                    <input type="hidden" name="id" value="{{ $medication->id }}">
-                                    <div class="row">
-                                          <div class="col-lg-1 col-md-4">
-                                             <div class="form-group">
-                                                <label class="mb-2"><strong>Medication</strong></label>
-                                                <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
-                                                <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="{{ old('medication', $medication->medication) }}" disabled>
-                                             </div>
-                                          </div>
-                                          <div class="col-lg-2 col-md-4">
-                                             <div class="form-group">
-                                                <label class="mb-2"><strong>Purpose Of Medication</strong></label>
-                                                <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="{{ old('purpose_of_medication', $medication->purpose_of_medication) }}" disabled>
-                                             </div>
-                                          </div>
-                                          <div class="col-lg-3 col-md-4">
-                                             <div class="use-column">
-                                                <div class="mfrequency">
-                                                      <p class=""><strong>Use schedule </strong></p>
-                                                      <div class="mfrequency-form">
-                                                         @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
-                                                            <div class="form-check ps-0">
-                                                               <p class="form-check-label">{{ $time }}</p>
-                                                               <input 
-                                                                     class="form-check-input ms-0" 
-                                                                     type="checkbox" 
-                                                                     name="use_schedule[]" 
-                                                                     value="{{ $time }}" 
-                                                                     {{ in_array($time, json_decode($medication->use_schedule, true)) ? 'checked' : '' }} 
-                                                                     disabled>
-                                                            </div>
-                                                         @endforeach
-                                                      </div>
-                                                </div>
-                                                <div class="food-use">
-                                                      <p class="mb-2"><strong>Food and use</strong></p>
-                                                      <select class="form-select" name="food_use" aria-label="Default select example" disabled>
-                                                         <option selected>Dropdown</option>
-                                                         <option value="1" {{ old('food_use', $medication->food_use) == 1 ? 'selected' : '' }}>One</option>
-                                                         <option value="2" {{ old('food_use', $medication->food_use) == 2 ? 'selected' : '' }}>Two</option>
-                                                         <option value="3" {{ old('food_use', $medication->food_use) == 3 ? 'selected' : '' }}>Three</option>
-                                                      </select>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-lg-6 col-md-6">
-                                             <div class="dose-column">
-                                                <div class="form-group">
-                                                      <label class="mb-1">Dose/Use(x units)</label>
-                                                      <input type="text" class="form-control" name="dose_use" value="{{ old('dose_use', $medication->dose_use) }}" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                      <label class="mb-1">Doses per package </label>
-                                                      <input type="text" class="form-control" name="doses_per_package" value="{{ old('doses_per_package', $medication->doses_per_package) }}" disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                      <label class="mb-1">Last prescription start</label>
-                                                      <div class="d-flex">
-                                                      <input type="date" class="form-control me-1" name="last_prescription_start" value="{{ old('last_prescription_start', $medication->last_prescription_start) }}" disabled>
-                                                      <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
-                                                      <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
-                                                      </div>
-                                                   </div>
-                                             </div>
-                                          </div>
+                           @foreach($patientMedications as $medication)
+                           <form class="medication-form" action="" data-form-id="{{ $loop->index + 1 }}">
+                              <input type="hidden" name="id" value="{{ $medication->id }}">
+                              <div class="row">
+                                 <div class="col-lg-1 col-md-4">
+                                    <div class="form-group">
+                                       <label class="mb-2"><strong>Medication</strong></label>
+                                       <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                                       <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="{{ old('medication', $medication->medication) }}" disabled>
                                     </div>
-                                 </form>
-                              @endforeach
+                                 </div>
+                                 <div class="col-lg-2 col-md-4">
+                                    <div class="form-group">
+                                       <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                       <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="{{ old('purpose_of_medication', $medication->purpose_of_medication) }}" disabled>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-3 col-md-4">
+                                    <div class="use-column">
+                                       <div class="mfrequency">
+                                          <p class=""><strong>Use schedule </strong></p>
+                                          <div class="mfrequency-form">
+                                             @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
+                                             <div class="form-check ps-0">
+                                                <p class="form-check-label">{{ $time }}</p>
+                                                <input class="form-check-input ms-0" type="checkbox" name="use_schedule[]" value="{{ $time }}" {{ in_array($time, json_decode($medication->use_schedule, true)) ? 'checked' : '' }} disabled>
+                                             </div>
+                                             @endforeach
+                                          </div>
+                                       </div>
+                                       <div class="food-use">
+                                          <p class="mb-2"><strong>Food and use</strong></p>
+                                          <select class="form-select" name="food_use" aria-label="Default select example" disabled>
+                                             <option selected>Dropdown</option>
+                                             <option value="1" {{ old('food_use', $medication->food_use) == 1 ? 'selected' : '' }}>One</option>
+                                             <option value="2" {{ old('food_use', $medication->food_use) == 2 ? 'selected' : '' }}>Two</option>
+                                             <option value="3" {{ old('food_use', $medication->food_use) == 3 ? 'selected' : '' }}>Three</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-6 col-md-6">
+                                    <div class="dose-column">
+                                       <div class="form-group">
+                                          <label class="mb-1">Dose/Use(x units)</label>
+                                          <input type="text" class="form-control" name="dose_use" value="{{ old('dose_use', $medication->dose_use) }}" disabled>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="mb-1">Doses per package </label>
+                                          <input type="text" class="form-control" name="doses_per_package" value="{{ old('doses_per_package', $medication->doses_per_package) }}" disabled>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="mb-1">Last prescription start</label>
+                                          <div class="d-flex">
+                                             <input type="date" class="form-control me-1" name="last_prescription_start" value="{{ old('last_prescription_start', $medication->last_prescription_start) }}" disabled>
+                                             <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                             <a href="#" class="btn btn-danger close-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </form>
+                           @endforeach
                            @endif
                         </div>
                         <div class="row mt-lg-4 mt-3">
-                              <div class="col-lg-12">
-                                 <a href="#" class="btn btn-primary" id="add-medication-btn" style="pointer-events: none; opacity: 0.5;"> Add Medication <i class="fa-solid fa-plus ms-2"></i></a>
-                              </div>
+                           <div class="col-lg-12">
+                              <a href="#" class="btn btn-primary" id="add-medication-btn" style="pointer-events: none; opacity: 0.5;"> Add Medication <i class="fa-solid fa-plus ms-2"></i></a>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -529,75 +518,81 @@
                      </div>
                      <div class="medical-body medical-body-monitoring-frequency border-0 mb-0">
                         <form class="monitoring-frequency-form" action="">
-                              <div class="row">
-                                 <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
-                                 <div class="col-lg-3 col-md-6">
-                                    <h5 class="mb-2"><strong>Frequency</strong></h5>
-                                    <div class="mfrequency-form">
-                                          @php
-                                             // Decode the frequency JSON or set an empty array if no record
-                                             $frequency = $monitoringFrequency ? json_decode($monitoringFrequency->frequency, true) : [];
-                                          @endphp
-                                          @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
-                                             <div class="form-check ps-0">
-                                                <p class="form-check-label">{{ $day }}</p>
-                                                <input class="form-check-input ms-0" type="checkbox" name="frequency[]" value="{{ $day }}" 
-                                                         {{ in_array($day, $frequency) ? 'checked' : '' }} disabled>
-                                             </div>
-                                          @endforeach
+                           <div class="row">
+                              <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
+                              <div class="col-lg-3 col-md-6">
+                                 <h5 class="mb-2"><strong>Frequency</strong></h5>
+                                 <div class="mfrequency-form">
+                                    @php
+                                    // Decode the frequency JSON or set an empty array if no record
+                                    $frequency = $monitoringFrequency ? json_decode($monitoringFrequency->frequency, true) : [];
+                                    @endphp
+                                    @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
+                                    <div class="form-check ps-0">
+                                       <p class="form-check-label">{{ $day }}</p>
+                                       <input class="form-check-input ms-0" type="checkbox" name="frequency[]" value="{{ $day }}" {{ in_array($day, $frequency) ? 'checked' : '' }} disabled>
                                     </div>
+                                    @endforeach
                                  </div>
-                                 <div class="col-lg-2 col-md-6">
-                                    <h5 class="mb-2"><strong>Preferred call time</strong></h5>
-                                    <div class="Preferred-call">
-                                          <select class="form-select" name="preferred_call_time" disabled>
-                                             <option value="10:12 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '10:12 PM' ? 'selected' : '' }}>10:12 PM</option>
-                                             <option value="12:14 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '12:14 PM' ? 'selected' : '' }}>12:14 PM</option>
-                                             <option value="14:16 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '14:16 PM' ? 'selected' : '' }}>14:16 PM</option>
-                                          </select>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-2 col-md-6 mt-4 pt-2">
-                                    <a href="#" class="btn btn-success save-btn-monitoring-frequency" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
-                                    <a href="#" class="btn btn-danger close-btn-monitoring-frequency" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
-                                 </div>   
                               </div>
+                              <div class="col-lg-2 col-md-6">
+                                 <h5 class="mb-2"><strong>Preferred call time</strong></h5>
+                                 <div class="Preferred-call">
+                                    <select class="form-select" name="preferred_call_time" disabled>
+                                       <option value="10:12 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '10:12 PM' ? 'selected' : '' }}>10:12 PM</option>
+                                       <option value="12:14 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '12:14 PM' ? 'selected' : '' }}>12:14 PM</option>
+                                       <option value="14:16 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '14:16 PM' ? 'selected' : '' }}>14:16 PM</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-lg-2 col-md-6 mt-4 pt-2">
+                                 <a href="#" class="btn btn-success save-btn-monitoring-frequency" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
+                                 <a href="#" class="btn btn-danger close-btn-monitoring-frequency" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-times"></i></a>
+                              </div>
+                           </div>
                         </form>
                      </div>
                   </div>
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
                         <h4>Family members</h4>
-                        <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a>
+                        <a href="javascript:void(0)" onclick="editFemilyMember()" class="edit-btn"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body border-0 mb-0">
-                        <form class="" action="">
+                        <form class="" action="" id="familyMemberForm" onsubmit="addFamilyMembers()">
+                           @if(count($patientmembers)>0)
+                           @foreach($patientmembers as $member)
+                           <input type="hidden" name="member_id[]" id="member_id[]" value="{{$member->id}}">
                            <div class="row">
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Emergency contact n. 1</label>
-                                    <input type="text" placeholder="Lena Marcibalova" class="form-control" />
+                                    <label class="form-label">Member Name</label>
+                                    <input type="text" id="name[]" name="name[]" placeholder="Member Name" class="form-control femily-member-sec" disabled value="{{$member->name}}" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Mobile Number</label>
-                                    <input type="text" placeholder="`+420 435 783 230" class="form-control" />
+                                    <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" class="form-control femily-member-sec" disabled value="{{$member->phone}}" />
                                  </div>
                               </div>
-                              <div class="col-lg-3 col-md-6">
+                              <div class="col-lg-2 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Relationship</label>
-                                    <input type="text" placeholder="Daughter" class="form-control" />
+                                    <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="{{$member->id}}" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
                                     <label class="form-label">Email Address</label>
-                                    <input type="text" placeholder="Lena Marcibalova" class="form-control" />
+                                    <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled />
                                  </div>
                               </div>
-                              <div class="col-lg-12 col-md-12">
+                              <div class="col-lg-1 col-md-6">
+                                 <button type="submit" class="btn btn-success" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
+                                 <button type="button" class="btn btn-danger" onclick="removeFamilyMember()" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+                              </div>
+                              <!-- <div class="col-lg-12 col-md-12">
                                  <div class="form-check mb-4">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
@@ -607,14 +602,61 @@
                                        </svg>
                                     </label>
                                  </div>
-                              </div>
-                              <div class="col-lg-12 col-md-12">
-                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary"> Add Family Member <i class="fa-solid fa-plus ms-2"></i></button>
+                              </div> -->
+
+                           </div>
+                           @endforeach
+                           @else
+                           <div class="row">
+                              <div class="col-lg-3 col-md-6">
+                                 <div class="form-group mb-4">
+                                    <label class="form-label">Member Name</label>
+                                    <input type="text" id="name[]" name="name[]" placeholder="Member Name" class="form-control femily-member-sec" disabled value="" />
                                  </div>
                               </div>
+                              <div class="col-lg-3 col-md-6">
+                                 <div class="form-group mb-4">
+                                    <label class="form-label">Mobile Number</label>
+                                    <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" class="form-control femily-member-sec" disabled value="" />
+                                 </div>
+                              </div>
+                              <div class="col-lg-2 col-md-6">
+                                 <div class="form-group mb-4">
+                                    <label class="form-label">Relationship</label>
+                                    <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="" />
+                                 </div>
+                              </div>
+                              <div class="col-lg-3 col-md-6">
+                                 <div class="form-group mb-4">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled />
+                                 </div>
+                              </div>
+                              <div class="col-lg-1 col-md-6">
+                                 <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
+                                 <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember()" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+                              </div>
+                              <!-- <div class="col-lg-12 col-md-12">
+                                 <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                       Invite to Mamsa Family <svg data-toggle="tooltip" aria-label="Invite to Mamsa Family" data-bs-original-title="Invite to Mamsa Family" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"></path>
+                                          <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"></path>
+                                       </svg>
+                                    </label>
+                                 </div>
+                              </div> -->
+
                            </div>
+                           @endif
+
                         </form>
+                        <div class="col-lg-12 col-md-12">
+                           <div class="form-group">
+                              <button type="button" onclick="addMemberRow()" class="btn btn-primary  femily-member-sec" disabled> Add Family Member <i class="fa-solid fa-plus ms-2"></i></button>
+                           </div>
+                        </div>
                      </div>
                   </div>
                   <div class="medical-conditions mb-4">
@@ -627,16 +669,16 @@
                         <div class="row">
                            @foreach($hobbies as $hobby)
                            <div class="col-lg-4 col-md-6">
-                                 <div class="form-check mb-2">
-                                    <input class="form-check-input checkbox_hobby" type="checkbox" value="{{ $hobby->id }}" id="flex{{ $hobby->name }}" data-patient-id="{{ $patient->id }}" {{ in_array($hobby->id, $selectedHobbies) ? 'checked' : '' }}  disabled>
-                                    <label class="form-check-label" for="flex{{ $hobby->name }}">
-                                       {{ $hobby->name }}
-                                       <svg data-toggle="tooltip" aria-label="{{ $hobby->name }}" data-bs-original-title="{{ $hobby->name }}" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"></path>
-                                             <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"></path>
-                                       </svg>
-                                    </label>
-                                 </div>
+                              <div class="form-check mb-2">
+                                 <input class="form-check-input checkbox_hobby" type="checkbox" value="{{ $hobby->id }}" id="flex{{ $hobby->name }}" data-patient-id="{{ $patient->id }}" {{ in_array($hobby->id, $selectedHobbies) ? 'checked' : '' }} disabled>
+                                 <label class="form-check-label" for="flex{{ $hobby->name }}">
+                                    {{ $hobby->name }}
+                                    <svg data-toggle="tooltip" aria-label="{{ $hobby->name }}" data-bs-original-title="{{ $hobby->name }}" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                       <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"></path>
+                                       <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"></path>
+                                    </svg>
+                                 </label>
+                              </div>
                            </div>
                            @endforeach
                         </div>
@@ -866,6 +908,50 @@
       </div>
    </div>
 </footer>
+<div id="familymemberrow" class="d-none">
+   <div class="row">
+      <div class="col-lg-3 col-md-6">
+         <div class="form-group mb-4">
+            <label class="form-label">Member Name</label>
+            <input type="text" id="name[]" name="name[]" placeholder="Member Name" class="form-control femily-member-sec" disabled value="" />
+         </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+         <div class="form-group mb-4">
+            <label class="form-label">Mobile Number</label>
+            <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" class="form-control femily-member-sec" disabled value="" />
+         </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+         <div class="form-group mb-4">
+            <label class="form-label">Relationship</label>
+            <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="" />
+         </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+         <div class="form-group mb-4">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled />
+         </div>
+      </div>
+      <div class="col-lg-1 col-md-6">
+         <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
+         <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+      </div>
+      <!-- <div class="col-lg-12 col-md-12">
+                                 <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                       Invite to Mamsa Family <svg data-toggle="tooltip" aria-label="Invite to Mamsa Family" data-bs-original-title="Invite to Mamsa Family" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"></path>
+                                          <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"></path>
+                                       </svg>
+                                    </label>
+                                 </div>
+                              </div> -->
+
+   </div>
+</div>
 @endsection
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -874,6 +960,24 @@
       $('#editProfileModal').modal('show');
    }
 
+   function addMemberRow() {
+      $('#familyMemberForm').append($('#familymemberrow').html());
+   }
+
+   function editFemilyMember() {
+      $('.femily-member-sec').prop('disabled', false);
+   }
+   function addFamilyMembers(){
+
+   }
+   function removeFamilyMember(obj){
+      const row = obj.closest('.row');
+
+    // Remove the row element from the DOM
+    if (row) {
+        row.remove();
+    }
+   }
    $(document).ready(function() {
 
       /* Script of area of monitoring section Satrt */
@@ -909,7 +1013,7 @@
                   url: '/doctor/update-medical-condition',
                   method: 'POST',
                   headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   },
                   contentType: 'application/json',
                   data: JSON.stringify({
@@ -956,55 +1060,55 @@
          const actionMessage = isChecked ? 'add this hobby?' : 'remove this hobby?';
 
          Swal.fire({
-               title: `Do you want to ${actionText} this hobby?`,
-               text: actionMessage,
-               icon: 'question',
-               showCancelButton: true,
-               confirmButtonText: 'Yes',
-               cancelButtonText: 'No'
+            title: `Do you want to ${actionText} this hobby?`,
+            text: actionMessage,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
          }).then(result => {
-               if (result.isConfirmed) {
-                  updateHobbyStatus(hobbyId, isChecked , patientId);
-               } else {
-                  // Revert the checkbox state if action is canceled
-                  $(this).prop('checked', !isChecked);
-               }
+            if (result.isConfirmed) {
+               updateHobbyStatus(hobbyId, isChecked, patientId);
+            } else {
+               // Revert the checkbox state if action is canceled
+               $(this).prop('checked', !isChecked);
+            }
          });
       });
 
-      function updateHobbyStatus(hobbyId, isChecked , patientId) {
+      function updateHobbyStatus(hobbyId, isChecked, patientId) {
          $.ajax({
-            url: '{{ route('update.hobby.status') }}',
+            url: '{{ route("update.hobby.status") }}',
             method: 'POST',
             data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                hobby_id: hobbyId,
-                patient_id: patientId,
-                is_checked: isChecked
+               _token: $('meta[name="csrf-token"]').attr('content'),
+               hobby_id: hobbyId,
+               patient_id: patientId,
+               is_checked: isChecked
             },
             success: function(response) {
-                if (response.success) {
-                    Swal.fire({
-                        title: 'Success',
-                        text: `Hobby ${isChecked ? 'added' : 'removed'} successfully.`,
-                        icon: 'success'
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'An error occurred while updating the hobby.',
-                        icon: 'error'
-                    });
-                }
+               if (response.success) {
+                  Swal.fire({
+                     title: 'Success',
+                     text: `Hobby ${isChecked ? 'added' : 'removed'} successfully.`,
+                     icon: 'success'
+                  });
+               } else {
+                  Swal.fire({
+                     title: 'Error',
+                     text: 'An error occurred while updating the hobby.',
+                     icon: 'error'
+                  });
+               }
             },
             error: function() {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'An error occurred while updating the hobby.',
-                    icon: 'error'
-                });
+               Swal.fire({
+                  title: 'Error',
+                  text: 'An error occurred while updating the hobby.',
+                  icon: 'error'
+               });
             }
-        });
+         });
       }
       /* Script of area of hobbies section End */
 
@@ -1019,18 +1123,18 @@
       // Click event to enable editing
       $('#edit-btn-area-of-medication').on('click', function(e) {
          e.preventDefault();
-         
+
          // Enable all inputs and selects in the form
          $('.medical-body-medication input, .medical-body-medication select').prop('disabled', false);
 
          // Enable the Add Medication button
-         $('#add-medication-btn').css('pointer-events', 'auto').css('opacity', '1');     
+         $('#add-medication-btn').css('pointer-events', 'auto').css('opacity', '1');
 
          // Enable the buttons
          $('.save-btn-area-of-medication, .close-btn-area-of-medication').css({
             'pointer-events': 'auto',
             'opacity': '1'
-        }).prop('disabled', false);
+         }).prop('disabled', false);
 
 
       });
@@ -1042,7 +1146,7 @@
          var formToClone = $('#medication-forms-container .medication-form:first').clone(true);
 
          // Remove the specific hidden input with name form 'id'
-          formToClone.find('input[type="hidden"][name="id"]').remove();
+         formToClone.find('input[type="hidden"][name="id"]').remove();
 
          // Generate a new unique ID for the cloned form
          var newFormId = $('#medication-forms-container .medication-form').length + 1;
@@ -1090,52 +1194,52 @@
             reverseButtons: true
          }).then((result) => {
             if (result.isConfirmed) {
-                  // User confirmed, proceed with saving or updating
+               // User confirmed, proceed with saving or updating
 
-                  var url = isUpdate ? '{{ route("update.medication") }}' : '{{ route("save.medication") }}'; // Determine the URL for the AJAX request
+               var url = isUpdate ? '{{ route("update.medication") }}' : '{{ route("save.medication") }}'; // Determine the URL for the AJAX request
 
-                  // Append CSRF token to FormData
-                  var csrfToken = $('meta[name="csrf-token"]').attr('content');
-                  formData.append('_token', csrfToken);
+               // Append CSRF token to FormData
+               var csrfToken = $('meta[name="csrf-token"]').attr('content');
+               formData.append('_token', csrfToken);
 
-                  $.ajax({
-                     url: url, // The URL for the AJAX request
-                     method: 'POST',
-                     data: formData,
-                     contentType: false, // Required for FormData
-                     processData: false, // Required for FormData
-                     success: function(response) {
-                        if (!isUpdate) {
-                              // If it's a new row, add the ID to the form
-                              form.append('<input type="hidden" name="id" value="' + response.id + '">');
-                        }
-
-                        // Display success alert
-                        Swal.fire({
-                              icon: 'success',
-                              title: 'Success!',
-                              text: response.message,
-                              confirmButtonText: 'OK'
-                        });
-                     },
-                     error: function(xhr) {
-                        // Display error alert
-                        Swal.fire({
-                              icon: 'error',
-                              title: 'Error!',
-                              text: 'Error saving medication! ' + (xhr.responseJSON.message || ''),
-                              confirmButtonText: 'OK'
-                        });
+               $.ajax({
+                  url: url, // The URL for the AJAX request
+                  method: 'POST',
+                  data: formData,
+                  contentType: false, // Required for FormData
+                  processData: false, // Required for FormData
+                  success: function(response) {
+                     if (!isUpdate) {
+                        // If it's a new row, add the ID to the form
+                        form.append('<input type="hidden" name="id" value="' + response.id + '">');
                      }
-                  });
+
+                     // Display success alert
+                     Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: response.message,
+                        confirmButtonText: 'OK'
+                     });
+                  },
+                  error: function(xhr) {
+                     // Display error alert
+                     Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Error saving medication! ' + (xhr.responseJSON.message || ''),
+                        confirmButtonText: 'OK'
+                     });
+                  }
+               });
             } else {
-                  // User canceled, no action taken
-                  Swal.fire({
-                     icon: 'info',
-                     title: 'Cancelled',
-                     text: 'Your medication update was not saved.',
-                     confirmButtonText: 'OK'
-                  });
+               // User canceled, no action taken
+               Swal.fire({
+                  icon: 'info',
+                  title: 'Cancelled',
+                  text: 'Your medication update was not saved.',
+                  confirmButtonText: 'OK'
+               });
             }
          });
       });
@@ -1158,62 +1262,65 @@
             cancelButtonText: 'No, cancel!'
          }).then((result) => {
             if (result.isConfirmed) {
-                  if (medicationId) {
-                     // Existing row - send AJAX request to delete from the database
-                     $.ajax({
-                        url: '{{ route("delete.medication") }}', // Check this URL is correct
-                        method: 'POST',
-                        data: {
-                              id: medicationId,
-                              _token: '{{ csrf_token() }}' // Ensure CSRF token is included
-                        },
-                        success: function(response) {
-                              if (response.success) {
-                                 Swal.fire(
-                                    'Deleted!',
-                                    'The medication has been deleted.',
-                                    'success'
-                                 );
-                                 form.remove(); // Remove the row from the DOM
-                              } else {
-                                 Swal.fire(
-                                    'Error!',
-                                    'Error: ' + response.message,
-                                    'error'
-                                 );
-                              }
-                        },
-                        error: function(xhr) {
-                              Swal.fire(
-                                 'Error!',
-                                 'Error deleting medication!',
-                                 'error'
-                              );
+               if (medicationId) {
+                  // Existing row - send AJAX request to delete from the database
+                  $.ajax({
+                     url: '{{ route("delete.medication") }}', // Check this URL is correct
+                     method: 'POST',
+                     data: {
+                        id: medicationId,
+                        _token: '{{ csrf_token() }}' // Ensure CSRF token is included
+                     },
+                     success: function(response) {
+                        if (response.success) {
+                           Swal.fire(
+                              'Deleted!',
+                              'The medication has been deleted.',
+                              'success'
+                           );
+                           form.remove(); // Remove the row from the DOM
+                        } else {
+                           Swal.fire(
+                              'Error!',
+                              'Error: ' + response.message,
+                              'error'
+                           );
                         }
-                     });
-                  } else {
-                     // New row - just remove the row from the DOM
-                     form.remove();
-                  }
+                     },
+                     error: function(xhr) {
+                        Swal.fire(
+                           'Error!',
+                           'Error deleting medication!',
+                           'error'
+                        );
+                     }
+                  });
+               } else {
+                  // New row - just remove the row from the DOM
+                  form.remove();
+               }
             }
          });
       });
       /* Script of area of medication section End */
-      
+
       /* Script of monitoring frequency section Start */
       $(document).on('click', '#edit-btn-monitoring-frequency', function(e) {
          e.preventDefault();
-         
+
          // Find the form in the same section as the clicked edit button
          const form = $(this).closest('.medical-conditions').find('form');
-         
+
          // Enable all inputs and selects in the form
          form.find('input, select').prop('disabled', false);
-         
+
          // Enable the save and close buttons
          form.find('.save-btn-monitoring-frequency, .close-btn-monitoring-frequency')
-         .css({'pointer-events': 'auto', 'opacity': '1'})
-         .prop('disabled', false);
+            .css({
+               'pointer-events': 'auto',
+               'opacity': '1'
+            })
+            .prop('disabled', false);
       });
 
 
@@ -1229,26 +1336,26 @@
             cancelButtonText: 'No, cancel!',
          }).then((result) => {
             if (result.isConfirmed) {
-                  var form = $(this).closest('form');
-                  var formData = new FormData(form[0]);
-                  var url = '{{ route("save.monitoring_frequency") }}';
+               var form = $(this).closest('form');
+               var formData = new FormData(form[0]);
+               var url = '{{ route("save.monitoring_frequency") }}';
 
-                  formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+               formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
 
-                  $.ajax({
-                     url: url,
-                     method: 'POST',
-                     data: formData,
-                     contentType: false,
-                     processData: false,
-                     success: function(response) {
-                        form.append('<input type="hidden" name="id" value="' + response.id + '">');
-                        Swal.fire('Saved!', response.message, 'success');
-                     },
-                     error: function(xhr) {
-                        Swal.fire('Error!', 'Error saving monitoring frequency!', 'error');
-                     }
-                  });
+               $.ajax({
+                  url: url,
+                  method: 'POST',
+                  data: formData,
+                  contentType: false,
+                  processData: false,
+                  success: function(response) {
+                     form.append('<input type="hidden" name="id" value="' + response.id + '">');
+                     Swal.fire('Saved!', response.message, 'success');
+                  },
+                  error: function(xhr) {
+                     Swal.fire('Error!', 'Error saving monitoring frequency!', 'error');
+                  }
+               });
             }
          });
       });
