@@ -591,7 +591,7 @@
                               </div>
                               <div class="col-lg-1 col-md-6">
                                  <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
-                                 <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+                                 <button type="button" class="btn btn-danger delete-family-member femily-member-sec" onclick="removeFamilyMember(this,'{{$member->id}}')" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
                               </div>
                               <!-- <div class="col-lg-12 col-md-12">
                                  <div class="form-check mb-4">
@@ -636,7 +636,7 @@
                               </div>
                               <div class="col-lg-1 col-md-6">
                                  <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
-                                 <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+                                 <button type="button" class="btn btn-danger delete-family-member femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
                               </div>
                               <!-- <div class="col-lg-12 col-md-12">
                                  <div class="form-check mb-4">
@@ -939,7 +939,7 @@
       </div>
       <div class="col-lg-1 col-md-6">
          <button type="submit" class="btn btn-success femily-member-sec" style="margin-top: 30px" disabled><i class="fa-solid fa-check"></i></button>
-         <button type="button" class="btn btn-danger femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
+         <button type="button" class="btn btn-danger delete-family-member femily-member-sec" onclick="removeFamilyMember(this)" style="margin-top: 30px" disabled><i class="fa-solid fa-times"></i></button>
       </div>
       <!-- <div class="col-lg-12 col-md-12">
                                  <div class="form-check mb-4">
@@ -999,7 +999,10 @@
                      // Iterate over each member_id and set it to the corresponding hidden field
                      response.member_ids.forEach(function(member_id, index) {
                         // Select the nth hidden input for member_id[]
-                        $('input[name="member_id[]"]').eq(index).val(member_id);
+                        var hiddenInput = $('input[name="member_id[]"]').eq(index);
+                        hiddenInput.val(member_id);
+                        var removeButton = hiddenInput.closest('.row').find('.delete-family-member');
+                        removeButton.attr('onclick', 'removeFamilyMember(this, ' + member_id + ')');
                         Swal.fire('Updated!', `The Family member data is updated`, 'success');
                      });
                   }
