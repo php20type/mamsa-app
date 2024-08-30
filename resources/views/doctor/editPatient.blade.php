@@ -689,7 +689,7 @@
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
                         <h4>Doctors and Facilities</h4>
-                        <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a>
+                        {{-- <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a> --}}
                      </div>
                      <div class="medical-body">
                         <form class="" action="">
@@ -712,13 +712,14 @@
                                  <label class="form-label">Doctor</label>
                                  <div class="form-group">
                                     <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected></option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
+                                       <select class="form-select" name="doctor_ids[]" multiple aria-label="Default select example">
+                                          @foreach($doctors as $doctor)
+                                             <option value="{{ $doctor->id }}" {{ in_array($doctor->id, $selectedDoctorIds) ? 'selected' : '' }}>
+                                                   {{ $doctor->firstname }}
+                                             </option>
+                                          @endforeach
                                        </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
+                                       {{-- <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button> --}}
                                     </div>
                                  </div>
                               </div>

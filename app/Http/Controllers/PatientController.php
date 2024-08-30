@@ -256,7 +256,7 @@ class PatientController extends Controller
         $patientdata['nextDay'] = $nextEnabledDay;
         $patientdata['message'] = $messagetext;
         $patientdata['medical_condition'] = $medical_condition;
-        $patientdata['quantitative_indicators']=$quantitative_indicators;
+        $patientdata['quantitative_indicators'] = $quantitative_indicators;
         if (isset($doctor->firstname)) {
             $patientdata['medication_admin'] = $doctor->firstname;
         } else {
@@ -346,11 +346,13 @@ class PatientController extends Controller
             ->pluck('hobby_id')
             ->toArray();
         $monitoringFrequency = PatientMonitoringFrequency::where('patient_id', $patient->id)->first();
-        $patientmembers=PatientFemilyMember::where('patient_id',$patient->id)->get();
+        $patientmembers = PatientFemilyMember::where('patient_id', $patient->id)->get();
         $patientMedications = $patient->medications;
+        $selectedDoctorIds = explode(',', $patient->doctor_ids);
+        $doctors = User::all();
 
         // Pass the patient and related data to the view
-        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications', 'monitoringFrequency','patientmembers'));
+        return view('doctor/editPatient', compact('patient', 'hobbies', 'selectedHobbies', 'patientMedications', 'monitoringFrequency', 'patientmembers', 'doctors', 'selectedDoctorIds'));
     }
     public function getPatientList(Request $request)
     {
@@ -520,18 +522,20 @@ class PatientController extends Controller
 
         return response()->json(['message' => 'Monitoring frequency saved successfully!', 'id' => $monitoringFrequency->id]);
     }
-    public function deleteMember(Request $request){
-        PatientFemilyMember::where('id',$request->member_id)->delete();
-        return response()->json(['status'=>true]);
+    public function deleteMember(Request $request)
+    {
+        PatientFemilyMember::where('id', $request->member_id)->delete();
+        return response()->json(['status' => true]);
     }
-    public function addMember(Request $request){
-       $membersname=$request->name;
-       $member_ids=[];
-       foreach($membersname as $key=>$member){
-           $member=PatientFemilyMember::updateOrCreate(['id'=>$request->member_id[$key]],['patient_id'=>$request->patient_id,'name'=>$request->name[$key],'phone'=>$request->phone[$key],'relation'=>$request->relation[$key],'email'=>$request->email[$key]]);
-           array_push($member_ids,$member->id);
-       }
-       return response()->json(['status'=>true,'member_ids'=>$member_ids]);
+    public function addMember(Request $request)
+    {
+        $membersname = $request->name;
+        $member_ids = [];
+        foreach ($membersname as $key => $member) {
+            $member = PatientFemilyMember::updateOrCreate(['id' => $request->member_id[$key]], ['patient_id' => $request->patient_id, 'name' => $request->name[$key], 'phone' => $request->phone[$key], 'relation' => $request->relation[$key], 'email' => $request->email[$key]]);
+            array_push($member_ids, $member->id);
+        }
+        return response()->json(['status' => true, 'member_ids' => $member_ids]);
 
     }
 }
