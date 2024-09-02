@@ -22,7 +22,6 @@ class Patient extends Model
     {
         $facility_ids = explode(',', $this->facility_ids);
         $facilities = MedicalFecility::whereIn('id', $facility_ids)->get(['facility_name', 'facility_id']);
-
         return $facilities;
     }
     public function patientHistory()

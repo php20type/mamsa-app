@@ -691,103 +691,28 @@
                         <h4>Doctors and Facilities</h4>
                         {{-- <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a> --}}
                      </div>
-                     <div class="medical-body">
-                        <form class="" action="">
-                           <div class="row">
-                              <div class="col-lg-4 col-md-6">
-                                 <label class="form-label">Medical Facilities</label>
-                                 <div class="form-group">
-                                    <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected></option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-lg-4 col-md-6">
-                                 <label class="form-label">Doctor</label>
-                                 <div class="form-group">
-                                    <div class="d-flex">
-                                       <select class="form-select" name="doctor_ids[]" multiple aria-label="Default select example">
-                                          @foreach($doctors as $doctor)
-                                             <option value="{{ $doctor->id }}" {{ in_array($doctor->id, $selectedDoctorIds) ? 'selected' : '' }}>
-                                                   {{ $doctor->firstname }}
-                                             </option>
-                                          @endforeach
-                                       </select>
-                                       {{-- <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button> --}}
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
                      <div class="medical-body border-0 mb-0">
                         <form class="" action="">
                            <div class="row">
                               <div class="col-lg-4 col-md-6">
                                  <label class="form-label">Medical Facilities</label>
+                                 @foreach($patient->facilities as $facility)
                                  <div class="form-group mb-3">
                                     <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>Bratislava hospital</option>
-                                          <option value="1">Bratislava hospital</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
+                                       <input type="text" disabled class="form-control" value="{{$facility->facility_name}}">
                                     </div>
                                  </div>
-                                 <div class="form-group">
-                                    <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>New Clinic Bratislava</option>
-                                          <option value="1">New Clinic Bratislava</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
-                                    </div>
-                                 </div>
+                                 @endforeach
                               </div>
                               <div class="col-lg-4 col-md-6">
                                  <label class="form-label">Doctor</label>
+                                 @foreach($patient->doctors as $doctor)
                                  <div class="form-group mb-3">
                                     <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>Martin Smith (045327)</option>
-                                          <option value="1">Martin Smith (045327)</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
+                                       <input type="text" disabled class="form-control" value="{{$doctor->firstname}} {{$doctor->lastname}}">
                                     </div>
                                  </div>
-                                 <div class="form-group mb-3">
-                                    <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>Jules Trends (75347)</option>
-                                          <option value="1">Jules Trends (75347)</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
-                                    </div>
-                                 </div>
-                                 <div class="form-group mb-3">
-                                    <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>David Barash (675481)</option>
-                                          <option value="1">David Barash (675481)</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
-                                    </div>
-                                 </div>
-                                 <div class="form-group mb-3">
-                                    <div class="d-flex">
-                                       <select class="form-select" aria-label="Default select example">
-                                          <option selected>Tibor Vinx (621783)</option>
-                                          <option value="1">Tibor Vinx (621783)</option>
-                                       </select>
-                                       <button type="text" class="btn btn-primary ms-2"><i class="fa-regular fa-plus"></i></button>
-                                    </div>
-                                 </div>
+                                 @endforeach
                               </div>
                            </div>
                         </form>

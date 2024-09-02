@@ -244,7 +244,7 @@
                                 <input type="text" name="weight" id="weight" required class="form-control">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <!-- <div class="col-lg-6">
                             <div class="form-group mb-4">
                                 <label class="form-label">{{__('patient.Medical Facility')}}:</label>
                                 <div class="input-inline">
@@ -255,7 +255,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-lg-6">
                             <div class="form-group cust-table mb-4">
                                 <label class="form-label">{{__('patient.Frequency')}}:</label>

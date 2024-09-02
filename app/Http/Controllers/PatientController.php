@@ -165,8 +165,16 @@ class PatientController extends Controller
         } else {
             $doctor_ids = auth()->user()->id;
         }
-        if ($request->facility_ids != null) {
-            $facility_ids = implode(',', $request->facility_ids);
+        $userid = auth()->user()->id;
+        $query = MedicalFecility::query();
+
+        foreach (explode(',',$doctor_ids) as $id) {
+            $query->orWhereRaw("FIND_IN_SET(?, facility_drs)", [$id]);
+        }
+
+        $medical_facilities = $query->pluck('id')->toArray();
+        if ($medical_facilities) {
+            $facility_ids = implode(',', $medical_facilities);
         }
         if ($request->patient_id != '') {
             $patient = Patient::updateOrCreate(['id' => $request->patient_id], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'DOB' => $request->DOB, 'weight' => $request->weight, 'lang' => $request->lang]);
@@ -235,6 +243,7 @@ class PatientController extends Controller
         $frequencyPattern = explode(',', $patient->frequency);
         $medical_condition = PatientMedicalCondition::where('patient_id', $patient->id)->first();
         $quantitative_indicators = PatientQuantitativeIndicators::where('patient_id', $patient->id)->first();
+        $lifestyles=PatientLifestyleAndWellbeing::where('patient_id',$patient->id)->first();
         // Get today's day of the week (1 for Monday through 7 for Sunday)
         $today = Carbon::now()->dayOfWeekIso; // Monday = 1, Sunday = 7
         // Find the next enabled day
@@ -257,6 +266,7 @@ class PatientController extends Controller
         $patientdata['message'] = $messagetext;
         $patientdata['medical_condition'] = $medical_condition;
         $patientdata['quantitative_indicators'] = $quantitative_indicators;
+        $patientdata['lifestyles']=$lifestyles;
         if (isset($doctor->firstname)) {
             $patientdata['medication_admin'] = $doctor->firstname;
         } else {
@@ -310,11 +320,22 @@ class PatientController extends Controller
         if ($request->filled('rep_medication_bodypart')) {
             $data['rep_medication_bodypart'] = $request->rep_medication_bodypart;
         }
+        if ($request->filled('monitor_bloodpressure_measured')) {
+            $data['monitor_bloodpressure_measured'] = $request->monitor_bloodpressure_measured;
+        }if ($request->filled('monitor_bloodpressure_measure_now')) {
+            $data['monitor_bloodpressure_measure_now'] = $request->monitor_bloodpressure_measure_now;
+        }if ($request->filled('monitor_bloodpressure_systolic')) {
+            $data['monitor_bloodpressure_systolic'] = $request->monitor_bloodpressure_systolic;
+        }if ($request->filled('monitor_bloodpressure_diastolic')) {
+            $data['monitor_bloodpressure_diastolic'] = $request->monitor_bloodpressure_diastolic;
+        }if ($request->filled('monitor_bloodpressure_feeling')) {
+            $data['monitor_bloodpressure_feeling'] = $request->monitor_bloodpressure_feeling;
+        }
         if ($request->filled('notes')) {
             $data['notes'] = $request->notes;
             Message::create(['sender_id' => $montorcondition->patient_id, 'receiver_id' => $montorcondition->doctor_id, 'message' => $request->notes, 'message_sender' => 'patient']);
         }
-
+        
         // Update or create the MonitoringHistory record with the prepared data
         $MonitoringHistory = MonitoringHistory::updateOrCreate(
             ['id' => $request->history_id],
@@ -536,6 +557,5 @@ class PatientController extends Controller
             array_push($member_ids, $member->id);
         }
         return response()->json(['status' => true, 'member_ids' => $member_ids]);
-
     }
 }
