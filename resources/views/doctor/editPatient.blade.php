@@ -41,7 +41,7 @@
                                  </svg>
                               </div>
                               <div class="info-sec">
-                                 <h5>Date of Birth</h5>
+                                 <h5>{{ __('medication.Date of Birth')}}</h5>
                                  <p>{{ \Carbon\Carbon::parse($patient->DOB)->format('F j, Y') }}</p>
                               </div>
                            </li>
@@ -52,7 +52,7 @@
                                  </svg>
                               </div>
                               <div class="info-sec">
-                                 <h5>Address</h5>
+                                 <h5>{{ __('medication.Address')}}</h5>
                                  <p>{{ $patient->address }}</p>
                               </div>
                            </li>
@@ -63,7 +63,7 @@
                                  </svg>
                               </div>
                               <div class="info-sec">
-                                 <h5>Phone Number</h5>
+                                 <h5>{{ __('medication.Phone Number')}}</h5>
                                  <p>{{ $patient->phone_number }}</p>
                               </div>
                            </li>
@@ -74,7 +74,7 @@
                                  </svg>
                               </div>
                               <div class="info-sec">
-                                 <h5>Other Number</h5>
+                                 <h5>{{ __('medication.Other Number')}}</h5>
                                  <p>{{ $patient->other_number }}</p>
                               </div>
                            </li>
@@ -84,8 +84,8 @@
                </div>
                <div class="box-out pb-1">
                   <div class="patient-monitorin">
-                     <a href="#" class="btn btn-outline-primary mb-2">Patient Monitoring</a>
-                     <a href="#" class="btn btn-outline-primary edit-profile" onclick="openEditProfileModal()">Edit Profile</a>
+                     <a href="#" class="btn btn-outline-primary mb-2">{{ __('medication.Patient Monitoring')}}</a>
+                     <a href="#" class="btn btn-outline-primary edit-profile" onclick="openEditProfileModal()">{{ __('medication.Edit Profile')}}</a>
                   </div>
                </div>
                <div class="box-out pt-2 mb-3">
@@ -285,7 +285,7 @@
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="physical_exercise_activity" data-patient-id="{{ $patient->id }}" data-model="PatientQuantitativeIndicators" data-column="physical_exercise_activity" {{ $quantitativeIndicators && $quantitativeIndicators->physical_exercise_activity ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="physical_exercise_activity">
                                        {{__('patient.Physical exercise/activity')}}
-                                       <svg data-toggle="tooltip" aria-label="Qxy gometer" data-bs-original-title="Qxy gometer" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                       <svg data-toggle="tooltip" aria-label="Oxy geometer" data-bs-original-title="Qxy gometer" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
                                        </svg>
@@ -336,7 +336,7 @@
                                  <div class="form-check mb-2">
                                     <input class="form-check-input checkbox_monitoring" type="checkbox" id="qxy_gometer" data-patient-id="{{ $patient->id }}" data-model="PatientLifestyleAndWellbeing" data-column="qxy_gometer" {{ $lifestyleAndWellbeing && $lifestyleAndWellbeing->qxy_gometer ? 'checked' : '' }} disabled>
                                     <label class="form-check-label" for="qxy_gometer">
-                                       {{__('patient.Qxy gometer')}}
+                                       {{__('patient.Oxy geometer')}}
                                        <svg data-toggle="tooltip" aria-label="Physical exercise/activity" data-bs-original-title="Physical exercise/activity" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686" />
                                           <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686" />
@@ -369,7 +369,7 @@
                   </div>
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
-                        <h4>Medications</h4>
+                        <h4>{{ __('medication.Medications')}}</h4>
                         <a href="#" class="edit-btn" id="edit-btn-area-of-medication"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body medical-body-medication border-0">
@@ -380,21 +380,21 @@
                               <div class="row">
                                  <div class="col-lg-1 col-md-4">
                                     <div class="form-group">
-                                       <label class="mb-2"><strong>Medication</strong></label>
+                                       <label class="mb-2"><strong>{{ __('medication.Medication')}}</strong></label>
                                        <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
                                        <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="" disabled>
                                     </div>
                                  </div>
                                  <div class="col-lg-2 col-md-4">
                                     <div class="form-group">
-                                       <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                       <label class="mb-2"><strong>{{ __('medication.Purpose Of Medication')}}</strong></label>
                                        <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="" disabled>
                                     </div>
                                  </div>
                                  <div class="col-lg-3 col-md-4">
                                     <div class="use-column">
                                        <div class="mfrequency">
-                                          <p class=""><strong>Use schedule</strong></p>
+                                          <p class=""><strong>{{ __('medication.Use schedule')}}</strong></p>
                                           <div class="mfrequency-form">
                                              @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
                                              <div class="form-check ps-0">
@@ -405,9 +405,9 @@
                                           </div>
                                        </div>
                                        <div class="food-use">
-                                          <p class="mb-2"><strong>Food and use</strong></p>
+                                          <p class="mb-2"><strong>{{ __('medication.Food and use')}}</strong></p>
                                           <select class="form-select" name="food_use" aria-label="Default select example" disabled>
-                                             <option selected>Dropdown</option>
+                                             <option selected>{{ __('medication.Food and use')}}</option>
                                              <option value="1">One</option>
                                              <option value="2">Two</option>
                                              <option value="3">Three</option>
@@ -418,15 +418,15 @@
                                  <div class="col-lg-6 col-md-6">
                                     <div class="dose-column">
                                        <div class="form-group">
-                                          <label class="mb-1">Dose/Use(x units)</label>
+                                          <label class="mb-1">{{ __('medication.Dose/Use(x units)')}}</label>
                                           <input type="text" class="form-control" name="dose_use" value="" disabled>
                                        </div>
                                        <div class="form-group">
-                                          <label class="mb-1">Doses per package</label>
+                                          <label class="mb-1">{{ __('medication.Doses per package')}}</label>
                                           <input type="text" class="form-control" name="doses_per_package" value="" disabled>
                                        </div>
                                        <div class="form-group">
-                                          <label class="mb-1">Last prescription start</label>
+                                          <label class="mb-1">{{ __('medication.Last prescription start')}}</label>
                                           <div class="d-flex">
                                              <input type="date" class="form-control me-1" name="last_prescription_start" value="" disabled>
                                              <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
@@ -444,21 +444,21 @@
                               <div class="row">
                                  <div class="col-lg-1 col-md-4">
                                     <div class="form-group">
-                                       <label class="mb-2"><strong>Medication</strong></label>
+                                       <label class="mb-2"><strong>{{ __('medication.Medication')}}</strong></label>
                                        <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
                                        <input type="text" class="form-control" name="medication" placeholder="Melyd 60x2 mg" value="{{ old('medication', $medication->medication) }}" disabled>
                                     </div>
                                  </div>
                                  <div class="col-lg-2 col-md-4">
                                     <div class="form-group">
-                                       <label class="mb-2"><strong>Purpose Of Medication</strong></label>
+                                       <label class="mb-2"><strong>{{ __('medication.Purpose Of Medication')}}</strong></label>
                                        <input type="text" class="form-control" name="purpose_of_medication" placeholder="" value="{{ old('purpose_of_medication', $medication->purpose_of_medication) }}" disabled>
                                     </div>
                                  </div>
                                  <div class="col-lg-3 col-md-4">
                                     <div class="use-column">
                                        <div class="mfrequency">
-                                          <p class=""><strong>Use schedule </strong></p>
+                                          <p class=""><strong>{{ __('medication.Use schedule')}} </strong></p>
                                           <div class="mfrequency-form">
                                              @foreach(['6:00', '12:00', '18:00', '24:00'] as $time)
                                              <div class="form-check ps-0">
@@ -469,9 +469,9 @@
                                           </div>
                                        </div>
                                        <div class="food-use">
-                                          <p class="mb-2"><strong>Food and use</strong></p>
+                                          <p class="mb-2"><strong>{{ __('medication.Food and use')}}</strong></p>
                                           <select class="form-select" name="food_use" aria-label="Default select example" disabled>
-                                             <option selected>Dropdown</option>
+                                             <option selected>{{ __('medication.Food and use')}}</option>
                                              <option value="1" {{ old('food_use', $medication->food_use) == 1 ? 'selected' : '' }}>One</option>
                                              <option value="2" {{ old('food_use', $medication->food_use) == 2 ? 'selected' : '' }}>Two</option>
                                              <option value="3" {{ old('food_use', $medication->food_use) == 3 ? 'selected' : '' }}>Three</option>
@@ -482,15 +482,15 @@
                                  <div class="col-lg-6 col-md-6">
                                     <div class="dose-column">
                                        <div class="form-group">
-                                          <label class="mb-1">Dose/Use(x units)</label>
+                                          <label class="mb-1">{{ __('medication.Dose/Use(x units)')}}</label>
                                           <input type="text" class="form-control" name="dose_use" value="{{ old('dose_use', $medication->dose_use) }}" disabled>
                                        </div>
                                        <div class="form-group">
-                                          <label class="mb-1">Doses per package </label>
+                                          <label class="mb-1">{{ __('medication.Doses per package')}} </label>
                                           <input type="text" class="form-control" name="doses_per_package" value="{{ old('doses_per_package', $medication->doses_per_package) }}" disabled>
                                        </div>
                                        <div class="form-group">
-                                          <label class="mb-1">Last prescription start</label>
+                                          <label class="mb-1">{{ __('medication.Last prescription start')}}</label>
                                           <div class="d-flex">
                                              <input type="date" class="form-control me-1" name="last_prescription_start" value="{{ old('last_prescription_start', $medication->last_prescription_start) }}" disabled>
                                              <a href="#" class="btn btn-success me-1 save-btn-area-of-medication" style="pointer-events: none; opacity: 0.5;" disabled><i class="fa-solid fa-check"></i></a>
@@ -506,14 +506,14 @@
                         </div>
                         <div class="row mt-lg-4 mt-3">
                            <div class="col-lg-12">
-                              <a href="#" class="btn btn-primary" id="add-medication-btn" style="pointer-events: none; opacity: 0.5;"> Add Medication <i class="fa-solid fa-plus ms-2"></i></a>
+                              <a href="#" class="btn btn-primary" id="add-medication-btn" style="pointer-events: none; opacity: 0.5;"> {{ __('medication.Add Medication')}} <i class="fa-solid fa-plus ms-2"></i></a>
                            </div>
                         </div>
                      </div>
                   </div>
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
-                        <h4>Monitoring Frequency</h4>
+                        <h4>{{ __('medication.Monitoring Frequency')}}</h4>
                         <a href="#" class="edit-btn" id="edit-btn-monitoring-frequency"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body medical-body-monitoring-frequency border-0 mb-0">
@@ -521,7 +521,7 @@
                            <div class="row">
                               <input type="hidden" class="form-control" name="patient_id" value="{{ $patient->id }}">
                               <div class="col-lg-3 col-md-6">
-                                 <h5 class="mb-2"><strong>Frequency</strong></h5>
+                                 <h5 class="mb-2"><strong>{{ __('medication.Frequency')}}</strong></h5>
                                  <div class="mfrequency-form">
                                     @php
                                     // Decode the frequency JSON or set an empty array if no record
@@ -530,13 +530,13 @@
                                     @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
                                     <div class="form-check ps-0">
                                        <p class="form-check-label">{{ $day }}</p>
-                                       <input class="form-check-input ms-0" type="checkbox" name="frequency[]" value="{{ $day }}" {{ in_array($day, $frequency) ? 'checked' : '' }} disabled>
+                                       <input class="form-check-input ms-0" type="checkbox" name="frequency[]" value="{{ __('patient.'.$day) }}" {{ in_array($day, $frequency) ? 'checked' : '' }} disabled>
                                     </div>
                                     @endforeach
                                  </div>
                               </div>
                               <div class="col-lg-2 col-md-6">
-                                 <h5 class="mb-2"><strong>Preferred call time</strong></h5>
+                                 <h5 class="mb-2"><strong>{{ __('medication.Preferred call time')}}</strong></h5>
                                  <div class="Preferred-call">
                                     <select class="form-select" name="preferred_call_time" disabled>
                                        <option value="10:12 PM" {{ old('preferred_call_time', $monitoringFrequency->preferred_call_time ?? '') == '10:12 PM' ? 'selected' : '' }}>10:12 PM</option>
@@ -555,7 +555,7 @@
                   </div>
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
-                        <h4>Family members</h4>
+                        <h4>{{ __('medication.Family members')}}</h4>
                         <a href="javascript:void(0)" onclick="editFemilyMember()" class="edit-btn"><i class="fa-light fa-pen"></i></a>
                      </div>
                      <div class="medical-body border-0 mb-0">
@@ -567,25 +567,25 @@
                               <input type="hidden" name="member_id[]" id="member_id[]" value="{{$member->id}}">
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Member Name</label>
+                                    <label class="form-label">{{ __('medication.Member Name')}}</label>
                                     <input type="text" id="name[]" name="name[]" placeholder="Member Name" required class="form-control femily-member-sec" disabled value="{{$member->name}}" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Mobile Number</label>
+                                    <label class="form-label">{{ __('medication.Mobile Number')}}</label>
                                     <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" required class="form-control femily-member-sec" disabled value="{{$member->phone}}" />
                                  </div>
                               </div>
                               <div class="col-lg-2 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Relationship</label>
+                                    <label class="form-label">{{ __('medication.Relationship')}}</label>
                                     <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="{{$member->relation}}" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Email Address</label>
+                                    <label class="form-label">{{ __('medication.Email Address')}}</label>
                                     <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled value="{{$member->email}}" />
                                  </div>
                               </div>
@@ -612,25 +612,25 @@
                               <input type="hidden" name="member_id[]" id="member_id[]" value="">
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Member Name</label>
+                                    <label class="form-label">{{ __('medication.Member Name')}}</label>
                                     <input type="text" id="name[]" name="name[]" placeholder="Member Name" required class="form-control femily-member-sec" disabled value="" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Mobile Number</label>
+                                    <label class="form-label">{{ __('medication.Mobile Number')}}</label>
                                     <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" required class="form-control femily-member-sec" disabled value="" />
                                  </div>
                               </div>
                               <div class="col-lg-2 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Relationship</label>
+                                    <label class="form-label">{{ __('medication.Relationship')}}</label>
                                     <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="" />
                                  </div>
                               </div>
                               <div class="col-lg-3 col-md-6">
                                  <div class="form-group mb-4">
-                                    <label class="form-label">Email Address</label>
+                                    <label class="form-label">{{ __('medication.Email Address')}}</label>
                                     <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled />
                                  </div>
                               </div>
@@ -656,17 +656,17 @@
                         </form>
                         <div class="col-lg-12 col-md-12">
                            <div class="form-group">
-                              <button type="button" onclick="addMemberRow()" class="btn btn-primary  femily-member-sec" disabled> Add Family Member <i class="fa-solid fa-plus ms-2"></i></button>
+                              <button type="button" onclick="addMemberRow()" class="btn btn-primary  femily-member-sec" disabled> {{ __('medication.Add Family Member')}} <i class="fa-solid fa-plus ms-2"></i></button>
                            </div>
                         </div>
                      </div>
                   </div>
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
-                        <h4>Areas of interest and hobbies</h4>
+                        <h4>{{ __('medication.Areas of interest and hobbies')}}</h4>
                         <a href="#" class="edit-btn" id="edit-btn-area-of-hobbies"><i class="fa-light fa-pen"></i></a>
                      </div>
-                     <h5 class="mb-3"><strong>Hobbies</strong></h5>
+                     <h5 class="mb-3"><strong>{{ __('medication.Hobbies')}}</strong></h5>
                      <form class="" action="">
                         <div class="row">
                            @foreach($hobbies as $hobby)
@@ -674,7 +674,7 @@
                               <div class="form-check mb-2">
                                  <input class="form-check-input checkbox_hobby" type="checkbox" value="{{ $hobby->id }}" id="flex{{ $hobby->name }}" data-patient-id="{{ $patient->id }}" {{ in_array($hobby->id, $selectedHobbies) ? 'checked' : '' }} disabled>
                                  <label class="form-check-label" for="flex{{ $hobby->name }}">
-                                    {{ $hobby->name }}
+                                    {{ __('medication.'.$hobby->name) }}
                                     <svg data-toggle="tooltip" aria-label="{{ $hobby->name }}" data-bs-original-title="{{ $hobby->name }}" class="ms-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                        <path d="M0.5 10C0.5 4.7533 4.7533 0.5 10 0.5C15.2467 0.5 19.5 4.7533 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.7533 19.5 0.5 15.2467 0.5 10Z" fill="#868686" fill-opacity="0.05" stroke="#868686"></path>
                                        <path d="M9.9795 5C10.8815 5 11.6105 5.26217 12.1663 5.78652C12.7221 6.31086 13 7.01311 13 7.89326C13 8.8764 12.7039 9.60674 12.1116 10.0843C11.5194 10.5524 10.7175 10.7865 9.70615 10.7865L9.66515 12.1208H8.58542L8.53075 9.90169H8.92711C9.82916 9.90169 10.5353 9.76124 11.0456 9.48034C11.5558 9.19944 11.8109 8.67041 11.8109 7.89326C11.8109 7.33146 11.6469 6.8867 11.3189 6.55899C10.9909 6.23127 10.549 6.06742 9.99317 6.06742C9.42825 6.06742 8.98178 6.22659 8.65376 6.54494C8.33485 6.85393 8.1754 7.27996 8.1754 7.82303H7C7 7.26124 7.12301 6.76966 7.36902 6.34831C7.61503 5.9176 7.96128 5.58521 8.40775 5.35112C8.86333 5.11704 9.38724 5 9.9795 5ZM9.11845 15C8.88155 15 8.68109 14.9157 8.51708 14.7472C8.35308 14.5787 8.27107 14.3727 8.27107 14.1292C8.27107 13.8858 8.35308 13.6798 8.51708 13.5112C8.68109 13.3427 8.88155 13.2584 9.11845 13.2584C9.34624 13.2584 9.53759 13.3427 9.69248 13.5112C9.85649 13.6798 9.9385 13.8858 9.9385 14.1292C9.9385 14.3727 9.85649 14.5787 9.69248 14.7472C9.53759 14.9157 9.34624 15 9.11845 15Z" fill="#868686"></path>
@@ -688,14 +688,14 @@
                   </div>
                   <div class="medical-conditions mb-4">
                      <div class="sec-title">
-                        <h4>Doctors and Facilities</h4>
+                        <h4>{{ __('medication.Doctors and Facilities')}}</h4>
                         {{-- <a href="#" class="edit-btn"><i class="fa-light fa-pen"></i></a> --}}
                      </div>
                      <div class="medical-body border-0 mb-0">
                         <form class="" action="">
                            <div class="row">
                               <div class="col-lg-4 col-md-6">
-                                 <label class="form-label">Medical Facilities</label>
+                                 <label class="form-label">{{ __('medication.Medical Facilities')}}</label>
                                  @foreach($patient->facilities as $facility)
                                  <div class="form-group mb-3">
                                     <div class="d-flex">
@@ -705,7 +705,7 @@
                                  @endforeach
                               </div>
                               <div class="col-lg-4 col-md-6">
-                                 <label class="form-label">Doctor</label>
+                                 <label class="form-label">{{ __('medication.Doctor')}}</label>
                                  @foreach($patient->doctors as $doctor)
                                  <div class="form-group mb-3">
                                     <div class="d-flex">
@@ -730,7 +730,7 @@
       <div class="modal-dialog" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+               <h5 class="modal-title" id="editProfileModalLabel">{{ __('medication.Edit Profile')}}</h5>
                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                </button>
@@ -741,18 +741,18 @@
                   <!-- Form content goes here -->
                   @csrf
                   <div class="form-group">
-                     <label for="image">Profile Image</label>
+                     <label for="image">{{ __('medication.Profile Image')}}</label>
                      <input type="hidden" id="patient_id" name="patient_id" value="{{ old('id', $patient->id) }}">
                      <input type="file" class="form-control" id="image" name="image">
                   </div>
 
                   <div class="form-group">
-                     <label for="first_name">First Name</label>
+                     <label for="first_name">{{ __('patient.First Name')}}</label>
                      <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name', $patient->first_name) }}">
                   </div>
 
                   <div class="form-group">
-                     <label for="last_name">Last Name</label>
+                     <label for="last_name">{{ __('patient.Last Name')}}</label>
                      <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name', $patient->last_name) }}">
                   </div>
 
@@ -767,19 +767,35 @@
                </div> -->
 
                   <div class="form-group">
-                     <label for="address">Address</label>
+                     <label for="address">{{ __('medication.Address')}}</label>
                      <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $patient->address) }}">
                   </div>
 
                   <div class="form-group">
-                     <label for="DOB">Date of Birth</label>
+                     <label for="DOB">{{ __('medication.Date of Birth')}}</label>
                      <input type="date" class="form-control" id="DOB" name="DOB" value="{{ old('DOB', $patient->DOB) }}">
                   </div>
-
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="weight">{{__('patient.Weight')}}</label>
+                           <input type="text" class="form-control" id="weight" name="weight" value="{{ old('weight', $patient->weight) }}">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="gender">{{__('patient.Gender')}}</label>
+                           <select name="gender" id="gender" class="form-control" required>
+                              <option value="m" @if($patient->gender=='m') selected @endif>{{__('patient.Male')}}</option>
+                              <option value="f" @if($patient->gender=='f') selected @endif>{{__('patient.Female')}}</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
                </div>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('medication.Close')}}</button>
+                  <button type="submit" class="btn btn-primary">{{ __('medication.Save changes')}}</button>
                </div>
             </form>
 
@@ -841,25 +857,25 @@
       <input type="hidden" name="member_id[]" id="member_id[]" value="">
       <div class="col-lg-3 col-md-6">
          <div class="form-group mb-4">
-            <label class="form-label">Member Name</label>
+            <label class="form-label">{{ __('medication.Member Name')}}</label>
             <input type="text" id="name[]" name="name[]" placeholder="Member Name" required class="form-control femily-member-sec" disabled value="" />
          </div>
       </div>
       <div class="col-lg-3 col-md-6">
          <div class="form-group mb-4">
-            <label class="form-label">Mobile Number</label>
+            <label class="form-label">{{ __('medication.Mobile Number')}}</label>
             <input type="text" id="phone[]" name="phone[]" placeholder="`+420 435 783 230" required class="form-control femily-member-sec" disabled value="" />
          </div>
       </div>
       <div class="col-lg-2 col-md-6">
          <div class="form-group mb-4">
-            <label class="form-label">Relationship</label>
+            <label class="form-label">{{ __('medication.Relationship')}}</label>
             <input type="text" id="relation[]" name="relation[]" placeholder="Daughter" class="form-control femily-member-sec" disabled value="" />
          </div>
       </div>
       <div class="col-lg-3 col-md-6">
          <div class="form-group mb-4">
-            <label class="form-label">Email Address</label>
+            <label class="form-label">{{ __('medication.Email Address')}}</label>
             <input type="email" id="email[]" name="email[]" placeholder="john@gmail.com" class="form-control  femily-member-sec" disabled />
          </div>
       </div>
@@ -999,7 +1015,7 @@
          const model = checkbox.data('model');
          const column = checkbox.data('column');
          const patientId = checkbox.data('patient-id');
-         const actionMessage = isChecked ? `Are you sure you want to add this ${$model}?` : `Are you sure you want to remove this ${$model}?`;
+         const actionMessage = isChecked ? `Are you sure you want to add this ${model}?` : `Are you sure you want to remove this ${model}?`;
 
          Swal.fire({
             title: 'Confirm Change',

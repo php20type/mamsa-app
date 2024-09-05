@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MonitoringHistory extends Model
 {
     use HasFactory;
-    protected $fillable=['doctor_id','patient_id','monitor_id','rep_date','rep_overall','rep_overall_neg','rep_overall_bodypart','rep_monitor_condition','rep_monitor_condition_neg','rep_medication','rep_medication_neg','rep_medication_sideeffect','rep_medication_bodypart','notes','monitor_bloodpressure_measured','monitor_bloodpressure_measure_now','monitor_bloodpressure_systolic','monitor_bloodpressure_diastolic','monitor_bloodpressure_feeling'];
+    protected $fillable=['doctor_id','patient_id','monitor_id','rep_date','rep_overall','rep_overall_neg','rep_overall_bodypart','rep_monitor_condition','rep_monitor_condition_neg','rep_medication','rep_medication_neg','rep_medication_sideeffect','rep_medication_bodypart','notes','monitor_bloodpressure_measured','monitor_bloodpressure_measure_now','monitor_bloodpressure_systolic','monitor_bloodpressure_diastolic','monitor_bloodpressure_feeling','monitor_chronicpain','monitor_chronicpain_location','monitor_chronicpain_scale','monitor_hydration_glasses','monitor_hydration_level'];
 
     public function patient()
     {

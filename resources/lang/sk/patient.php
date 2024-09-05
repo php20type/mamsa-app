@@ -54,10 +54,12 @@ return [
     'Lifestyle and Wellbeing' => 'Životný štýl a pohoda',
     'Regular food food intake' => 'Pravidelný príjem jedla',
     'Hydration' => 'Hydratácia',
-    'Qxy gometer' => 'Oxymeter',
+    'Oxy geometer' => 'Oxymeter',
     'Quality of sleep' => 'Kvalita spánku',
     'Which other indicators of lifestyle & wellbeing would you like to see?' => 'Ktoré ďalšie ukazovatele životného štýlu a pohody by ste chceli vidieť?',
-
+    'Gender' => 'Pohlavie',
+    'Male' => 'Muž',
+    'Female' => 'Žena',
 ];
 
 ?>

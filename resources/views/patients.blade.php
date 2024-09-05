@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><a href="javascript:void(0)" onclick="updatePatient(`{{$patient->id}}`,`{{$patient->patient_id}}`,`{{$patient->first_name}}`,`{{$patient->last_name}}`,`{{$patient->phone_number}}`,`{{$patient->doctor_ids}}`,`{{$patient->facility_ids}}`,`{{$patient->preferred_time_from}}`,`{{$patient->preferred_time_to}}`,`{{$patient->frequency}}`,`{{$patient->lang}}`,`{{$patient->DOB}}`,`{{$patient->weight}}`)"><i class="fa-regular fa-pen"></i></a>
+                            <td><a href="javascript:void(0)" onclick="updatePatient(`{{$patient->id}}`,`{{$patient->patient_id}}`,`{{$patient->first_name}}`,`{{$patient->last_name}}`,`{{$patient->phone_number}}`,`{{$patient->doctor_ids}}`,`{{$patient->facility_ids}}`,`{{$patient->preferred_time_from}}`,`{{$patient->preferred_time_to}}`,`{{$patient->frequency}}`,`{{$patient->lang}}`,`{{$patient->DOB}}`,`{{$patient->weight}}`,`{{$patient->gender}}`)"><i class="fa-regular fa-pen"></i></a>
                                 <a href="#" class="ms-2" onclick="deletePatient('{{$patient->id}}')"><i class="fa-regular fa-trash"></i></a>
                             </td>
                         </tr>
@@ -274,6 +274,15 @@
                             <div class="form-group mb-4">
                                 <label class="form-label">{{__('patient.Weight')}}:</label>
                                 <input type="text" name="weight" id="weight" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label for="gender">{{__('patient.Gender')}}</label>
+                                <select name="gender" id="gender" class="form-control" required>
+                                    <option value="m">{{__('patient.Male')}}</option>
+                                    <option value="f">{{__('patient.Female')}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -408,7 +417,7 @@
         $('#facility_ids').selectpicker('refresh');
     }
 
-    function updatePatient(id, patient_id, first_name, last_name, phone_number, doctor_ids, facility_ids, from_time, to_time, frequency,lang,dob,weight) {
+    function updatePatient(id, patient_id, first_name, last_name, phone_number, doctor_ids, facility_ids, from_time, to_time, frequency, lang, dob, weight,gender) {
         var doctorsid = doctor_ids.split(',').map(function(item) {
             return item.trim();
         });
@@ -430,8 +439,9 @@
         $('#patient_id_label').text(patient_id);
         $('#patient_id_sec').removeClass('d-none');
         $('#lang').val(lang).trigger('change');
-         $('#DOB').val(dob);
+        $('#DOB').val(dob);
         $('#weight').val(weight);
+        $('#gender').val(gender);
         $('#first_name').val(first_name);
         $('#last_name').val(last_name);
         $('#phone_number').val(phone_number);

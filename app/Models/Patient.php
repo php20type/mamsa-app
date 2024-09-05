@@ -9,7 +9,7 @@ class Patient extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['patient_id', 'first_name', 'last_name', 'phone_number', 'other_number', 'image', 'address', 'doctor_ids', 'facility_ids', 'frequency', 'preferred_time_from', 'preferred_time_to', 'monitor_id', 'lang', 'DOB', 'weight'];
+    protected $fillable = ['patient_id', 'first_name', 'last_name', 'phone_number', 'other_number', 'image', 'address', 'doctor_ids', 'facility_ids', 'frequency', 'preferred_time_from', 'preferred_time_to', 'monitor_id', 'lang', 'DOB', 'weight','gender'];
 
     public function getDoctorsAttribute()
     {

@@ -57,9 +57,11 @@
         'Lifestyle and Wellbeing'=>'Lifestyle and Wellbeing',
         'Regular food food intake'=>'Regular food food intake',
         'Hydration'=>'Hydration',
-        'Qxy gometer'=>'Qxy gometer',
+        'Oxy geometer'=>'Oxy geometer',
         'Quality of sleep'=>'Quality of sleep',
         'Which other indicators of lifestyle & wellbeing would you like to see?'=>'Which other indicators of lifestyle & wellbeing would you like to see?',
-        
+        'Gender'=>'Gender',
+        'Male'=>'Male',
+        'Female'=>'Female',
     ]
 ?>

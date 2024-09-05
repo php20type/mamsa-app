@@ -216,8 +216,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group mb-4">
-                                <label class="form-label">{{__('patient.First Name')}}:</label>
-                                <input type="text" name="first_name" id="first_name" class="form-control">
+                                <label class="form-label">{{__('patient.First Name')}}:*</label>
+                                <input type="text" name="first_name" id="first_name" required class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -228,20 +228,29 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group mb-4">
-                                <label class="form-label">{{__('patient.Phone Number')}}:</label>
+                                <label class="form-label">{{__('patient.Phone Number')}}:*</label>
                                 <input type="text" name="phone_number" id="phone_number" required class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group mb-4">
-                                <label class="form-label">{{__('patient.Date Of Birth')}}:</label>
+                                <label class="form-label">{{__('patient.Date Of Birth')}}:*</label>
                                 <input type="date" name="DOB" id="DOB" required class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group mb-4">
-                                <label class="form-label">{{__('patient.Weight')}}:</label>
+                                <label class="form-label">{{__('patient.Weight')}}:*</label>
                                 <input type="text" name="weight" id="weight" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-4">
+                                <label class="form-label">{{__('patient.Gender')}}:*</label>
+                                <select name="gender" id="gender" class="form-control" required>
+                                    <option value="m">{{__('patient.Male')}}</option>
+                                    <option value="f">{{__('patient.Female')}}</option>
+                                </select>
                             </div>
                         </div>
                         <!-- <div class="col-lg-6">

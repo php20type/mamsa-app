@@ -78,8 +78,29 @@ class PatientController extends Controller
         if ($request->facility_ids != null) {
             $facility_ids = implode(',', $request->facility_ids);
         }
-        $patient = Patient::updateOrCreate(['id' => $request->patient_id], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'lang' => $request->lang, 'DOB' => $request->DOB, 'weight' => $request->weight]);
-
+        $patient = Patient::updateOrCreate(['id' => $request->patient_id], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'lang' => $request->lang, 'DOB' => $request->DOB, 'weight' => $request->weight,'gender'=>$request->gender]);
+        if ($request->facility_ids != null) {
+           foreach($request->facility_ids as $facility){
+               $facilitydata=MedicalFecility::where('id',$facility)->first();
+               if($facilitydata->facility_patients!=null){
+                $patient_ids_array=explode(',',$facilitydata->facility_patients);
+                if(!in_array($patient->id,$patient_ids_array)){
+                    array_push($patient_ids_array,$patient->id);
+                    MedicalFecility::where('id',$facility)->update(['facility_patients'=>implode(',',$patient_ids_array)]);
+                }
+               }else{
+                   MedicalFecility::where('id',$facility)->update(['facility_patients'=>$patient->id]);
+               }
+           }
+           $unassignedfacility=MedicalFecility::whereNotIn('id',$request->facility_ids)->whereRaw("FIND_IN_SET($patient->id,facility_patients)")->get();
+           foreach($unassignedfacility as $unfacility){
+                  $facility_ids_array=explode(',',$unfacility->facility_patients);
+                   if (($key = array_search($patient->id, $facility_ids_array)) !== false) {
+                       unset($facility_ids_array[$key]);
+                   }
+                   MedicalFecility::where('id',$unfacility->id)->update(['facility_patients'=>implode(',',$facility_ids_array)]);
+           }
+        }
         if ($request->patient_id != '') {
             return redirect()->back()->with('success', __('patient.Patient Updated Successfully'));
         }
@@ -168,7 +189,7 @@ class PatientController extends Controller
         $userid = auth()->user()->id;
         $query = MedicalFecility::query();
 
-        foreach (explode(',',$doctor_ids) as $id) {
+        foreach (explode(',', $doctor_ids) as $id) {
             $query->orWhereRaw("FIND_IN_SET(?, facility_drs)", [$id]);
         }
 
@@ -177,9 +198,9 @@ class PatientController extends Controller
             $facility_ids = implode(',', $medical_facilities);
         }
         if ($request->patient_id != '') {
-            $patient = Patient::updateOrCreate(['id' => $request->patient_id], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'DOB' => $request->DOB, 'weight' => $request->weight, 'lang' => $request->lang]);
+            $patient = Patient::updateOrCreate(['id' => $request->patient_id], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'DOB' => $request->DOB, 'weight' => $request->weight, 'lang' => $request->lang,'gender'=>$request->gender]);
         } else {
-            $patient = Patient::updateOrCreate(['phone_number' => $request->phone_number], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'lang' => $request->lang, 'DOB' => $request->DOB, 'weight' => $request->weight]);
+            $patient = Patient::updateOrCreate(['phone_number' => $request->phone_number], ['first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number, 'facility_ids' => $facility_ids, 'doctor_ids' => $doctor_ids, 'preferred_time_from' => $request->preferred_time_from, 'preferred_time_to' => $request->preferred_time_to, 'frequency' => implode(',', $frequency_array), 'lang' => $request->lang, 'DOB' => $request->DOB, 'weight' => $request->weight,'gender'=>$request->gender]);
         }
         if ($request->patient_id != '') {
             return redirect()->back()->with('success', __('patient.Patient Updated Successfully'));
@@ -220,6 +241,8 @@ class PatientController extends Controller
         $patient->other_number = $request->input('other_number');
         $patient->address = $request->input('address');
         $patient->DOB = $request->input('DOB');
+        $patient->weight = $request->input('weight');
+        $patient->gender = $request->input('gender');
 
         // Save the updated patient
         $patient->save();
@@ -230,64 +253,68 @@ class PatientController extends Controller
     public function getPatientData(Request $request)
     {
         $patient = Patient::where(DB::raw('RIGHT(phone_number, 10)'), substr($request->phone_number, -10))->first();
-        $monitordata = PatientMonitor::where('id', $patient->monitor_id)->first();
-        $medication = Medication::where('id', $monitordata->medication)->first();
-        $symptoms = Symptom::where('id', $monitordata->monitor_condition)->first();
-        $doctor = User::where('id', $monitordata->doctor_id)->first();
-        $messages = Message::where('receiver_id', $patient->id)->where('is_read', 0)->get();
-        $messagetext = '';
-        Message::where('receiver_id', $patient->id)->update(['is_read' => 1]);
-        foreach ($messages as $message) {
-            $messagetext .= $message->message;
-        }
-        $frequencyPattern = explode(',', $patient->frequency);
-        $medical_condition = PatientMedicalCondition::where('patient_id', $patient->id)->first();
-        $quantitative_indicators = PatientQuantitativeIndicators::where('patient_id', $patient->id)->first();
-        $lifestyles=PatientLifestyleAndWellbeing::where('patient_id',$patient->id)->first();
-        // Get today's day of the week (1 for Monday through 7 for Sunday)
-        $today = Carbon::now()->dayOfWeekIso; // Monday = 1, Sunday = 7
-        // Find the next enabled day
-        $nextEnabledDay = '';
-        for ($i = 1; $i < 7; $i++) {
-            $dayIndex = ($today + $i - 1) % 7; // Adjust index to match array (0-6)
-            if ($frequencyPattern[$dayIndex] == '1' && $nextEnabledDay == '') {
-                $nextEnabledDay = Carbon::now()->addDays($i)->format('l');
+        if ($patient) {
+            $monitordata = PatientMonitor::where('id', $patient->monitor_id)->first();
+            $medication = Medication::where('id', $monitordata->medication)->first();
+            $symptoms = Symptom::where('id', $monitordata->monitor_condition)->first();
+            $doctor = User::where('id', $monitordata->doctor_id)->first();
+            $messages = Message::where('receiver_id', $patient->id)->where('is_read', 0)->get();
+            $messagetext = '';
+            Message::where('receiver_id', $patient->id)->update(['is_read' => 1]);
+            foreach ($messages as $message) {
+                $messagetext .= $message->message;
             }
+            $frequencyPattern = explode(',', $patient->frequency);
+            $medical_condition = PatientMedicalCondition::where('patient_id', $patient->id)->first();
+            $quantitative_indicators = PatientQuantitativeIndicators::where('patient_id', $patient->id)->first();
+            $lifestyles = PatientLifestyleAndWellbeing::where('patient_id', $patient->id)->first();
+            // Get today's day of the week (1 for Monday through 7 for Sunday)
+            $today = Carbon::now()->dayOfWeekIso; // Monday = 1, Sunday = 7
+            // Find the next enabled day
+            $nextEnabledDay = '';
+            for ($i = 1; $i < 7; $i++) {
+                $dayIndex = ($today + $i - 1) % 7; // Adjust index to match array (0-6)
+                if ($frequencyPattern[$dayIndex] == '1' && $nextEnabledDay == '') {
+                    $nextEnabledDay = Carbon::now()->addDays($i)->format('l');
+                }
+            }
+            $patientdata['FirstName'] = $patient->first_name;
+            $patientdata['LastName'] = $patient->last_name;
+            $patientdata['weight'] = $patient->weight;
+            $patientdata['gender'] = $patient->gender;
+            $patientdata['PatientID'] = $patient->patient_id;
+            $patientdata['MonitoredCondition1'] = $symptoms->title;
+            $patientdata['Meds1_Name'] = $medication->med_name;
+            $patientdata['med_form_look'] = $medication->med_form_look;
+            $patientdata['med_pack_look'] = $medication->med_pack_look;
+            $patientdata['dose'] = $monitordata->dose;
+            $patientdata['nextDay'] = $nextEnabledDay;
+            $patientdata['message'] = $messagetext;
+            $patientdata['medical_condition'] = $medical_condition;
+            $patientdata['quantitative_indicators'] = $quantitative_indicators;
+            $patientdata['lifestyles'] = $lifestyles;
+            if (isset($doctor->firstname)) {
+                $patientdata['medication_admin'] = $doctor->firstname;
+            } else {
+                $patientdata['medication_admin'] = '';
+            }
+            $history=MonitoringHistory::create(['patient_id'=>$patient->id,'rep_date' => now()]);
+            $patientdata['history_id']=$history->id;
+            return response()->json($patientdata);
         }
-        $patientdata['FirstName'] = $patient->first_name;
-        $patientdata['LastName'] = $patient->last_name;
-        $patientdata['PatientID'] = $patient->patient_id;
-        $patientdata['MonitoredCondition1'] = $symptoms->title;
-        $patientdata['Meds1_Name'] = $medication->med_name;
-        $patientdata['med_form_look'] = $medication->med_form_look;
-        $patientdata['med_pack_look'] = $medication->med_pack_look;
-        $patientdata['dose'] = $monitordata->dose;
-        $patientdata['nextDay'] = $nextEnabledDay;
-        $patientdata['message'] = $messagetext;
-        $patientdata['medical_condition'] = $medical_condition;
-        $patientdata['quantitative_indicators'] = $quantitative_indicators;
-        $patientdata['lifestyles']=$lifestyles;
-        if (isset($doctor->firstname)) {
-            $patientdata['medication_admin'] = $doctor->firstname;
-        } else {
-            $patientdata['medication_admin'] = '';
-        }
-        return response()->json($patientdata);
+        return false;
     }
     public function storeMonitorHistory(Request $request)
     {
         $patient = Patient::where('patient_id', $request->patient_id)->first();
+        $monitorhistory=MonitoringHistory::where('id',$request->history_id)->first();
         $montorcondition = PatientMonitor::where('id', $patient->monitor_id)->first();
-
         $lang = 'en';
         if ($request->lang) {
             $lang = $request->lang;
         }
         // Prepare the data array for update or create
         $data = [
-            'doctor_id' => $montorcondition->doctor_id,
-            'patient_id' => $montorcondition->patient_id,
-            'monitor_id' => $montorcondition->id,
             'lang' => $lang,
             'rep_date' => now(), // Using Laravel's now() helper for current date and time
         ];
@@ -322,18 +349,55 @@ class PatientController extends Controller
         }
         if ($request->filled('monitor_bloodpressure_measured')) {
             $data['monitor_bloodpressure_measured'] = $request->monitor_bloodpressure_measured;
-        }if ($request->filled('monitor_bloodpressure_measure_now')) {
+        }
+        if ($request->filled('monitor_bloodpressure_measure_now')) {
             $data['monitor_bloodpressure_measure_now'] = $request->monitor_bloodpressure_measure_now;
-        }if ($request->filled('monitor_bloodpressure_systolic')) {
+        }
+        if ($request->filled('monitor_bloodpressure_systolic')) {
             $data['monitor_bloodpressure_systolic'] = $request->monitor_bloodpressure_systolic;
-        }if ($request->filled('monitor_bloodpressure_diastolic')) {
+        }
+        if ($request->filled('monitor_bloodpressure_diastolic')) {
             $data['monitor_bloodpressure_diastolic'] = $request->monitor_bloodpressure_diastolic;
-        }if ($request->filled('monitor_bloodpressure_feeling')) {
+        }
+        if ($request->filled('monitor_bloodpressure_feeling')) {
             $data['monitor_bloodpressure_feeling'] = $request->monitor_bloodpressure_feeling;
         }
         if ($request->filled('notes')) {
             $data['notes'] = $request->notes;
-            Message::create(['sender_id' => $montorcondition->patient_id, 'receiver_id' => $montorcondition->doctor_id, 'message' => $request->notes, 'message_sender' => 'patient']);
+            Message::create(['sender_id' => $monitorhistory->patient_id, 'receiver_id' => $monitorhistory->doctor_id, 'message' => $request->notes, 'message_sender' => 'patient']);
+        }
+        if($request->filled('monitor_chronicpain')){
+            $data['monitor_chronicpain']=$request->monitor_chronicpain;
+        }
+        if($request->filled('monitor_chronicpain_location')){
+            if($monitorhistory->monitor_chronicpain_location!=null){
+                $chronicpain_location=explode(',',$monitorhistory->monitor_chronicpain_location);
+                array_push($chronicpain_location,$request->monitor_chronicpain_location);
+                $data['monitor_chronicpain_location']=implode(',',$chronicpain_location);
+            }else{
+                $data['monitor_chronicpain_location']=$request->monitor_chronicpain_location;
+            }
+        }
+        if($request->filled('monitor_chronicpain_scale')){
+            if($monitorhistory->monitor_chronicpain_scale!=null){
+                $chronicpain_scale=explode(',',$monitorhistory->monitor_chronicpain_scale);
+                array_push($chronicpain_scale,$request->monitor_chronicpain_scale);
+                $data['monitor_chronicpain_scale']=implode(',',$chronicpain_scale);
+            }else{
+                $data['monitor_chronicpain_scale']=$request->monitor_chronicpain_scale;
+            }
+        }
+        if($request->filled('monitor_sleep_well')){
+            $data['monitor_sleep_well']=$request->monitor_sleep_well;
+        }
+        if($request->filled('monitor_sleep_reason')){
+            $data['monitor_sleep_reason']=$request->monitor_sleep_reason;
+        }
+        if($request->filled('monitor_hydration_glasses')){
+            $data['monitor_hydration_glasses']=$request->monitor_hydration_glasses;
+        }
+        if($request->filled('monitor_hydration_level')){
+            $data['monitor_hydration_level']=$request->monitor_hydration_level;
         }
         
         // Update or create the MonitoringHistory record with the prepared data
